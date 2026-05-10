@@ -68,11 +68,11 @@ git init
 git add .
 git commit -m "Initial site launch"
 git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
+git remote add origin https://github.com/abhi2504/aarvyaconsulting.com.git
 git push -u origin main
 ```
 
-(Replace `YOUR-USERNAME` and `YOUR-REPO` with your actual GitHub username and repo name. GitHub will prompt for login the first time.)
+(GitHub will prompt for login the first time.)
 
 ---
 
@@ -89,7 +89,7 @@ git push -u origin main
 
 After a moment, the page will show:
 
-> **Your site is live at** `https://YOUR-USERNAME.github.io/YOUR-REPO/`
+> **Your site is live at** `https://abhi2504.github.io/aarvyaconsulting.com/`
 
 Click that URL — you should see your homepage. ✅
 
@@ -130,7 +130,7 @@ You’ll see a banner saying *“DNS check in progress”* — that’s expected
 
 | Type | Host / Name | Value | TTL |
 |---|---|---|---|
-| CNAME | `www` | `YOUR-USERNAME.github.io` | 1 hour |
+| CNAME | `www` | `abhi2504.github.io` | 1 hour |
 
 > Replace `YOUR-USERNAME` with your actual GitHub username. **Do not include `https://` or a trailing slash.** GoDaddy may add a trailing dot — that’s fine.
 
