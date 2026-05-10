@@ -1,0 +1,19 @@
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# Env (in case of future backend integration)
+.env
+.env.local
+.env.*.local
