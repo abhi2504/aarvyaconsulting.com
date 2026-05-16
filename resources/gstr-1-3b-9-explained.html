@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a1f44" />
+<title>GSTR-1, GSTR-3B, GSTR-9 Explained for Beginners | Aarvya Consulting</title>
+<meta name="description" content="The 3 GST returns every business must know — GSTR-1 (sales), GSTR-3B (summary + payment), GSTR-9 (annual). When, why, how — in plain English." />
+<link rel="canonical" href="https://aarvyaconsulting.com/resources/gstr-1-3b-9-explained.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+<link rel="stylesheet" href="_shared.css" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a1f44'/><text x='50%' y='58%' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23c9a961'>A</text></svg>" />
+</head>
+<body>
+<div class="read-progress"><div class="read-progress__fill"></div></div>
+<div class="topbar"><div class="container topbar__row"><div class="topbar__left"><a href="tel:+917042833440">+91 70428 33440</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div><div class="topbar__right"><span>Mon–Sat · 10:00–19:00</span></div></div></div>
+
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya Consulting</strong><span>Tax · Compliance · ERP</span></span></a><nav class="nav__menu"><a href="../index.html">Home</a><a href="../about.html">About</a><span class="has-sub"><a href="../services.html">Services</a><div class="submenu"><a href="../services/gst-filing.html">GST Services</a><a href="../services/itr-filing.html">Income Tax / ITR</a><a href="../services/company-registration.html">Business Registration</a><a href="../services/erp-consulting.html">ERP Consulting</a><a href="../services.html">All Services →</a></div></span><a class="is-active" href="../resources.html">Guides</a><a href="../contact.html">Contact</a></nav><div class="nav__cta"><a class="btn btn--ghost" href="tel:+917042833440">Call Now</a><a class="btn btn--primary" href="../contact.html">Free Consultation</a></div><button class="nav__toggle" aria-label="Open menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></header>
+
+<div class="mobile-panel" id="mobilePanel"><div class="mobile-panel__inner"><div class="mobile-panel__head"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya</strong><span>Consulting</span></span></a><button class="mobile-panel__close nav__toggle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="../index.html">Home</a><a href="../about.html">About Us</a><a href="../services.html">Services</a><a href="../resources.html">Guides</a><a href="../contact.html">Contact</a><div class="mobile-panel__cta"><a class="btn btn--whatsapp" href="https://wa.me/917042833440" target="_blank" rel="noopener">WhatsApp Us</a><a class="btn btn--primary" href="tel:+917042833440">Call Now</a></div></div></div>
+
+<section class="article-header"><div class="article-header__inner">
+  <div class="breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="../resources.html">Guides</a> <span>/</span> GSTR-1, 3B, 9</div>
+  <div class="article-meta"><span class="chip">GST</span><span>· 8 min read</span><span class="meta-sep">·</span><span>Updated Jan 2026</span></div>
+  <h1>GSTR-1, GSTR-3B, GSTR-9 — what they are and when to file</h1>
+  <p class="lede">Three letters. Three forms. Three different jobs. Get them right and GST runs like clockwork.</p>
+</div></section>
+
+<article class="section"><div class="article-body">
+
+  <div class="tldr"><div class="tldr__title">🪙 In 60 seconds</div><ul>
+    <li><strong>GSTR-1</strong> — your sales return. Due by <strong>11th</strong> of next month (or 13th for quarterly QRMP).</li>
+    <li><strong>GSTR-3B</strong> — your summary return + GST payment. Due by <strong>20th</strong> of next month.</li>
+    <li><strong>GSTR-9</strong> — annual return summarising the full year. Due by <strong>31 December</strong> of the next FY. Mandatory if turnover > ₹2 cr.</li>
+    <li>Missing any of these = late fees + interest + ITC blocked for your buyers.</li>
+  </ul></div>
+
+  <h2>How they connect</h2>
+  <div class="mermaid-wrap">
+<pre class="mermaid">
+flowchart LR
+  Sales[Your sales invoices] --> G1[GSTR-1 by 11th]
+  G1 --> Buyer[Auto-flows to buyer's GSTR-2A/2B]
+  Purchases[Your purchase bills] --> G2B[GSTR-2B<br/>auto-generated from vendors]
+  G1 --> G3B[GSTR-3B by 20th]
+  G2B --> G3B
+  G3B --> Pay[Pay GST via challan]
+  G1 --> G9[GSTR-9 by 31 Dec annually]
+  G3B --> G9
+</pre>
+  </div>
+
+  <h2>GSTR-1 — the sales return</h2>
+  <p>This is where you tell the government <strong>"here's everything I sold this month"</strong> — invoice by invoice for B2B sales, and summary for B2C.</p>
+
+  <h3>What goes in</h3>
+  <ul>
+    <li>B2B invoices — full details (invoice number, date, buyer GSTIN, taxable value, tax)</li>
+    <li>B2C large (above ₹2.5L inter-state) — invoice details</li>
+    <li>B2C small — state-wise + rate-wise summary</li>
+    <li>Credit notes / debit notes</li>
+    <li>Exports — with shipping bill details</li>
+    <li>HSN-wise summary of outward supplies</li>
+  </ul>
+
+  <h3>Why it matters beyond you</h3>
+  <p>Your GSTR-1 entries flow into your buyer's <strong>GSTR-2B</strong>. If you don't file it on time or skip an invoice, your buyer can't claim Input Tax Credit on it. They will chase you. They might switch vendors.</p>
+
+  <h3>Frequency</h3>
+  <ul>
+    <li><strong>Monthly</strong> — if turnover > ₹5 cr or you opted out of QRMP</li>
+    <li><strong>Quarterly (QRMP)</strong> — for turnover up to ₹5 cr. Pay tax monthly via PMT-06, but file GSTR-1 only quarterly. Saves time.</li>
+  </ul>
+
+  <h2>GSTR-3B — the summary return + payment</h2>
+  <p>This is the <strong>"settle up"</strong> return. You declare total sales, ITC claimed, and pay any net tax. Filed by 20th of next month (24th for some states in QRMP).</p>
+
+  <h3>Structure of GSTR-3B</h3>
+  <table class="data-table">
+    <thead><tr><th>Table</th><th>What goes there</th></tr></thead>
+    <tbody>
+      <tr><td>3.1</td><td>Outward supplies (sales) — taxable, zero-rated, nil-rated, exempt</td></tr>
+      <tr><td>3.1.1</td><td>Supplies notified u/s 9(5) (e-commerce operators)</td></tr>
+      <tr><td>3.2</td><td>Inter-state supplies to unregistered / composition / UIN holders</td></tr>
+      <tr><td>4</td><td>Eligible ITC — IGST, CGST, SGST, Cess</td></tr>
+      <tr><td>4(B)</td><td>ITC reversed (rule 42/43, blocked credits)</td></tr>
+      <tr><td>5</td><td>Inward supplies from exempt / nil-rated / composition suppliers</td></tr>
+      <tr><td>6.1</td><td>Payment of tax — offset cash ledger, credit ledger</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong>Pro tip</strong>GSTR-3B is now mostly auto-populated from GSTR-1 (your sales) and GSTR-2B (your purchases). Verify, don't blindly accept. The "edit" option is there for a reason.</div></div>
+
+  <h2>GSTR-9 — the annual return</h2>
+  <p>One return per year that consolidates everything you filed across 12 GSTR-1s and 12 GSTR-3Bs. Plus reconciliation with your books.</p>
+
+  <h3>Who must file</h3>
+  <ul>
+    <li><strong>Mandatory:</strong> all regular taxpayers with turnover > ₹2 cr</li>
+    <li><strong>Optional:</strong> turnover ≤ ₹2 cr (most small businesses)</li>
+    <li><strong>GSTR-9C (Reconciliation Statement):</strong> additionally required if turnover > ₹5 cr — needs self-certification</li>
+  </ul>
+
+  <h3>Due date</h3>
+  <p>31 December of the next financial year. (FY 24-25 → due 31 Dec 2025.)</p>
+
+  <h2>The deadline calendar</h2>
+  <table class="data-table">
+    <thead><tr><th>Return</th><th>Period</th><th>Due date</th></tr></thead>
+    <tbody>
+      <tr><td>GSTR-1 monthly</td><td>Monthly</td><td>11th of next month</td></tr>
+      <tr><td>GSTR-1 quarterly (QRMP)</td><td>Quarterly</td><td>13th of next month</td></tr>
+      <tr><td>IFF (QRMP — for first 2 months of quarter)</td><td>Monthly (M1, M2 of qtr)</td><td>13th of next month</td></tr>
+      <tr><td>GSTR-3B monthly</td><td>Monthly</td><td>20th of next month</td></tr>
+      <tr><td>GSTR-3B quarterly (QRMP)</td><td>Quarterly</td><td>22nd or 24th (state-wise)</td></tr>
+      <tr><td>PMT-06 (QRMP monthly tax payment)</td><td>Monthly</td><td>25th of next month (M1, M2)</td></tr>
+      <tr><td>GSTR-9 (annual)</td><td>Annual</td><td>31 December of next FY</td></tr>
+      <tr><td>GSTR-9C (reconciliation)</td><td>Annual (> ₹5 cr)</td><td>31 December of next FY</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Late fees and interest</h2>
+  <ul>
+    <li><strong>GSTR-1 late fee:</strong> ₹50/day (₹20/day if nil), capped at ₹5,000</li>
+    <li><strong>GSTR-3B late fee:</strong> ₹50/day (₹20/day if nil), capped at ₹5,000–₹10,000 per Act (CGST + SGST stack)</li>
+    <li><strong>Interest on late tax payment:</strong> 18% p.a. on net cash liability</li>
+    <li><strong>GSTR-9 late fee:</strong> ₹200/day (₹100 CGST + ₹100 SGST), capped at 0.5% of turnover</li>
+  </ul>
+
+  <div class="callout callout--warn"><div class="callout__icon">⚠️</div><div class="callout__body"><strong>The compounding nightmare</strong>Miss GSTR-3B → can't file next month's GSTR-3B without filing this one. Returns stack up. Late fees compound. After 6 months of non-filing, GSTIN gets cancelled. Then your input credit history breaks. Don't go there.</div></div>
+
+  <h2>Filing checklist (do this every month)</h2>
+  <ul class="checklist">
+    <li>By 5th: All previous month's sales invoices entered in books</li>
+    <li>By 8th: All purchase bills entered; cross-check against GSTR-2B on portal</li>
+    <li>By 10th: Reconcile any GSTR-2B mismatches with vendors</li>
+    <li>By 11th: File GSTR-1 (or IFF if QRMP)</li>
+    <li>By 18th: Verify auto-populated GSTR-3B; compute net tax</li>
+    <li>By 19th: Pay GST via PMT-06 challan</li>
+    <li>By 20th: File GSTR-3B and offset payment</li>
+  </ul>
+
+  <blockquote class="pull-quote"><p>GSTR-3B closes the month. GSTR-9 closes the year. Get the monthly habit right and the annual return is just summary work.</p></blockquote>
+
+  <h2>FAQs</h2>
+  <div class="faq">
+    <div class="faq__item is-open"><button class="faq__q">If I had nil sales last month, do I still need to file?</button><div class="faq__a"><p>Yes. Nil GSTR-1 and Nil GSTR-3B. They can be filed via SMS for simplicity. Skip them → late fees pile up anyway.</p></div></div>
+    <div class="faq__item"><button class="faq__q">Can I revise a filed GSTR-1?</button><div class="faq__a"><p>You can't "revise" the same return. But you can correct errors in the next month's GSTR-1 using amendment tables (9A, 9B, 9C, etc.). Most errors get caught and fixed this way.</p></div></div>
+    <div class="faq__item"><button class="faq__q">What's IFF?</button><div class="faq__a"><p>Invoice Furnishing Facility — for QRMP taxpayers. You upload B2B invoices in months 1 and 2 of the quarter (by 13th) so your buyers can claim ITC immediately, even though your GSTR-1 is filed quarterly.</p></div></div>
+    <div class="faq__item"><button class="faq__q">Should I opt for QRMP or monthly filing?</button><div class="faq__a"><p>QRMP saves time if turnover is below ₹5 cr. Trade-off: you must still pay tax monthly (via PMT-06), just file returns quarterly. For most SMBs, QRMP wins.</p></div></div>
+    <div class="faq__item"><button class="faq__q">Is GSTR-9 hard to file?</button><div class="faq__a"><p>It's mostly auto-populated. But you must reconcile: turnover as per books vs turnover as per GSTR-1/3B, ITC claimed vs ITC eligible per books, tax paid in cash vs credit. Mismatches need explanation. We help when needed.</p></div></div>
+  </div>
+
+  <div class="cta-strip reveal"><div><h2>Want all 3 returns handled?</h2><p>Monthly GSTR-1 + 3B + annual GSTR-9. Reconciliation. Vendor follow-up. Fixed monthly fee.</p></div><div class="cta-strip__btns"><a class="btn btn--gold btn--lg" href="https://wa.me/917042833440?text=Hello%20Aarvya%2C%20GST%20returns%20help." target="_blank" rel="noopener">WhatsApp Now</a><a class="btn btn--ghost-light btn--lg" href="../contact.html">Send a Message</a></div></div>
+
+  <div class="helpful"><p>Was this guide helpful?</p><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20GST%20returns">👍 Yes</a><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20GST%20returns%20could%20be%20better">👎 Could be better</a></div>
+
+  <div class="related"><h3>Read next</h3><div class="related__grid">
+    <a class="related__card" href="how-to-pay-gst-online.html"><span class="chip">GST</span><h4>How to pay GST online</h4><p>Payment process for GSTR-3B liabilities.</p></a>
+    <a class="related__card" href="input-tax-credit-explained.html"><span class="chip">GST</span><h4>Input Tax Credit explained</h4><p>The most-misunderstood concept in GST.</p></a>
+    <a class="related__card" href="how-to-register-for-gst.html"><span class="chip">GST</span><h4>How to register for GST</h4><p>If you haven't done step 1.</p></a>
+  </div></div>
+
+</div></article>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a class="brand" href="../index.html" style="margin-bottom:16px"><span class="brand__mark">A</span><span class="brand__name"><strong style="color:#fff">Aarvya Consulting</strong><span style="color:#8794b1">Tax · Compliance · ERP</span></span></a><p>Professional services in taxation, compliance, accounting, audit, ERP and business advisory.</p><p style="font-family:var(--font-display);font-style:italic;color:var(--gold-400);margin-top:14px">"Driven by Accuracy, Powered by Trust."</p></div><div><h4>Services</h4><ul class="footer__list"><li><a href="../services/itr-filing.html">Income Tax &amp; TDS</a></li><li><a href="../services/gst-filing.html">GST Services</a></li><li><a href="../services/company-registration.html">Business Registration</a></li><li><a href="../services/erp-consulting.html">ERP Consulting</a></li><li><a href="../services.html">All services</a></li></ul></div><div><h4>Company</h4><ul class="footer__list"><li><a href="../about.html">About Us</a></li><li><a href="../resources.html">Guides &amp; Resources</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li></ul></div><div><h4>Contact</h4><div class="footer__contact"><a href="tel:+917042833440">+91 70428 33440</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div></div></div><div class="footer__bottom"><span>© <span data-year>2025</span> Aarvya Consulting. All rights reserved.</span><span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span></div></div></footer>
+
+<div class="mobile-actions"><a class="call" href="tel:+917042833440">Call Now</a><a class="wa" href="https://wa.me/917042833440" target="_blank" rel="noopener">WhatsApp Us</a></div>
+<a class="fab-wa" href="https://wa.me/917042833440" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 1.64 6L0 24l6.18-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.5-8.5Z"/></svg></a>
+
+<script src="../assets/js/main.js" defer></script>
+<script src="_articles.js" defer></script>
+</body>
+</html>
