@@ -65,11 +65,13 @@
     s.type = 'module';
     s.textContent =
       "import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';" +
-      "mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: {" +
-        "primaryColor: '#0a1f44', primaryTextColor: '#fff', primaryBorderColor: '#c9a961'," +
-        "lineColor: '#5a6478', secondaryColor: '#c9a961', tertiaryColor: '#f8f9fb'," +
-        "fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '14px'" +
-      "}});";
+      "mermaid.initialize({ startOnLoad: true, theme: 'base', " +
+        "flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis', padding: 14 }, " +
+        "themeVariables: {" +
+          "primaryColor: '#0a1f44', primaryTextColor: '#fff', primaryBorderColor: '#c9a961'," +
+          "lineColor: '#5a6478', secondaryColor: '#c9a961', tertiaryColor: '#f8f9fb'," +
+          "fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '17px'" +
+        "}});";
     document.head.appendChild(s);
   }
 })();

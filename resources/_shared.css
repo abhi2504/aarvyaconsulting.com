@@ -141,9 +141,32 @@
 .steps > li a { color: var(--navy-700); }
 
 /* Mermaid container */
-.mermaid-wrap { margin: 28px 0; padding: 24px; background: var(--bg-soft); border-radius: var(--radius-md); overflow-x: auto; border: 1px solid var(--line); }
-.mermaid-wrap .mermaid { background: transparent; min-width: 100%; }
-.mermaid-wrap > .mermaid > svg { max-width: 100%; height: auto; }
+.mermaid-wrap {
+  margin: 28px 0;
+  padding: 24px;
+  background: var(--bg-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  text-align: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mermaid-wrap .mermaid {
+  background: transparent;
+  display: block;
+  text-align: center;
+}
+/* Force Mermaid SVGs to fill the available width so small diagrams
+   don't look tiny on mobile (Mermaid sets inline width/height attrs
+   that we have to override with !important). */
+.mermaid-wrap .mermaid svg,
+.mermaid-wrap > .mermaid > svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
 
 /* Related guides */
 .related {
@@ -439,9 +462,18 @@
   .steps > li h3 { font-size: 1rem; }
   .steps > li p { font-size: .94rem; }
 
-  /* Mermaid wrap — tighter, smaller diagrams */
-  .mermaid-wrap { padding: 14px; margin: 22px 0; border-radius: var(--radius-sm); }
-  .mermaid-wrap .mermaid { font-size: 12px; }
+  /* Mermaid wrap — full-bleed-ish on mobile so diagrams have room to breathe */
+  .mermaid-wrap {
+    padding: 14px 8px;
+    margin: 22px -4px;
+    border-radius: var(--radius-sm);
+  }
+  /* Don't shrink the SVG below a usable size — better to allow horizontal
+     scroll for complex diagrams than render them at 200px wide. */
+  .mermaid-wrap .mermaid svg,
+  .mermaid-wrap > .mermaid > svg {
+    min-width: 280px;
+  }
 
   /* Checklist items — tighter */
   .checklist li { padding: 10px 14px; font-size: .92rem; }
@@ -510,4 +542,3 @@
 
 /* Ensure SVG illustrations / Mermaid never overflow on any screen */
 .article-body img, .article-body svg:not(.ico), .hero-svg svg { max-width: 100%; height: auto; }
-.mermaid-wrap > .mermaid { max-width: 100%; }
