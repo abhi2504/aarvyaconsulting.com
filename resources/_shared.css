@@ -340,3 +340,174 @@
 .no-results { padding: 40px; text-align: center; color: var(--ink-500); }
 .no-results.is-visible + .guide-grid:empty,
 .no-results:not(.is-visible) { display: none; }
+
+/* ============================================================
+   MOBILE OPTIMISATIONS
+   Tighter spacing, scrollable chips & tables, smaller hero on
+   small screens. Keeps content readable, avoids horizontal overflow.
+   ============================================================ */
+
+@media (max-width: 720px) {
+  /* Hub hero — tighter padding so chips don't push content way down */
+  .hub-hero { padding: 48px 0 36px; }
+  .hub-hero h1 { font-size: 1.7rem; line-height: 1.2; margin-bottom: 10px; }
+  .hub-hero p { font-size: .95rem; margin-bottom: 20px; }
+  .hub-hero__inner .hero__pill { font-size: .72rem; padding: 6px 12px; }
+
+  /* Hub controls — tighter card, vertical stack handled by base */
+  .hub-controls { padding: 12px; gap: 10px; border-radius: var(--radius-md); }
+  .hub-search input { padding: 11px 14px 11px 40px; font-size: .92rem; }
+
+  /* Category chips → horizontally scrollable strip (cleaner than wrap) */
+  .cat-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 2px;
+    margin: 0 -4px;
+    scroll-snap-type: x proximity;
+  }
+  .cat-chips::-webkit-scrollbar { display: none; }
+  .cat-chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    font-size: .8rem;
+    padding: 7px 12px;
+  }
+
+  /* Quick actions — pull less negative-margin on mobile */
+  .quick-actions { margin: 18px 0 28px; gap: 10px; }
+  .quick-card { padding: 14px 16px; gap: 12px; }
+  .quick-card__icon { flex: 0 0 36px; height: 36px; }
+  .quick-card__body strong { font-size: .94rem; }
+  .quick-card__body span { font-size: .74rem; }
+
+  /* Section heads inside hub — tighter */
+  section.section .section-head { margin-bottom: 22px; }
+
+  /* Article header — tighter on mobile */
+  .article-header { padding: 44px 0 28px; }
+  .article-header h1 { font-size: clamp(1.5rem, 6vw, 1.95rem); line-height: 1.22; }
+  .article-header .lede { font-size: .95rem; line-height: 1.55; }
+  .article-meta { font-size: .72rem; gap: 6px; }
+  .article-meta .chip { padding: 3px 8px; }
+  .breadcrumb { font-size: .75rem; margin-bottom: 10px; }
+
+  /* Article body — tighter padding & line height */
+  .article-body p, .article-body li { font-size: .98rem; line-height: 1.7; }
+  .article-body h2 { font-size: 1.3rem; margin-top: 1.6em; }
+  .article-body h3 { font-size: 1.05rem; }
+
+  /* TL;DR — tighter padding */
+  .tldr { padding: 16px 18px; margin-bottom: 26px; border-radius: var(--radius-sm); }
+  .tldr__title { font-size: .72rem; letter-spacing: .12em; margin-bottom: 10px; }
+  .tldr ul { padding-left: 18px; }
+  .tldr li { font-size: .92rem; }
+
+  /* Callouts — tighter on mobile */
+  .callout { padding: 14px 16px; gap: 10px; margin: 18px 0; }
+  .callout__icon { flex: 0 0 30px; height: 30px; font-size: 1rem; border-radius: 8px; }
+  .callout__body { font-size: .92rem; }
+  .callout__body strong { font-size: .78rem; }
+
+  /* Pull quote — tighter */
+  .pull-quote { padding: 20px 22px; margin: 26px 0; border-radius: var(--radius-md); }
+  .pull-quote::before { font-size: 5rem; top: -8px; left: 14px; }
+  .pull-quote p { font-size: 1.02rem; line-height: 1.45; }
+
+  /* Data tables — allow horizontal scroll to prevent overflow */
+  .article-body .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    white-space: nowrap;
+    font-size: .85rem;
+    /* faint right edge as a scroll hint */
+    background-image: linear-gradient(to right, transparent 90%, rgba(10,31,68,.05));
+    background-attachment: local, scroll;
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 24px 100%;
+    background-position: 0 0, 100% 0;
+  }
+  .article-body .data-table th, .article-body .data-table td { padding: 10px 12px; }
+
+  /* Steps — smaller numbered circle on mobile */
+  .steps > li { grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 0; }
+  .steps > li::before { width: 36px; height: 36px; font-size: .95rem; }
+  .steps > li h3 { font-size: 1rem; }
+  .steps > li p { font-size: .94rem; }
+
+  /* Mermaid wrap — tighter, smaller diagrams */
+  .mermaid-wrap { padding: 14px; margin: 22px 0; border-radius: var(--radius-sm); }
+  .mermaid-wrap .mermaid { font-size: 12px; }
+
+  /* Checklist items — tighter */
+  .checklist li { padding: 10px 14px; font-size: .92rem; }
+
+  /* Next-up card — tighter */
+  .next-up { padding: 14px 16px; gap: 12px; margin: 20px 0; }
+  .next-up__icon { flex: 0 0 32px; width: 32px; height: 32px; }
+  .next-up__label { font-size: .65rem; }
+  .next-up__title { font-size: .92rem; }
+
+  /* Related guides — tighter */
+  .related { margin-top: 40px; padding-top: 30px; }
+  .related h3 { font-size: 1.2rem; margin-bottom: 18px; }
+  .related__card { padding: 16px; }
+  .related__card h4 { font-size: .98rem; }
+  .related__card p { font-size: .85rem; }
+
+  /* Compliance calendar items — tighter */
+  .cal-item { padding: 12px 14px; gap: 12px; }
+  .cal-item__date { flex: 0 0 52px; height: 52px; }
+  .cal-item__date strong { font-size: 1.2rem; }
+  .cal-item__date small { font-size: .62rem; }
+  .cal-item__body h4 { font-size: .92rem; }
+  .cal-item__body p { font-size: .78rem; }
+
+  /* Portal links — tighter */
+  .portal-link { padding: 12px 14px; }
+  .portal-link__icon { flex: 0 0 32px; width: 32px; height: 32px; }
+  .portal-link__body strong { font-size: .9rem; }
+  .portal-link__body span { font-size: .74rem; }
+
+  /* Guide cards — tighter on mobile, slightly smaller art aspect */
+  .guide-grid { gap: 14px; }
+  .guide-card__art { aspect-ratio: 16/8; }
+  .guide-card__art svg { width: 46px; height: 46px; }
+  .guide-card__body { padding: 14px 16px; }
+  .guide-card__body h4 { font-size: 1rem; }
+  .guide-card__body p { font-size: .86rem; }
+  .guide-card__meta { font-size: .68rem; }
+  .guide-card__meta .chip { font-size: .62rem; padding: 2px 7px; }
+  .guide-card__read { font-size: .78rem; }
+
+  /* Featured grid — single column on mobile, first card hero-sized */
+  .featured-grid { gap: 14px; }
+  .featured-grid .guide-card:first-child .guide-card__art { aspect-ratio: 16/9; }
+
+  /* Helpful bar — tighter */
+  .helpful { padding: 18px; }
+  .helpful p { font-size: .9rem; }
+  .helpful .btn-helpful { font-size: .82rem; padding: 7px 14px; margin: 4px 4px; }
+}
+
+/* Extra-small phones (≤ 400px) */
+@media (max-width: 400px) {
+  .hub-hero h1 { font-size: 1.5rem; }
+  .article-header h1 { font-size: 1.45rem; }
+  .article-body h2 { font-size: 1.2rem; }
+  .tldr { padding: 14px 14px; }
+  .callout { padding: 12px 14px; }
+  .quick-card__body strong { font-size: .9rem; }
+}
+
+/* Prevent any wide content (long URLs, code, etc.) from breaking layout */
+.article-body { word-wrap: break-word; overflow-wrap: break-word; }
+.article-body a { word-break: break-word; }
+
+/* Ensure SVG illustrations / Mermaid never overflow on any screen */
+.article-body img, .article-body svg:not(.ico), .hero-svg svg { max-width: 100%; height: auto; }
+.mermaid-wrap > .mermaid { max-width: 100%; }

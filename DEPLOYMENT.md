@@ -23,8 +23,8 @@ Before deploying, update the placeholder phone, email and address. See the **REA
 
 Quick checklist:
 
-- [ ] Replace `+91 70428 33440` with real phone everywhere
-- [ ] Replace `917042833440` (no `+`) with real WhatsApp number everywhere
+- [ ] Replace `+91 92117 19725` with real phone everywhere
+- [ ] Replace `919211719725` (no `+`) with real WhatsApp number everywhere
 - [ ] Replace `aarvyaconsulting@gmail.com` with real email everywhere
 - [ ] Replace office address with real address (in `index.html` and `contact.html`)
 - [ ] Replace Google Maps `iframe src` with your real embed URL
@@ -201,7 +201,7 @@ The live site updates automatically.
 | `aarvyaconsulting.com` shows GoDaddy parking page | DNS hasn’t propagated yet. Wait, then flush local DNS: `ipconfig /flushdns` in PowerShell. |
 | HTTPS checkbox is greyed out | DNS check is still failing. Confirm your A records exactly match the four IPs above. |
 | `www` works but apex `aarvyaconsulting.com` doesn’t | You forgot one or more `A` records. All four are required. |
-| WhatsApp link opens to wrong number | You missed a placeholder. Search the codebase for `917042833440` and replace. |
+| WhatsApp link opens to wrong number | You missed a placeholder. Search the codebase for `919211719725` and replace. |
 | Form submits but nothing happens | Form opens WhatsApp by design. To capture leads to email, integrate Formspree or Web3Forms (see README → Future roadmap). |
 
 ---

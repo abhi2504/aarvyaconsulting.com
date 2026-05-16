@@ -60,8 +60,8 @@ AarvyaConsulting/
 
 | Item | Value |
 |---|---|
-| Phone | `+91 70428 33440` |
-| WhatsApp | `+91 70428 33440` (link: `https://wa.me/917042833440`) |
+| Phone | `+91 92117 19725` |
+| WhatsApp | `+91 92117 19725` (link: `https://wa.me/919211719725`) |
 | Email | `aarvyaconsulting@gmail.com` |
 | Domain | `aarvyaconsulting.com` (via `CNAME`) |
 | Brand identity, services, mission/vision | Set per client brief |
