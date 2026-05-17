@@ -215,7 +215,7 @@
   <div class="calc-panel" data-panel="capgain">
     <div class="calc-card">
       <h2>Capital gains calculator</h2>
-      <p class="sub">Equity / equity MF — STCG 15% / LTCG 10% above ₹1L. Other assets — slab / 20% with indexation.</p>
+      <p class="sub">Post 23-Jul-2024 rates. Equity / equity MF — STCG 20% / LTCG 12.5% above ₹1.25L. Property / gold / unlisted — LTCG 12.5% (no indexation).</p>
       <div class="calc-grid">
         <div class="calc-field">
           <label for="cg-asset">Asset type</label>
@@ -243,11 +243,11 @@
         <h3>Result</h3>
         <div class="calc-result-row"><strong>Gain type</strong><span id="cg-type">—</span></div>
         <div class="calc-result-row"><strong>Gross gain</strong><span id="cg-gain">—</span></div>
-        <div class="calc-result-row"><strong>Exemption (₹1L for equity LTCG)</strong><span id="cg-exempt">—</span></div>
+        <div class="calc-result-row"><strong>Exemption (₹1.25L for equity LTCG)</strong><span id="cg-exempt">—</span></div>
         <div class="calc-result-row"><strong>Taxable gain</strong><span id="cg-taxable">—</span></div>
         <div class="calc-result-final"><strong id="cg-rate-label">Tax payable</strong><span id="cg-tax">—</span></div>
       </div>
-      <div class="calc-note">Indexation benefit on property / unlisted shares not auto-applied here — depends on year-of-purchase CII. For listed equity, the calculator handles ₹1L Sec 112A exemption correctly.</div>
+      <div class="calc-note">Post 23-Jul-2024 rates applied: equity STCG 20% / LTCG 12.5% (₹1.25L exempt); property / gold / unlisted LTCG 12.5% without indexation. For property bought <em>before</em> 23 Jul 2024 you may opt for 20% with indexation — that toggle is coming in the advanced mode.</div>
     </div>
   </div>
 
@@ -269,6 +269,7 @@
             <option value="194-IA">Property purchase (194-IA)</option>
             <option value="194Q">Purchase of goods (194Q)</option>
             <option value="194S">Crypto / VDA transfer (194S)</option>
+            <option value="194T">Partner remuneration by firm (194T — new FY 25-26)</option>
           </select>
         </div>
         <div class="calc-field">
@@ -288,7 +289,7 @@
         <div class="calc-result-final"><strong>TDS to deduct</strong><span id="tds-deduct">—</span></div>
         <div class="calc-result-row" style="margin-top:10px"><strong>Net payable to payee</strong><span id="tds-net">—</span></div>
       </div>
-      <div class="calc-note">Threshold logic: 194C uses single-payment ₹30k OR aggregate ₹1L. Crypto threshold is ₹50k/yr individuals, ₹10k businesses. Full table in our <a href="resources/tds-rates-master.html">TDS rates master</a>.</div>
+      <div class="calc-note">Finance Act 2025 thresholds (effective 1 Apr 2025): 194J professional fees ₹50k (was ₹30k), 194H commission ₹20k (was ₹15k), 194I rent ₹6L/yr (was ₹2.4L). New section 194T: 10% TDS on partner remuneration by firms above ₹20k/month. Threshold logic: 194C uses single-payment ₹30k OR aggregate ₹1L. Full table in our <a href="resources/tds-rates-master.html">TDS rates master</a>.</div>
     </div>
   </div>
 
@@ -404,11 +405,12 @@
   function taxNew(ti){
     let t=0;
     const slabs = [
-      [300000, 0],
-      [700000, 0.05],
-      [1000000, 0.10],
-      [1200000, 0.15],
-      [1500000, 0.20],
+      [400000, 0],
+      [800000, 0.05],
+      [1200000, 0.10],
+      [1600000, 0.15],
+      [2000000, 0.20],
+      [2400000, 0.25],
       [Infinity, 0.30]
     ];
     let prev = 0;
@@ -416,8 +418,11 @@
       if(ti <= limit){ t += (ti - prev) * rate; break; }
       else { t += (limit - prev) * rate; prev = limit; }
     }
-    if(ti <= 700000) t = 0; // 87A rebate up to 7L new
-    return t * 1.04;
+    if(ti <= 1200000) return 0; // 87A rebate up to 12L taxable (FY 25-26 / AY 26-27)
+    let total = t * 1.04; // 4% cess
+    // Marginal relief: tax+cess should not exceed (ti - 12L) for incomes just over 12L
+    if(total > (ti - 1200000)) total = ti - 1200000;
+    return total;
   }
   function calcSalary(){
     const ctc = +document.getElementById('sal-ctc').value || 0;
@@ -469,8 +474,9 @@
     const sale = +document.getElementById('cg-sale').value || 0;
     const gain = Math.max(0, sale - cost);
     let longThreshold, ltcgRate, stcgRate, exempt = 0;
-    if(asset === 'equity'){ longThreshold = 12; ltcgRate = 0.10; stcgRate = 0.15; }
-    else if(asset === 'property' || asset === 'gold'){ longThreshold = 24; ltcgRate = 0.20; stcgRate = 0; /* slab */ }
+    // Post 23-Jul-2024 rates (Finance Act 2024)
+    if(asset === 'equity'){ longThreshold = 12; ltcgRate = 0.125; stcgRate = 0.20; }
+    else if(asset === 'property' || asset === 'gold'){ longThreshold = 24; ltcgRate = 0.125; stcgRate = 0; /* slab */ }
     else { longThreshold = Infinity; ltcgRate = 0; stcgRate = 0; /* debt MF post Apr-23: slab */ }
     let isLong = months > longThreshold;
     let typeLabel, taxable, tax, rateLabel;
@@ -479,11 +485,11 @@
       taxable = gain; tax = 0; rateLabel = 'Slab-taxed — add to income';
     } else if(isLong){
       typeLabel = 'LTCG';
-      if(asset === 'equity'){ exempt = Math.min(gain, 100000); taxable = Math.max(0, gain - 100000); tax = taxable * ltcgRate; rateLabel='Tax @ 10% (above ₹1L)'; }
-      else { taxable = gain; tax = gain * ltcgRate; rateLabel='Tax @ 20% (indexation not applied)'; }
+      if(asset === 'equity'){ exempt = Math.min(gain, 125000); taxable = Math.max(0, gain - 125000); tax = taxable * ltcgRate; rateLabel='Tax @ 12.5% (above ₹1.25L, Sec 112A)'; }
+      else { taxable = gain; tax = gain * ltcgRate; rateLabel='Tax @ 12.5% (post 23-Jul-24, no indexation)'; }
     } else {
       typeLabel = 'STCG';
-      if(asset === 'equity'){ taxable = gain; tax = gain * stcgRate; rateLabel='Tax @ 15% (Sec 111A)'; }
+      if(asset === 'equity'){ taxable = gain; tax = gain * stcgRate; rateLabel='Tax @ 20% (Sec 111A, post 23-Jul-24)'; }
       else { taxable = gain; tax = 0; rateLabel='Slab-taxed — add to income'; }
     }
     document.getElementById('cg-type').textContent = typeLabel;
@@ -497,16 +503,18 @@
   calcCapGain();
 
   // --- TDS ---
+  // Thresholds updated for Finance Act 2025 (effective 1 Apr 2025).
   const tdsTable = {
     '194C-ind': {threshold:30000, aggregate:100000, rate:0.01, label:'1% (individual contractor)'},
     '194C-other': {threshold:30000, aggregate:100000, rate:0.02, label:'2% (non-individual contractor)'},
-    '194J': {threshold:30000, rate:0.10, label:'10%'},
-    '194I-b': {threshold:240000, rate:0.10, label:'10% (land/building)'},
-    '194I-a': {threshold:240000, rate:0.02, label:'2% (plant/machinery)'},
-    '194H': {threshold:15000, rate:0.05, label:'5%'},
+    '194J': {threshold:50000, rate:0.10, label:'10%'},
+    '194I-b': {threshold:600000, rate:0.10, label:'10% (land/building)'},
+    '194I-a': {threshold:600000, rate:0.02, label:'2% (plant/machinery)'},
+    '194H': {threshold:20000, rate:0.05, label:'5%'},
     '194-IA': {threshold:5000000, rate:0.01, label:'1% (property buyer)'},
     '194Q': {threshold:5000000, rate:0.001, label:'0.1%'},
-    '194S': {threshold:50000, rate:0.01, label:'1% (crypto/VDA)'}
+    '194S': {threshold:50000, rate:0.01, label:'1% (crypto/VDA)'},
+    '194T': {threshold:240000, rate:0.10, label:'10% (partner remuneration by firm)'}
   };
   function calcTDS(){
     const sec = document.getElementById('tds-section').value;
