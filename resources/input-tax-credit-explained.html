@@ -4,9 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0a1f44" />
-<title>Input Tax Credit (ITC) Explained — Claim It Right | Aarvya Consulting</title>
-<meta name="description" content="What ITC is, how to claim it, what's blocked, and how to reconcile with GSTR-2B. The single biggest lever in GST." />
+<title>Input Tax Credit (ITC) — Claim It Right | Aarvya Consulting</title>
+<meta name="description" content="Sweetie's Cakes pays GST on flour, charges GST on cakes. ITC is the bridge that stops the double tax. We walk through every rule — the 4 conditions, the blocked credits, and the vendor problem." />
+<meta name="keywords" content="Input Tax Credit, ITC, GST credit, GSTR-2B, Rule 36(4), blocked credits, RCM" />
 <link rel="canonical" href="https://aarvyaconsulting.com/resources/input-tax-credit-explained.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Input Tax Credit (ITC) — claim it right" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" />
@@ -15,120 +18,232 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a1f44'/><text x='50%' y='58%' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23c9a961'>A</text></svg>" />
 </head>
 <body>
+
 <div class="read-progress"><div class="read-progress__fill"></div></div>
+
 <div class="topbar"><div class="container topbar__row"><div class="topbar__left"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div><div class="topbar__right"><span>Mon–Sat · 10:00–19:00</span></div></div></div>
 
 <header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya Consulting</strong><span>Tax · Compliance · ERP</span></span></a><nav class="nav__menu"><a href="../index.html">Home</a><a href="../about.html">About</a><span class="has-sub"><a href="../services.html">Services</a><div class="submenu"><a href="../services/gst-filing.html">GST Services</a><a href="../services/itr-filing.html">Income Tax / ITR</a><a href="../services/company-registration.html">Business Registration</a><a href="../services/erp-consulting.html">ERP Consulting</a><a href="../services.html">All Services →</a></div></span><a class="is-active" href="../resources.html">Guides</a><a href="../contact.html">Contact</a></nav><div class="nav__cta"><a class="btn btn--ghost" href="tel:+919211719725">Call Now</a><a class="btn btn--primary" href="../contact.html">Free Consultation</a></div><button class="nav__toggle" aria-label="Open menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></header>
 
 <div class="mobile-panel" id="mobilePanel"><div class="mobile-panel__inner"><div class="mobile-panel__head"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya</strong><span>Consulting</span></span></a><button class="mobile-panel__close nav__toggle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="../index.html">Home</a><a href="../about.html">About Us</a><a href="../services.html">Services</a><a href="../resources.html">Guides</a><a href="../contact.html">Contact</a><div class="mobile-panel__cta"><a class="btn btn--whatsapp" href="https://wa.me/919211719725" target="_blank" rel="noopener">WhatsApp Us</a><a class="btn btn--primary" href="tel:+919211719725">Call Now</a></div></div></div>
 
-<section class="article-header"><div class="article-header__inner">
-  <div class="breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="../resources.html">Guides</a> <span>/</span> Input Tax Credit</div>
-  <div class="article-meta"><span class="chip">GST</span><span>· 8 min read</span><span class="meta-sep">·</span><span>Updated Jan 2026</span></div>
-  <h1>Input Tax Credit (ITC) — claim it right</h1>
-  <p class="lede">ITC is the single biggest lever in GST. Get it wrong and you pay tax twice. Get it right and your effective tax drops dramatically.</p>
-</div></section>
-
-<article class="section"><div class="article-body">
-
-  <div class="tldr"><div class="tldr__title">🪙 In 60 seconds</div><ul>
-    <li><strong>ITC</strong> = the GST you paid on purchases, which you can offset against the GST you collected on sales.</li>
-    <li>Net GST you pay = output GST (on sales) − ITC (on purchases).</li>
-    <li>4 conditions: valid invoice, goods/services received, tax actually paid by vendor, your GSTR-3B filed.</li>
-    <li>What's blocked: motor vehicles (mostly), food/beverages, club memberships, personal-use goods.</li>
-    <li>Strict rule: must match with GSTR-2B. No match = no credit.</li>
-  </ul></div>
-
-  <h2>The cookbook example</h2>
-  <p>You're a bakery. In a month:</p>
-  <ul>
-    <li>You bought flour, oil, packaging worth ₹1,00,000 + ₹18,000 GST = ₹1,18,000</li>
-    <li>You sold cakes worth ₹2,00,000 + ₹36,000 GST = ₹2,36,000</li>
-  </ul>
-  <p>Without ITC: you pay ₹36,000 to govt. Your supplier paid ₹18,000 already. Govt got ₹54,000 on the same value-add chain — double tax. Bad.</p>
-  <p>With ITC: you offset the ₹18,000 you already paid. Net cash to govt = ₹36,000 − ₹18,000 = <strong>₹18,000</strong>. Fair.</p>
-
-  <h2>The 4 conditions for claiming ITC</h2>
-  <ol class="steps">
-    <li><h3>Valid tax invoice</h3><p>Vendor's invoice must show their GSTIN, your GSTIN, taxable value, tax rate, tax amount, HSN. No proper invoice = no credit.</p></li>
-    <li><h3>Goods or services actually received</h3><p>Paper invoices without delivery don't qualify. For services delivered over time, partial ITC as it accrues.</p></li>
-    <li><h3>Tax paid by vendor to government</h3><p>You only get ITC when your vendor has filed their GSTR-1 and the invoice reflects in your GSTR-2B. This is the famous "vendor compliance" problem.</p></li>
-    <li><h3>Your GSTR-3B is filed</h3><p>ITC is claimed via Table 4 of GSTR-3B. No filing = no claim. Must be claimed within the same FY or by GSTR-3B of November of next FY, whichever is earlier.</p></li>
-  </ol>
-
-  <h2>What CAN'T you claim ITC on (blocked credits under Sec 17(5))</h2>
-  <ul>
-    <li><strong>Motor vehicles</strong> — except if you're in vehicle trading, transport business, or driving school</li>
-    <li><strong>Food &amp; beverages, outdoor catering, beauty treatment, health services</strong> — unless used to make same-category outward supplies</li>
-    <li><strong>Membership of clubs, gyms, health centres</strong></li>
-    <li><strong>Rent-a-cab, life insurance, health insurance</strong> — unless mandated by law or for same-category supplies</li>
-    <li><strong>Goods/services for personal consumption</strong></li>
-    <li><strong>Goods lost, stolen, written off, given as gifts/samples</strong></li>
-    <li><strong>Construction of immovable property</strong> (other than plant &amp; machinery) for own use</li>
-  </ul>
-
-  <h2>The reconciliation routine</h2>
-  <div class="mermaid-wrap">
-<pre class="mermaid">
-flowchart LR
-  PB[Your purchase bills<br/>in books] --> Match{Match with GSTR-2B?}
-  V[Vendor GSTR-1] --> G2B[GSTR-2B<br/>14th of month]
-  G2B --> Match
-  Match -->|Yes| Claim[Claim ITC in 3B]
-  Match -->|Missing in 2B| Chase[Chase vendor]
-  Match -->|Extra in 2B| Verify[Verify it's yours]
-  Chase --> Defer[Defer ITC to next month]
-</pre>
+<section class="hero-illust">
+  <div class="hero-illust__inner">
+    <div class="hero-illust__text">
+      <div class="hero-illust__breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../resources.html">Guides</a><span>›</span><span>Input Tax Credit</span></div>
+      <div class="hero-illust__meta"><span class="chip">GST</span><span>· 8 min read</span><span>· Updated Jan 2026</span></div>
+      <h1>Input Tax Credit — the single biggest lever in GST</h1>
+      <p class="lede">Sweetie's Cakes pays GST on flour, charges GST on cakes. ITC is the bridge that stops the double tax.</p>
+    </div>
+    <div class="hero-illust__art-wrap">
+      <svg class="hero-illust__art illust-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="160" cy="220" rx="160" ry="18" fill="#f0e9d5"/>
+        <!-- flour bag (purchase) -->
+        <rect x="40" y="120" width="60" height="80" rx="6" fill="#fff" stroke="#0a1f44" stroke-width="2"/>
+        <rect x="42" y="120" width="56" height="14" rx="3" fill="#c9a961"/>
+        <text x="70" y="131" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="7" font-weight="700" fill="#0a1f44">FLOUR</text>
+        <text x="70" y="160" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#0a1f44">+18%</text>
+        <text x="70" y="178" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="700" fill="#946e2c">ITC</text>
+        <!-- arrow with minus -->
+        <path d="M110 160 L150 160" stroke="#0a1f44" stroke-width="2"/>
+        <polygon points="148,156 154,160 148,164" fill="#0a1f44"/>
+        <text x="130" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="800" fill="#1f9e5e">−</text>
+        <!-- cake (sale) -->
+        <rect x="160" y="100" width="100" height="100" rx="6" fill="#fff" stroke="#0a1f44" stroke-width="2"/>
+        <!-- cake shape -->
+        <ellipse cx="210" cy="170" rx="36" ry="6" fill="#f0e9d5"/>
+        <rect x="174" y="135" width="72" height="35" rx="3" fill="#c9a961"/>
+        <rect x="174" y="120" width="72" height="15" rx="3" fill="#fff" stroke="#c9a961" stroke-width="1"/>
+        <circle cx="210" cy="115" r="3" fill="#d04444"/>
+        <text x="210" y="195" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#0a1f44">+18% GST</text>
+        <!-- net result -->
+        <rect x="265" y="140" width="50" height="35" rx="5" fill="#1f9e5e"/>
+        <text x="290" y="155" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="8" font-weight="700" fill="#fff">NET</text>
+        <text x="290" y="168" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="800" fill="#fff">PAY</text>
+      </svg>
+    </div>
   </div>
+</section>
 
-  <h2>Rule 36(4) — the 100% match rule</h2>
-  <p>From January 2022, you can only claim ITC that appears in your GSTR-2B. Earlier you could claim up to 105% of GSTR-2B (10% provisional). Now zero provisional. If vendor hasn't uploaded, you can't claim.</p>
-  <p>Practically: chase vendors who file late. Hold payments till you see their invoices in your 2B. Some companies have an internal policy of "10% of bill amount held until 2B match".</p>
+<article class="section">
+  <div class="article-body article-body--story">
 
-  <div class="callout callout--warn"><div class="callout__icon">⚠️</div><div class="callout__body"><strong>The vendor risk</strong>If your vendor doesn't pay GST to govt, you lose ITC. Even if you have a perfect invoice and paid them. Welcome to GST's vendor-chasing era — pick reliable vendors with GST track records.</div></div>
+    <div class="story-opener">
+      <div class="story-opener__avatar" aria-hidden="true">S</div>
+      <div class="story-opener__body">
+        <span class="story-opener__name">Sweetie · 34 · Owner of Sweetie's Cakes</span>
+        <p>Sweetie has been baking cakes for 8 years. Last year she crossed ₹50L and got a GST number. She charged 18% on her cakes and paid GST every month — until her cousin asked, <em>"Hold on, are you claiming ITC on the flour and oil you buy?"</em></p>
+        <p>She wasn't. She'd been double-paying for two years. Let's fix this.</p>
+      </div>
+    </div>
 
-  <h2>Reverse charge mechanism (RCM)</h2>
-  <p>In some cases the <strong>buyer</strong> pays GST instead of the seller. Common cases:</p>
-  <ul>
-    <li>Import of services</li>
-    <li>Goods Transport Agency (GTA) services</li>
-    <li>Legal services from advocates / firms</li>
-    <li>Director's sitting fees</li>
-    <li>Insurance / banking / business correspondents (specific cases)</li>
-  </ul>
-  <p>You self-invoice, pay GST in cash, and claim it back as ITC (if eligible). RCM tax must be paid in cash — can't offset with existing ITC.</p>
+    <div class="tldr">
+      <div class="tldr__title">🪙 In 60 seconds</div>
+      <ul>
+        <li><strong>ITC</strong> = GST you paid on purchases, which you can offset against GST you collected on sales.</li>
+        <li>Net GST you pay = output GST (on sales) − ITC (on purchases).</li>
+        <li>4 conditions: valid invoice + goods/services received + tax paid by vendor + your GSTR-3B filed.</li>
+        <li>Blocked under Sec 17(5): most motor vehicles, food &amp; beverages, club memberships, personal-use goods.</li>
+        <li>Strict rule: it must match your <strong>GSTR-2B</strong>. No match = no credit.</li>
+      </ul>
+    </div>
 
-  <h2>Order of ITC utilisation</h2>
-  <p>From 1 Feb 2019, you must utilise ITC in this order:</p>
-  <ol>
-    <li><strong>IGST</strong> credit first — against IGST, then CGST, then SGST liability</li>
-    <li><strong>CGST</strong> credit — only against CGST and IGST liability</li>
-    <li><strong>SGST</strong> credit — only against SGST and IGST liability</li>
-  </ol>
-  <p>Translation: don't let IGST credit pile up. Use it.</p>
+    <h2>Sweetie's bakery math, with and without ITC</h2>
 
-  <blockquote class="pull-quote"><p>GST is not "18% on sales". It's "18% on value addition". ITC is the mechanism that makes it so. Master ITC and you've mastered GST.</p></blockquote>
+    <p>In one month:</p>
+    <p>👉 Bought flour, oil, packaging worth ₹1,00,000 + ₹18,000 GST = ₹1,18,000<br>
+    👉 Sold cakes worth ₹2,00,000 + ₹36,000 GST = ₹2,36,000</p>
 
-  <h2>FAQs</h2>
-  <div class="faq">
-    <div class="faq__item is-open"><button class="faq__q">Can I claim ITC on capital goods like a laptop?</button><div class="faq__a"><p>Yes, if used for business. Full ITC available in the month of purchase. For motor vehicles, restrictions apply (Sec 17(5)).</p></div></div>
-    <div class="faq__item"><button class="faq__q">My vendor filed late — can I still claim?</button><div class="faq__a"><p>You can claim only when the invoice appears in your GSTR-2B. If vendor files late, the invoice appears in a later month's 2B — claim it then. ITC isn't lost, just deferred.</p></div></div>
-    <div class="faq__item"><button class="faq__q">I missed claiming an ITC — can I claim it later?</button><div class="faq__a"><p>Yes, but only until 30th November of the next FY or filing of GSTR-9 for the FY, whichever is earlier. After that, ITC is permanently lost.</p></div></div>
-    <div class="faq__item"><button class="faq__q">How do I handle composition vendors?</button><div class="faq__a"><p>Composition vendors can't issue tax invoices — they issue bills of supply. You can't claim ITC on those. Plan accordingly.</p></div></div>
-    <div class="faq__item"><button class="faq__q">What about exempt outward supplies?</button><div class="faq__a"><p>If you make both taxable and exempt supplies, ITC is restricted proportionally (Rules 42/43). Common in mixed-use real estate, education, healthcare.</p></div></div>
+    <div class="compare-cards">
+      <div class="compare-card">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Without ITC</h3>
+            <p class="compare-card__tagline">What Sweetie did for 2 years</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">She paid <strong>₹36,000</strong> to govt. Her supplier already paid ₹18,000. Govt collected <strong>₹54,000</strong> on the same value chain. <strong>Double tax.</strong></p>
+      </div>
+      <div class="compare-card compare-card--pick">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">With ITC</h3>
+            <p class="compare-card__tagline">How GST is supposed to work</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">She offsets the ₹18,000 she already paid. Net cash to govt = ₹36,000 − ₹18,000 = <strong>₹18,000</strong>. Total in chain = ₹36k. <strong>Fair.</strong></p>
+      </div>
+    </div>
+
+    <p style="margin-top:18px">That's why ITC exists. GST is meant to be 18% on the <strong>value added</strong>, not 18% stacked on every link of the chain. ITC is the mechanism.</p>
+
+    <h2>The 4 conditions for claiming ITC</h2>
+
+    <div class="viz-flow">
+      <div class="viz-step">
+        <div class="viz-step__num">1</div>
+        <div class="viz-step__body">
+          <strong>Valid tax invoice</strong>
+          <p>Vendor's invoice must show their GSTIN, your GSTIN, taxable value, tax rate, tax amount, HSN code. No proper invoice = no credit.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">2</div>
+        <div class="viz-step__body">
+          <strong>Goods or services actually received</strong>
+          <p>Paper invoices without delivery don't qualify. For services delivered over time, partial ITC as the work accrues.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">3</div>
+        <div class="viz-step__body">
+          <strong>Tax paid by vendor to govt</strong>
+          <p>You only get ITC when your vendor has filed their GSTR-1 and the invoice shows up in your GSTR-2B. This is the famous "vendor compliance" problem.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">4</div>
+        <div class="viz-step__body">
+          <strong>You filed GSTR-3B</strong>
+          <p>ITC is claimed via Table 4 of GSTR-3B. Must be claimed within the same FY or by GSTR-3B of November of next FY, whichever is earlier.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>What you CAN'T claim — blocked credits (Sec 17(5))</h2>
+    <p>The big "no" list:</p>
+
+    <ul class="checklist">
+      <li><strong>Motor vehicles</strong> — except if you're in vehicle trading, transport, or driving school</li>
+      <li><strong>Food &amp; beverages, outdoor catering, beauty, health services</strong> — unless used to make same-category outward supplies</li>
+      <li><strong>Club / gym / health-centre memberships</strong></li>
+      <li><strong>Rent-a-cab, life insurance, health insurance</strong> — unless mandated by law or same-category supplies</li>
+      <li><strong>Personal-use goods / services</strong></li>
+      <li><strong>Goods lost, stolen, written off, gifted, sampled</strong></li>
+      <li><strong>Construction of immovable property</strong> for own use (other than plant &amp; machinery)</li>
+    </ul>
+
+    <h2>The monthly ITC routine</h2>
+    <p>Every month, around the 14th, your <strong>GSTR-2B</strong> auto-generates. It's the system's view of what ITC you can legally claim, pulled from your vendors' GSTR-1 uploads.</p>
+    <p>Your job is to compare it against your purchase register:</p>
+
+    <p>👉 <strong>Invoice in books + in 2B</strong> → claim it.<br>
+    👉 <strong>Invoice in books, missing from 2B</strong> → vendor hasn't filed. Chase them. Defer the ITC to next month.<br>
+    👉 <strong>Invoice in 2B, not in your books</strong> → verify it's actually yours. Sometimes a vendor enters a wrong GSTIN.</p>
+
+    <div class="sticky-note">
+      <span class="sticky-note__label">⚠️ Rule 36(4) — the 100% match rule</span>
+      <p>From Jan 2022, you can only claim ITC that appears in your GSTR-2B. Earlier there was a 5% / 10% provisional buffer. Now zero. <strong>If vendor hasn't uploaded, you can't claim — even with a perfect invoice and full payment.</strong></p>
+    </div>
+
+    <h2>The vendor problem — and how to handle it</h2>
+    <p>The harshest part of GST: <strong>your tax credit depends on someone else's discipline</strong>. If your vendor doesn't file their GSTR-1 or doesn't pay GST to govt, you lose ITC even with a perfect invoice.</p>
+
+    <p>What sensible businesses do:</p>
+    <p>👉 Pick vendors with GST track records (check on GST portal — file history is public)<br>
+    👉 Hold a portion of payment (often 10%) until the invoice reflects in your 2B<br>
+    👉 Use vendor-rating workflows in your accounting tool — repeat offenders move to "no further orders"<br>
+    👉 For big-ticket purchases, ask for a written GST-filing undertaking</p>
+
+    <h2>Reverse Charge Mechanism (RCM) — when YOU pay GST</h2>
+    <p>In some cases, the <strong>buyer</strong> (you) pays GST instead of the seller. Common scenarios:</p>
+
+    <ul class="checklist">
+      <li>Import of services</li>
+      <li>Goods Transport Agency (GTA) services</li>
+      <li>Legal services from advocates / firms</li>
+      <li>Director's sitting fees</li>
+      <li>Insurance / banking / business correspondents (specific cases)</li>
+    </ul>
+
+    <p>For RCM: you self-invoice, pay GST in cash, then claim it back as ITC (if eligible). <strong>RCM tax must be paid in cash</strong> — can't offset with existing ITC.</p>
+
+    <h2>The order in which ITC gets used</h2>
+    <p>From 1 Feb 2019, you must use ITC in this sequence:</p>
+
+    <p>👉 <strong>IGST credit first</strong> — against IGST, then CGST, then SGST liability<br>
+    👉 <strong>CGST credit</strong> — only against CGST and IGST liability<br>
+    👉 <strong>SGST credit</strong> — only against SGST and IGST liability</p>
+
+    <p>Translation: <strong>don't let IGST credit pile up</strong>. Use it first or you can end up with cash payable on CGST/SGST while IGST credit sits idle.</p>
+
+    <div class="character-quote">
+      <p>GST isn't "18% on sales". It's "18% on value added". ITC is the mechanism that makes it so. Master ITC and you've mastered GST.</p>
+      <footer>— Sweetie, year 3 of her bakery</footer>
+    </div>
+
+    <h2>Quick answers</h2>
+    <div class="faq">
+      <div class="faq__item is-open"><button class="faq__q">Can I claim ITC on a laptop I bought?</button><div class="faq__a"><p>Yes, if used for business. Full ITC available in the month of purchase. For motor vehicles, restrictions apply under Sec 17(5).</p></div></div>
+      <div class="faq__item"><button class="faq__q">My vendor filed late — can I still claim ITC?</button><div class="faq__a"><p>You can claim only when the invoice appears in your GSTR-2B. If the vendor files late, the invoice shows up in a later month's 2B — claim it then. ITC isn't lost, just deferred.</p></div></div>
+      <div class="faq__item"><button class="faq__q">I missed claiming an ITC last year — can I claim it now?</button><div class="faq__a"><p>Yes, but only until 30th November of the next FY or filing of GSTR-9 for that FY, whichever is earlier. After that window, ITC is permanently lost.</p></div></div>
+      <div class="faq__item"><button class="faq__q">How do I handle composition-scheme vendors?</button><div class="faq__a"><p>Composition vendors can't issue tax invoices — they issue "bills of supply". You can't claim ITC on those purchases. Factor that into your vendor mix.</p></div></div>
+      <div class="faq__item"><button class="faq__q">What about exempt outward supplies?</button><div class="faq__a"><p>If you make both taxable and exempt supplies, ITC is restricted proportionally (Rules 42 / 43). Common in mixed-use real estate, education, healthcare.</p></div></div>
+    </div>
+
+    <a class="next-up" href="gstr-1-3b-9-explained.html">
+      <div class="next-up__icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+      <div class="next-up__body"><div class="next-up__label">Where ITC actually gets claimed</div><div class="next-up__title">GSTR-1, 3B, 9 — what each return actually does</div></div>
+      <div class="next-up__arrow"><svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+    </a>
+
+    <h2>When you might want help</h2>
+    <p>Claiming ITC right is the single highest-leverage GST activity. Where it pays off most: monthly 2B reconciliation (15 minutes well spent), chasing late vendors before the year-end ITC window closes, and the complex rules around RCM, Rules 42/43, blocked credits — these are easy to get wrong and expensive when you do.</p>
+
+    <div class="cta-strip reveal"><div><h2>Want monthly ITC reconciliation handled?</h2><p>We match every invoice to GSTR-2B, chase late vendors, optimise your tax outflow. Fixed monthly fee.</p></div><div class="cta-strip__btns"><a class="btn btn--gold btn--lg" href="https://wa.me/919211719725?text=Hello%20Aarvya%2C%20ITC%20reconciliation%20help." target="_blank" rel="noopener">WhatsApp Now</a><a class="btn btn--ghost-light btn--lg" href="../contact.html">Send a Message</a></div></div>
+
+    <div class="helpful"><p>Was this guide helpful?</p><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20ITC">👍 Yes</a><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20ITC%20could%20be%20better">👎 Could be better</a></div>
+
+    <div class="related"><h3>Read next</h3><div class="related__grid">
+      <a class="related__card" href="gstr-1-3b-9-explained.html"><span class="chip">GST</span><h4>GSTR-1, 3B, 9 explained</h4><p>Where ITC actually gets claimed.</p></a>
+      <a class="related__card" href="e-invoicing-explained.html"><span class="chip">GST</span><h4>E-invoicing explained</h4><p>The newer compliance layer.</p></a>
+      <a class="related__card" href="how-to-pay-gst-online.html"><span class="chip">GST</span><h4>How to pay GST online</h4><p>The payment process.</p></a>
+    </div></div>
+
   </div>
-
-  <div class="cta-strip reveal"><div><h2>Want monthly ITC reconciliation handled?</h2><p>We match every invoice with GSTR-2B, chase late vendors, optimise your tax outflow.</p></div><div class="cta-strip__btns"><a class="btn btn--gold btn--lg" href="https://wa.me/919211719725?text=Hello%20Aarvya%2C%20ITC%20reconciliation%20help." target="_blank" rel="noopener">WhatsApp Now</a><a class="btn btn--ghost-light btn--lg" href="../contact.html">Send a Message</a></div></div>
-
-  <div class="helpful"><p>Was this guide helpful?</p><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20ITC">👍 Yes</a><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20ITC%20could%20be%20better">👎 Could be better</a></div>
-
-  <div class="related"><h3>Read next</h3><div class="related__grid">
-    <a class="related__card" href="gstr-1-3b-9-explained.html"><span class="chip">GST</span><h4>GSTR-1, 3B, 9 explained</h4><p>The returns where ITC gets claimed.</p></a>
-    <a class="related__card" href="e-invoicing-explained.html"><span class="chip">GST</span><h4>E-invoicing explained</h4><p>How modern invoices flow into ITC chains.</p></a>
-    <a class="related__card" href="how-to-handle-gst-notice.html"><span class="chip">GST</span><h4>How to handle a GST notice</h4><p>Many notices come from ITC mismatches.</p></a>
-  </div></div>
-
-</div></article>
+</article>
 
 <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a class="brand" href="../index.html" style="margin-bottom:16px"><span class="brand__mark">A</span><span class="brand__name"><strong style="color:#fff">Aarvya Consulting</strong><span style="color:#8794b1">Tax · Compliance · ERP</span></span></a><p>Professional services in taxation, compliance, accounting, audit, ERP and business advisory.</p><p style="font-family:var(--font-display);font-style:italic;color:var(--gold-400);margin-top:14px">"Driven by Accuracy, Powered by Trust."</p></div><div><h4>Services</h4><ul class="footer__list"><li><a href="../services/itr-filing.html">Income Tax &amp; TDS</a></li><li><a href="../services/gst-filing.html">GST Services</a></li><li><a href="../services/company-registration.html">Business Registration</a></li><li><a href="../services/erp-consulting.html">ERP Consulting</a></li><li><a href="../services.html">All services</a></li></ul></div><div><h4>Company</h4><ul class="footer__list"><li><a href="../about.html">About Us</a></li><li><a href="../resources.html">Guides &amp; Resources</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li></ul></div><div><h4>Contact</h4><div class="footer__contact"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div></div></div><div class="footer__bottom"><span>© <span data-year>2025</span> Aarvya Consulting. All rights reserved.</span><span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span></div></div></footer>
 
