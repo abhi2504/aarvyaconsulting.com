@@ -63,6 +63,14 @@
 @media (min-width:640px){.calc-cta h3{font-size:1.3rem}}
 .calc-cta p{color:#c2cae0;margin:0 0 16px;font-size:.95rem}
 .calc-cta .btn{margin:0 4px 8px}
+.calc-advanced{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed #d8d0bd}
+.calc-advanced.is-open{display:block}
+.calc-advanced > p{font-size:.85rem;color:var(--ink-600);margin:0 0 12px}
+.calc-advanced-toggle{background:none;border:0;color:var(--gold-500);font-size:.88rem;font-weight:600;cursor:pointer;padding:10px 0;margin-top:8px;display:inline-block;min-height:44px;font-family:inherit}
+.calc-advanced-toggle::before{content:'+ '}
+.calc-advanced-toggle.is-open::before{content:'− '}
+.calc-warn{margin-top:12px;padding:10px 12px;background:#fff8e7;border-left:3px solid #c9a961;border-radius:0 8px 8px 0;font-size:.85rem;color:var(--ink-700);line-height:1.5}
+.calc-warn.is-hidden{display:none}
 </style>
 <meta property="og:image" content="https://aarvyaconsulting.com/og-default.svg" />
 <meta property="og:image:width" content="1200" />
@@ -133,6 +141,36 @@
           <select id="gst-type"><option value="intra">Intra-state (CGST+SGST)</option><option value="inter">Inter-state (IGST)</option></select>
         </div>
       </div>
+      <button type="button" class="calc-advanced-toggle" data-target="gst-advanced">Show advanced options</button>
+      <div class="calc-advanced" id="gst-advanced">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="gst-composition">Composition scheme</label>
+            <select id="gst-composition">
+              <option value="none">No — regular GST</option>
+              <option value="trader">Trader (1% turnover)</option>
+              <option value="manufacturer">Manufacturer (1% turnover)</option>
+              <option value="restaurant">Restaurant (5% turnover)</option>
+              <option value="service">Service supplier (6% turnover)</option>
+            </select>
+            <small>Composition: pay flat % on turnover, but cannot claim ITC and cannot issue tax invoice. Overrides the GST rate above.</small>
+          </div>
+          <div class="calc-field">
+            <label for="gst-cess">Cess on supply (%)</label>
+            <input id="gst-cess" type="number" value="0" min="0" step="0.01" />
+            <small>Compensation cess — cars (1–22%), tobacco, aerated drinks. Leave 0 if none.</small>
+          </div>
+          <div class="calc-field">
+            <label for="gst-rcm">Charge mechanism</label>
+            <select id="gst-rcm">
+              <option value="forward">Forward charge (supplier collects)</option>
+              <option value="reverse">Reverse charge (buyer pays govt)</option>
+            </select>
+            <small>RCM: Sec 9(3)/9(4) — security services, lawyer fees, GTA, gov supplies, etc.</small>
+          </div>
+        </div>
+        <div id="gst-rcm-note" class="calc-warn is-hidden">Under RCM, supplier issues invoice without collecting GST. Buyer pays this tax directly to government in GSTR-3B and can usually claim it back as ITC in the same return.</div>
+      </div>
       <div class="calc-result">
         <h3>Result</h3>
         <div class="calc-result-row"><strong>Base amount</strong><span id="gst-base">₹1,000.00</span></div>
@@ -158,8 +196,45 @@
         <div class="calc-field">
           <label for="sal-deductions">Old-regime deductions (₹)</label>
           <input id="sal-deductions" type="number" value="200000" min="0" step="any" />
-          <small>80C + 80D + 80CCD(1B) + home-loan int + HRA exempt + LTA, etc.</small>
+          <small>80C + 80D + 80CCD(1B) + home-loan int + HRA exempt + LTA, etc. Auto-filled if you use the section breakdown below.</small>
         </div>
+      </div>
+      <button type="button" class="calc-advanced-toggle" data-target="sal-advanced">Show advanced options</button>
+      <div class="calc-advanced" id="sal-advanced">
+        <p>Break old-regime deductions down by section. If any value below is non-zero, the sum overrides the manual total above.</p>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="sal-hra">HRA exemption (₹/yr)</label>
+            <input id="sal-hra" type="number" value="0" min="0" step="any" />
+            <small>Use the HRA tab to compute, then paste the exempt amount here.</small>
+          </div>
+          <div class="calc-field">
+            <label for="sal-80c">Section 80C (₹, max ₹1.5L)</label>
+            <input id="sal-80c" type="number" value="0" min="0" step="any" />
+            <small>PF + PPF + ELSS + life insurance + home loan principal + ULIP + kids' tuition.</small>
+          </div>
+          <div class="calc-field">
+            <label for="sal-80d">Section 80D health insurance (₹)</label>
+            <input id="sal-80d" type="number" value="0" min="0" step="any" />
+            <small>Self/family ₹25k + parents ₹25k (₹50k if seniors). Preventive check-ups up to ₹5k.</small>
+          </div>
+          <div class="calc-field">
+            <label for="sal-80ccd1b">80CCD(1B) NPS extra (₹, max ₹50k)</label>
+            <input id="sal-80ccd1b" type="number" value="0" min="0" step="any" />
+            <small>Over and above the ₹1.5L 80C ceiling.</small>
+          </div>
+          <div class="calc-field">
+            <label for="sal-24b">Sec 24(b) home loan interest (₹)</label>
+            <input id="sal-24b" type="number" value="0" min="0" step="any" />
+            <small>Self-occupied: cap ₹2L. Let-out: actual interest, loss capped at ₹2L set-off.</small>
+          </div>
+          <div class="calc-field">
+            <label for="sal-other-ded">Other old-regime deductions (₹)</label>
+            <input id="sal-other-ded" type="number" value="0" min="0" step="any" />
+            <small>80E (education loan), 80G (donations), 80EEA, 80TTA/TTB, LTA, gratuity, etc.</small>
+          </div>
+        </div>
+        <div id="sal-surcharge-note" class="calc-warn is-hidden"></div>
       </div>
       <div class="calc-result">
         <h3>Old regime</h3>
@@ -198,6 +273,30 @@
           <label for="hra-metro">Live in metro?</label>
           <select id="hra-metro"><option value="yes">Yes (Delhi / Mumbai / Chennai / Kolkata)</option><option value="no">No</option></select>
         </div>
+      </div>
+      <button type="button" class="calc-advanced-toggle" data-target="hra-advanced">Show advanced options</button>
+      <div class="calc-advanced" id="hra-advanced">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="hra-da">DA forming part of retirement benefits (₹/yr)</label>
+            <input id="hra-da" type="number" value="0" min="0" step="any" />
+            <small>Common for government / PSU employees. Added to basic for the 50%/40% &amp; 10%-rent computation.</small>
+          </div>
+          <div class="calc-field">
+            <label for="hra-months">Months HRA was received</label>
+            <input id="hra-months" type="number" value="12" min="0" max="12" step="1" />
+            <small>For partial-year cases — mid-year joining / leaving, moved cities.</small>
+          </div>
+          <div class="calc-field">
+            <label for="hra-relative">Rent paid to</label>
+            <select id="hra-relative">
+              <option value="landlord">Third-party landlord</option>
+              <option value="parents">Parents / relatives</option>
+            </select>
+            <small>Renting from parents is legal but needs a rent agreement, actual bank transfer, and parents must declare it as income.</small>
+          </div>
+        </div>
+        <div id="hra-relative-note" class="calc-warn is-hidden">Rent to parents/relatives: keep a written rent agreement, transfer rent via bank (not cash), and your parents must report it as income from house property in their ITR. The IT department scrutinises this pattern.</div>
       </div>
       <div class="calc-result">
         <h3>The three candidates</h3>
@@ -238,6 +337,40 @@
           <label for="cg-sale">Sale price (₹)</label>
           <input id="cg-sale" type="number" value="800000" min="0" step="any" />
         </div>
+      </div>
+      <button type="button" class="calc-advanced-toggle" data-target="cg-advanced">Show advanced options</button>
+      <div class="calc-advanced" id="cg-advanced">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="cg-improvement">Cost of improvement (₹)</label>
+            <input id="cg-improvement" type="number" value="0" min="0" step="any" />
+            <small>Major additions / structural improvements after purchase. Adds to cost base.</small>
+          </div>
+          <div class="calc-field">
+            <label for="cg-expenses">Transfer expenses (₹)</label>
+            <input id="cg-expenses" type="number" value="0" min="0" step="any" />
+            <small>Brokerage, legal fees, stamp duty on sale.</small>
+          </div>
+          <div class="calc-field">
+            <label for="cg-mode">Property / gold LTCG mode</label>
+            <select id="cg-mode">
+              <option value="new">12.5% without indexation (post 23-Jul-24)</option>
+              <option value="indexed">20% with indexation (pre 23-Jul-24 property only)</option>
+            </select>
+            <small>Only affects property / gold / unlisted LTCG. Equity always uses 12.5% above ₹1.25L.</small>
+          </div>
+          <div class="calc-field">
+            <label for="cg-cii-acq">CII for acquisition year</label>
+            <input id="cg-cii-acq" type="number" value="280" min="100" step="1" />
+            <small>2024-25 = 363, 2023-24 = 348, 2022-23 = 331, 2021-22 = 317. Base 2001-02 = 100.</small>
+          </div>
+          <div class="calc-field">
+            <label for="cg-cii-sale">CII for sale year</label>
+            <input id="cg-cii-sale" type="number" value="370" min="100" step="1" />
+            <small>FY 25-26 ≈ 370 (CBDT notifies each year).</small>
+          </div>
+        </div>
+        <div id="cg-mode-note" class="calc-warn is-hidden">Indexation option only applies to property (land / building) acquired before 23 July 2024. For everything else under "property / gold", post-23-Jul-24 the only rate is 12.5% without indexation.</div>
       </div>
       <div class="calc-result">
         <h3>Result</h3>
@@ -281,6 +414,25 @@
           <select id="tds-pan"><option value="yes">Yes</option><option value="no">No (206AA — higher rate)</option></select>
         </div>
       </div>
+      <button type="button" class="calc-advanced-toggle" data-target="tds-advanced">Show advanced options</button>
+      <div class="calc-advanced" id="tds-advanced">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="tds-aggregate">Aggregate already paid this FY (₹)</label>
+            <input id="tds-aggregate" type="number" value="0" min="0" step="any" />
+            <small>For 194C: total paid to the same contractor this FY. ₹1L aggregate triggers TDS on this payment even if single-payment is under ₹30k.</small>
+          </div>
+          <div class="calc-field">
+            <label for="tds-residency">Payee residency</label>
+            <select id="tds-residency">
+              <option value="resident">Resident in India</option>
+              <option value="nr">Non-resident (Sec 195 applies)</option>
+            </select>
+            <small>For NR payees, Sec 195 takes over with different rates and possible DTAA relief.</small>
+          </div>
+        </div>
+        <div id="tds-nr-note" class="calc-warn is-hidden">Sec 195 applies to non-resident payees, not Sec 194. Rates depend on income type and the applicable DTAA. Form 15CA / 15CB may be needed before remittance. See our <a href="resources/foreign-tax-credit-form-67.html">FTC guide</a>.</div>
+      </div>
       <div class="calc-result">
         <h3>Result</h3>
         <div class="calc-result-row"><strong>Threshold</strong><span id="tds-threshold">—</span></div>
@@ -314,6 +466,41 @@
         <div class="calc-field">
           <label>&nbsp;</label>
           <span style="color:var(--ink-500);font-size:.85rem;padding:11px 0">EMI = P × r × (1+r)ⁿ / ((1+r)ⁿ − 1)</span>
+        </div>
+      </div>
+      <button type="button" class="calc-advanced-toggle" data-target="emi-advanced">Show advanced options</button>
+      <div class="calc-advanced" id="emi-advanced">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="emi-fee">Processing fee (₹)</label>
+            <input id="emi-fee" type="number" value="0" min="0" step="any" />
+            <small>Usually 0.5–1% of loan + 18% GST on the fee. One-time, added to total cost.</small>
+          </div>
+          <div class="calc-field">
+            <label for="emi-prepay">Prepayment amount (₹)</label>
+            <input id="emi-prepay" type="number" value="0" min="0" step="any" />
+            <small>One-time lumpsum applied at the month below.</small>
+          </div>
+          <div class="calc-field">
+            <label for="emi-prepay-month">Prepayment month (from start)</label>
+            <input id="emi-prepay-month" type="number" value="12" min="0" step="1" />
+            <small>E.g. 12 = after 1 year of EMIs. Shortens tenure at same EMI.</small>
+          </div>
+          <div class="calc-field">
+            <label for="emi-marginal-tax">Marginal tax rate (%, for home-loan tax saving)</label>
+            <input id="emi-marginal-tax" type="number" value="0" min="0" max="42.744" step="0.001" />
+            <small>Old regime only. Use 30% + 4% cess = 31.2% for the highest slab. Leave 0 if not a home loan.</small>
+          </div>
+          <div class="calc-field">
+            <label for="emi-24b">Sec 24(b) interest cap (₹/yr)</label>
+            <input id="emi-24b" type="number" value="200000" min="0" step="any" />
+            <small>Self-occupied: ₹2L. Let-out: actual interest (loss capped at ₹2L set-off).</small>
+          </div>
+          <div class="calc-field">
+            <label for="emi-80c">Sec 80C principal cap (₹/yr)</label>
+            <input id="emi-80c" type="number" value="150000" min="0" step="any" />
+            <small>₹1.5L total across all 80C uses (PF + PPF + ELSS + this).</small>
+          </div>
         </div>
       </div>
       <div class="calc-result">
@@ -366,29 +553,44 @@
   // --- GST CALCULATOR ---
   function calcGST(){
     const amt = +document.getElementById('gst-amount').value || 0;
-    const rate = +document.getElementById('gst-rate').value;
+    let rate = +document.getElementById('gst-rate').value;
     const mode = document.getElementById('gst-mode').value;
     const type = document.getElementById('gst-type').value;
+    const composition = document.getElementById('gst-composition').value;
+    const cessPct = +document.getElementById('gst-cess').value || 0;
+    const rcm = document.getElementById('gst-rcm').value === 'reverse';
+    const compRates = {trader:1, manufacturer:1, restaurant:5, service:6};
+    const isComp = composition !== 'none';
+    if(isComp) rate = compRates[composition];
     let base, tax;
-    if(mode === 'add'){ base = amt; tax = amt * rate / 100; }
+    if(mode === 'add'){ base = amt; tax = base * rate / 100; }
     else { base = amt / (1 + rate/100); tax = amt - base; }
+    const cess = isComp ? 0 : (base * cessPct / 100);
     document.getElementById('gst-base').textContent = fmt(base);
-    if(type === 'intra'){
-      document.getElementById('gst-split-1-label').textContent = 'CGST ('+(rate/2)+'%)';
+    if(isComp){
+      document.getElementById('gst-split-1-label').textContent = 'Composition tax ('+rate+'%)';
+      document.getElementById('gst-split-1').textContent = fmt(tax);
+      document.getElementById('gst-split-2-label').parentElement.style.display = 'none';
+    } else if(type === 'intra'){
+      document.getElementById('gst-split-1-label').textContent = 'CGST ('+(rate/2)+'%)' + (cessPct?' + Cess':'');
       document.getElementById('gst-split-2-label').textContent = 'SGST ('+(rate/2)+'%)';
-      document.getElementById('gst-split-1').textContent = fmt(tax/2);
+      document.getElementById('gst-split-1').textContent = fmt(tax/2 + cess);
       document.getElementById('gst-split-2').textContent = fmt(tax/2);
       document.getElementById('gst-split-2-label').parentElement.style.display = '';
     } else {
-      document.getElementById('gst-split-1-label').textContent = 'IGST ('+rate+'%)';
-      document.getElementById('gst-split-1').textContent = fmt(tax);
+      document.getElementById('gst-split-1-label').textContent = 'IGST ('+rate+'%)' + (cessPct?' + Cess':'');
+      document.getElementById('gst-split-1').textContent = fmt(tax + cess);
       document.getElementById('gst-split-2-label').parentElement.style.display = 'none';
     }
-    const total = mode==='add' ? base + tax : amt;
-    document.getElementById('gst-final-label').textContent = mode==='add' ? 'Total payable' : 'Tax component';
-    document.getElementById('gst-final').textContent = mode==='add' ? fmt(total) : fmt(tax);
+    let finalLabel, finalValue;
+    if(isComp){ finalLabel = 'Composition tax payable'; finalValue = fmt(tax); }
+    else if(mode === 'add'){ finalLabel = 'Total payable' + (rcm ? ' (buyer pays govt)' : ''); finalValue = fmt(base + tax + cess); }
+    else { finalLabel = 'Tax component'; finalValue = fmt(tax + cess); }
+    document.getElementById('gst-final-label').textContent = finalLabel;
+    document.getElementById('gst-final').textContent = finalValue;
+    document.getElementById('gst-rcm-note').classList.toggle('is-hidden', !rcm);
   }
-  ['gst-amount','gst-rate','gst-mode','gst-type'].forEach(id => document.getElementById(id).addEventListener('input', calcGST));
+  ['gst-amount','gst-rate','gst-mode','gst-type','gst-composition','gst-cess','gst-rcm'].forEach(id => document.getElementById(id).addEventListener('input', calcGST));
   calcGST();
 
   // --- SALARY ---
@@ -426,11 +628,20 @@
   }
   function calcSalary(){
     const ctc = +document.getElementById('sal-ctc').value || 0;
-    const ded = +document.getElementById('sal-deductions').value || 0;
-    // Old: std deduction 50k + user deductions
+    const manualDed = +document.getElementById('sal-deductions').value || 0;
+    // Advanced: per-section breakdown overrides manual total if any value entered
+    const hra = +document.getElementById('sal-hra').value || 0;
+    const sec80c = Math.min(+document.getElementById('sal-80c').value || 0, 150000);
+    const sec80d = +document.getElementById('sal-80d').value || 0;
+    const sec80ccd1b = Math.min(+document.getElementById('sal-80ccd1b').value || 0, 50000);
+    const sec24b = +document.getElementById('sal-24b').value || 0;
+    const otherDed = +document.getElementById('sal-other-ded').value || 0;
+    const advancedSum = hra + sec80c + sec80d + sec80ccd1b + sec24b + otherDed;
+    const ded = advancedSum > 0 ? advancedSum : manualDed;
+    // Old: std deduction 50k + deductions
     const oldTaxable = Math.max(0, ctc - 50000 - ded);
     const oldTax = taxOld(oldTaxable);
-    // New: std deduction 75k
+    // New: std deduction 75k, no deductions (except 80CCD(2) employer NPS — not modelled here)
     const newTaxable = Math.max(0, ctc - 75000);
     const newTax = taxNew(newTaxable);
     document.getElementById('sal-old-taxable').textContent = fmtInt(oldTaxable);
@@ -441,29 +652,45 @@
     document.getElementById('sal-new-net').textContent = fmtInt(ctc - newTax);
     if(oldTax === newTax) document.getElementById('sal-winner').textContent = 'Tied';
     else document.getElementById('sal-winner').textContent = oldTax < newTax ? 'Old saves '+fmtInt(newTax - oldTax) : 'New saves '+fmtInt(oldTax - newTax);
+    // Surcharge warning at slab cliffs (math not adjusted — note only)
+    const tiMax = Math.max(oldTaxable, newTaxable);
+    let surMsg = '';
+    if(tiMax > 50000000) surMsg = '⚠️ Above ₹5cr taxable: surcharge 37% (old regime) / 25% (new regime). The numbers above do <strong>not</strong> include surcharge — talk to us for accurate computation.';
+    else if(tiMax > 20000000) surMsg = '⚠️ Above ₹2cr taxable: surcharge 25%. The numbers above do <strong>not</strong> include surcharge.';
+    else if(tiMax > 10000000) surMsg = '⚠️ Above ₹1cr taxable: surcharge 15%. The numbers above do <strong>not</strong> include surcharge.';
+    else if(tiMax > 5000000) surMsg = '⚠️ Above ₹50L taxable: surcharge 10%. The numbers above do <strong>not</strong> include surcharge — marginal relief applies at the threshold.';
+    const surNote = document.getElementById('sal-surcharge-note');
+    surNote.innerHTML = surMsg;
+    surNote.classList.toggle('is-hidden', !surMsg);
   }
-  ['sal-ctc','sal-deductions'].forEach(id => document.getElementById(id).addEventListener('input', calcSalary));
+  ['sal-ctc','sal-deductions','sal-hra','sal-80c','sal-80d','sal-80ccd1b','sal-24b','sal-other-ded'].forEach(id => document.getElementById(id).addEventListener('input', calcSalary));
   calcSalary();
 
   // --- HRA ---
   function calcHRA(){
     const basic = +document.getElementById('hra-basic').value || 0;
+    const da = +document.getElementById('hra-da').value || 0;
+    const effBasic = basic + da;
     const rec = +document.getElementById('hra-received').value || 0;
     const rent = +document.getElementById('hra-rent').value || 0;
     const metro = document.getElementById('hra-metro').value === 'yes';
+    const months = Math.max(0, Math.min(12, +document.getElementById('hra-months').value || 12));
+    const monthFactor = months / 12;
+    const relative = document.getElementById('hra-relative').value === 'parents';
     const pct = metro ? 0.5 : 0.4;
     const c1 = rec;
-    const c2 = basic * pct;
-    const c3 = Math.max(0, rent - basic * 0.1);
+    const c2 = effBasic * pct * monthFactor;
+    const c3 = Math.max(0, rent - effBasic * 0.1) * monthFactor;
     const exempt = Math.min(c1, c2, c3);
     document.getElementById('hra-c1').textContent = fmtInt(c1);
-    document.getElementById('hra-c2-label').textContent = (metro?'50%':'40%')+' of basic';
+    document.getElementById('hra-c2-label').textContent = (metro?'50%':'40%')+' of basic' + (da>0?'+DA':'') + (months<12?' × '+months+'/12':'');
     document.getElementById('hra-c2').textContent = fmtInt(c2);
     document.getElementById('hra-c3').textContent = fmtInt(c3);
     document.getElementById('hra-exempt').textContent = fmtInt(exempt);
     document.getElementById('hra-taxable').textContent = fmtInt(Math.max(0, rec - exempt));
+    document.getElementById('hra-relative-note').classList.toggle('is-hidden', !relative);
   }
-  ['hra-basic','hra-received','hra-rent','hra-metro'].forEach(id => document.getElementById(id).addEventListener('input', calcHRA));
+  ['hra-basic','hra-received','hra-rent','hra-metro','hra-da','hra-months','hra-relative'].forEach(id => document.getElementById(id).addEventListener('input', calcHRA));
   calcHRA();
 
   // --- CAPITAL GAINS ---
@@ -472,25 +699,50 @@
     const months = +document.getElementById('cg-holding').value || 0;
     const cost = +document.getElementById('cg-cost').value || 0;
     const sale = +document.getElementById('cg-sale').value || 0;
-    const gain = Math.max(0, sale - cost);
-    let longThreshold, ltcgRate, stcgRate, exempt = 0;
-    // Post 23-Jul-2024 rates (Finance Act 2024)
-    if(asset === 'equity'){ longThreshold = 12; ltcgRate = 0.125; stcgRate = 0.20; }
-    else if(asset === 'property' || asset === 'gold'){ longThreshold = 24; ltcgRate = 0.125; stcgRate = 0; /* slab */ }
-    else { longThreshold = Infinity; ltcgRate = 0; stcgRate = 0; /* debt MF post Apr-23: slab */ }
-    let isLong = months > longThreshold;
+    const improvement = +document.getElementById('cg-improvement').value || 0;
+    const expenses = +document.getElementById('cg-expenses').value || 0;
+    const cgMode = document.getElementById('cg-mode').value; // 'new' or 'indexed'
+    const ciiAcq = Math.max(1, +document.getElementById('cg-cii-acq').value || 100);
+    const ciiSale = Math.max(1, +document.getElementById('cg-cii-sale').value || 100);
+    const adjCost = cost + improvement;
+    const gain = Math.max(0, sale - adjCost - expenses);
+    let longThreshold, exempt = 0;
+    if(asset === 'equity'){ longThreshold = 12; }
+    else if(asset === 'property' || asset === 'gold'){ longThreshold = 24; }
+    else { longThreshold = Infinity; }
+    const isLong = months > longThreshold;
     let typeLabel, taxable, tax, rateLabel;
     if(asset === 'debt'){
       typeLabel = 'Slab rate (added to total income)';
       taxable = gain; tax = 0; rateLabel = 'Slab-taxed — add to income';
     } else if(isLong){
       typeLabel = 'LTCG';
-      if(asset === 'equity'){ exempt = Math.min(gain, 125000); taxable = Math.max(0, gain - 125000); tax = taxable * ltcgRate; rateLabel='Tax @ 12.5% (above ₹1.25L, Sec 112A)'; }
-      else { taxable = gain; tax = gain * ltcgRate; rateLabel='Tax @ 12.5% (post 23-Jul-24, no indexation)'; }
+      if(asset === 'equity'){
+        exempt = Math.min(gain, 125000);
+        taxable = Math.max(0, gain - 125000);
+        tax = taxable * 0.125;
+        rateLabel = 'Tax @ 12.5% (above ₹1.25L, Sec 112A)';
+      } else if(cgMode === 'indexed'){
+        const indexedCost = adjCost * (ciiSale / ciiAcq);
+        taxable = Math.max(0, sale - indexedCost - expenses);
+        tax = taxable * 0.20;
+        rateLabel = 'Tax @ 20% with indexation (Sec 112 — pre-23-Jul-24 property only)';
+      } else {
+        taxable = gain;
+        tax = gain * 0.125;
+        rateLabel = 'Tax @ 12.5% (post 23-Jul-24, no indexation)';
+      }
     } else {
       typeLabel = 'STCG';
-      if(asset === 'equity'){ taxable = gain; tax = gain * stcgRate; rateLabel='Tax @ 20% (Sec 111A, post 23-Jul-24)'; }
-      else { taxable = gain; tax = 0; rateLabel='Slab-taxed — add to income'; }
+      if(asset === 'equity'){
+        taxable = gain;
+        tax = gain * 0.20;
+        rateLabel = 'Tax @ 20% (Sec 111A, post 23-Jul-24)';
+      } else {
+        taxable = gain;
+        tax = 0;
+        rateLabel = 'Slab-taxed — add to income';
+      }
     }
     document.getElementById('cg-type').textContent = typeLabel;
     document.getElementById('cg-gain').textContent = fmtInt(gain);
@@ -498,8 +750,11 @@
     document.getElementById('cg-taxable').textContent = fmtInt(taxable);
     document.getElementById('cg-rate-label').textContent = rateLabel;
     document.getElementById('cg-tax').textContent = (asset === 'debt' || (!isLong && asset !== 'equity')) ? '—' : fmtInt(tax);
+    // Indexation note: visible if user picked 'indexed' but asset is equity (doesn't apply)
+    const showIndexNote = (cgMode === 'indexed' && asset === 'equity');
+    document.getElementById('cg-mode-note').classList.toggle('is-hidden', !showIndexNote);
   }
-  ['cg-asset','cg-holding','cg-cost','cg-sale'].forEach(id => document.getElementById(id).addEventListener('input', calcCapGain));
+  ['cg-asset','cg-holding','cg-cost','cg-sale','cg-improvement','cg-expenses','cg-mode','cg-cii-acq','cg-cii-sale'].forEach(id => document.getElementById(id).addEventListener('input', calcCapGain));
   calcCapGain();
 
   // --- TDS ---
@@ -520,18 +775,31 @@
     const sec = document.getElementById('tds-section').value;
     const amt = +document.getElementById('tds-amount').value || 0;
     const hasPan = document.getElementById('tds-pan').value === 'yes';
+    const aggregate = +document.getElementById('tds-aggregate').value || 0;
+    const isNR = document.getElementById('tds-residency').value === 'nr';
     const info = tdsTable[sec];
-    const above = amt > info.threshold;
+    // For 194C: above if single-payment > 30k OR (aggregate + this) > 1L
+    let above;
+    let breachReason = '';
+    if(info.aggregate){
+      const singleBreached = amt > info.threshold;
+      const aggregateBreached = (aggregate + amt) > info.aggregate;
+      above = singleBreached || aggregateBreached;
+      if(above) breachReason = singleBreached ? ' (single-payment cap)' : ' (aggregate cap with FY-to-date)';
+    } else {
+      above = amt > info.threshold;
+    }
     let rate = info.rate;
     if(!hasPan){ rate = Math.max(rate * 1.2, 0.20); }
     const tds = above ? amt * rate : 0;
     document.getElementById('tds-threshold').textContent = fmtInt(info.threshold) + (info.aggregate ? ' single / '+fmtInt(info.aggregate)+' aggregate' : '');
     document.getElementById('tds-rate').textContent = hasPan ? info.label : (Math.round(rate*10000)/100)+'% (no PAN, 206AA)';
-    document.getElementById('tds-above').textContent = above ? 'Yes — TDS applies' : 'No — below threshold';
+    document.getElementById('tds-above').textContent = above ? 'Yes — TDS applies' + breachReason : 'No — below threshold';
     document.getElementById('tds-deduct').textContent = fmtInt(tds);
     document.getElementById('tds-net').textContent = fmtInt(amt - tds);
+    document.getElementById('tds-nr-note').classList.toggle('is-hidden', !isNR);
   }
-  ['tds-section','tds-amount','tds-pan'].forEach(id => document.getElementById(id).addEventListener('input', calcTDS));
+  ['tds-section','tds-amount','tds-pan','tds-aggregate','tds-residency'].forEach(id => document.getElementById(id).addEventListener('input', calcTDS));
   calcTDS();
 
   // --- EMI ---
@@ -539,20 +807,64 @@
     const p = +document.getElementById('emi-principal').value || 0;
     const ratePct = +document.getElementById('emi-rate').value || 0;
     const years = +document.getElementById('emi-tenure').value || 0;
-    const n = years * 12;
+    const fee = +document.getElementById('emi-fee').value || 0;
+    const prepay = +document.getElementById('emi-prepay').value || 0;
+    const prepayMonth = Math.max(0, +document.getElementById('emi-prepay-month').value || 0);
+    const marginalTax = (+document.getElementById('emi-marginal-tax').value || 0) / 100;
+    const cap24b = +document.getElementById('emi-24b').value || 0;
+    const cap80c = +document.getElementById('emi-80c').value || 0;
+    const n = Math.max(1, years * 12);
     const r = ratePct / 100 / 12;
     let emi = 0;
     if(r === 0) emi = p / n;
     else emi = p * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
-    const total = emi * n;
-    const interest = total - p;
-    document.getElementById('emi-months').textContent = n + ' months';
-    document.getElementById('emi-interest').textContent = fmtInt(interest);
-    document.getElementById('emi-total').textContent = fmtInt(total);
-    document.getElementById('emi-monthly').textContent = fmtInt(emi);
+    // Amortise month-by-month, applying optional prepayment
+    let balance = p;
+    let totalInterest = 0;
+    let totalPaid = 0;
+    let monthsActual = 0;
+    let yearInterest = 0;  // year-1 sums for tax-saving display
+    let yearPrincipal = 0;
+    const maxMonths = 720; // 60-year safety cap
+    for(let m = 1; m <= maxMonths && balance > 0.01; m++){
+      const interestPart = balance * r;
+      let principalPart = emi - interestPart;
+      if(principalPart > balance) principalPart = balance;
+      balance -= principalPart;
+      totalInterest += interestPart;
+      totalPaid += interestPart + principalPart;
+      monthsActual = m;
+      if(m <= 12){ yearInterest += interestPart; yearPrincipal += principalPart; }
+      if(prepay > 0 && m === prepayMonth && balance > 0){
+        const applyPrepay = Math.min(prepay, balance);
+        balance -= applyPrepay;
+        totalPaid += applyPrepay;
+      }
+    }
+    const totalWithFee = totalPaid + fee;
+    // Year-1 tax saving (Sec 24(b) interest + Sec 80C principal, capped)
+    const ded24b = Math.min(yearInterest, cap24b);
+    const ded80c = Math.min(yearPrincipal, cap80c);
+    const annualTaxSave = (ded24b + ded80c) * marginalTax;
+    const monthsLabel = monthsActual + ' months' + (prepay > 0 && monthsActual < n ? ' (saved ' + (n - monthsActual) + ' months via prepay)' : '');
+    const totalLabel = fmtInt(totalWithFee) + (fee > 0 ? ' (incl. ₹' + fmtInt(fee).replace('₹','') + ' fee)' : '');
+    document.getElementById('emi-months').textContent = monthsLabel;
+    document.getElementById('emi-interest').textContent = fmtInt(totalInterest);
+    document.getElementById('emi-total').textContent = totalLabel;
+    document.getElementById('emi-monthly').textContent = fmtInt(emi) + (annualTaxSave > 0 ? ' (≈ ' + fmtInt(annualTaxSave) + '/yr tax saved, year 1)' : '');
   }
-  ['emi-principal','emi-rate','emi-tenure'].forEach(id => document.getElementById(id).addEventListener('input', calcEMI));
+  ['emi-principal','emi-rate','emi-tenure','emi-fee','emi-prepay','emi-prepay-month','emi-marginal-tax','emi-24b','emi-80c'].forEach(id => document.getElementById(id).addEventListener('input', calcEMI));
   calcEMI();
+
+  // --- Advanced-options toggle ---
+  document.querySelectorAll('.calc-advanced-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      btn.classList.toggle('is-open');
+      target.classList.toggle('is-open');
+      btn.textContent = btn.classList.contains('is-open') ? 'Hide advanced options' : 'Show advanced options';
+    });
+  });
 })();
 </script>
 
