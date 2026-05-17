@@ -68,9 +68,11 @@
 .hub-hero__art-wrap{order:1;display:flex;justify-content:center;max-width:380px;margin:0 auto}
 .hub-hero__art{width:100%;max-width:300px;height:auto}
 @media (min-width:840px){
-  .hub-hero__inner{grid-template-columns:1.4fr 1fr;gap:36px}
+  .hub-hero__inner{grid-template-columns:1.4fr 1fr;gap:36px;max-width:var(--container);text-align:left}
   .hub-hero__text{order:1}
-  .hub-hero__art-wrap{order:2;max-width:none}
+  .hub-hero__text p{margin-left:0;margin-right:0}
+  .hub-hero .hub-controls{margin-left:0;margin-right:0}
+  .hub-hero__art-wrap{order:2;max-width:none;margin:0}
   .hub-hero__art{max-width:340px}
 }
 </style>
@@ -244,7 +246,7 @@
     <div class="section-head reveal">
       <span class="eyebrow">All guides</span>
       <h2 class="section-title">Browse by topic</h2>
-      <p class="section-lede">48 guides live · more being added every week. Use the search above to filter.</p>
+      <p class="section-lede">53 guides live · more being added every week. Use the search above to filter.</p>
     </div>
     <div class="no-results">No guides match — try a different search.</div>
     <div class="guide-grid">
@@ -462,6 +464,31 @@
       <a class="guide-card" href="resources/share-transfer-pvt-ltd.html" data-guide data-cat="roc" data-title="Share transfer Pvt Ltd" data-tags="SH-4 share transfer stamp duty cap table">
         <div class="guide-card__art guide-card__art--roc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         <div class="guide-card__body"><div class="guide-card__meta"><span class="chip">ROC</span><span>· 6 min</span></div><h4>Share transfer in a Pvt Ltd — SH-4, stamp duty, cap table</h4><p>Co-founder exit, ESOP exercise, new investor. The clean paperwork.</p><div class="guide-card__read">Read →</div></div>
+      </a>
+
+      <a class="guide-card" href="resources/textile-baron-zero-tax.html" data-guide data-cat="tax" data-title="Textile baron zero tax" data-tags="tax avoidance loophole GAAR 80HHC family trust debenture 115BAB">
+        <div class="guide-card__art guide-card__art--tax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="guide-card__body"><div class="guide-card__meta"><span class="chip">Tax</span><span>· 9 min</span></div><h4>The textile baron who paid ₹0 tax — legally</h4><p>The five doors a 1970s tycoon walked through, and why almost all of them are bricked up now.</p><div class="guide-card__read">Read →</div></div>
+      </a>
+
+      <a class="guide-card" href="resources/fake-invoice-factory.html" data-guide data-cat="gst" data-title="Fake invoice factory ITC fraud" data-tags="GST fraud ITC fake invoice bogus billing 16(2)(aa) GSTR-2B e-invoice">
+        <div class="guide-card__art guide-card__art--gst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
+        <div class="guide-card__body"><div class="guide-card__meta"><span class="chip">GST</span><span>· 8 min</span></div><h4>The factory that printed only invoices, never goods</h4><p>How fake-bill ITC scams work, why one in twenty SMEs accidentally became part of one, and the four walls now blocking it.</p><div class="guide-card__read">Read →</div></div>
+      </a>
+
+      <a class="guide-card" href="resources/pizza-freelancer-143-notice.html" data-guide data-cat="tax" data-title="Pizza freelancer 143(2) notice" data-tags="AIS SFT 143(2) notice scrutiny e-proceedings 194O aggregator">
+        <div class="guide-card__art guide-card__art--tax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+        <div class="guide-card__body"><div class="guide-card__meta"><span class="chip">Tax</span><span>· 8 min</span></div><h4>The delivery freelancer who got a 143(2) notice</h4><p>He never filed an ITR. AIS knew everything anyway. What the department actually sees, and how to respond.</p><div class="guide-card__read">Read →</div></div>
+      </a>
+
+      <a class="guide-card" href="resources/moved-abroad-residential-status.html" data-guide data-cat="tax" data-title="Moved abroad residential status" data-tags="NRI residential status 182 day rule Section 6 deemed resident RNOR">
+        <div class="guide-card__art guide-card__art--tax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+        <div class="guide-card__body"><div class="guide-card__meta"><span class="chip">Tax</span><span>· 8 min</span></div><h4>Moved abroad mid-year? NR / RNOR / Resident map</h4><p>The 182-day rule, the 60+365 trap, the deemed-resident clause — with day-by-day math for an October move.</p><div class="guide-card__read">Read →</div></div>
+      </a>
+
+      <a class="guide-card" href="resources/refund-shrank-234abc-interest.html" data-guide data-cat="tax" data-title="Why refund shrank 234ABC" data-tags="234A 234B 234C interest advance tax shortfall ITR refund freelance">
+        <div class="guide-card__art guide-card__art--tax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg></div>
+        <div class="guide-card__body"><div class="guide-card__meta"><span class="chip">Tax</span><span>· 7 min</span></div><h4>Why your refund shrank by ₹14,237 — Sec 234A/B/C</h4><p>The three sections that quietly eat your refund — with the math and four-quarter fix.</p><div class="guide-card__read">Read →</div></div>
       </a>
 
     </div>
