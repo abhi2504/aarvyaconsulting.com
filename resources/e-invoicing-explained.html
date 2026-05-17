@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0a1f44" />
 <title>E-Invoicing Under GST — Who Needs It and How | Aarvya Consulting</title>
-<meta name="description" content="E-invoicing thresholds, IRN, QR code, how to generate. Currently mandatory above ₹5 cr turnover — keeps dropping." />
+<meta name="description" content="Not 'emailing a PDF'. E-invoicing means registering every B2B invoice with the government before sending. We walk Meera's apparel exporter through the entire flow." />
+<meta name="keywords" content="e-invoicing GST, IRN, IRP, e-invoice India, B2B invoice, einvoice1.gst.gov.in" />
 <link rel="canonical" href="https://aarvyaconsulting.com/resources/e-invoicing-explained.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="E-invoicing under GST — who needs it and how" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" />
@@ -15,113 +18,262 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a1f44'/><text x='50%' y='58%' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23c9a961'>A</text></svg>" />
 </head>
 <body>
+
 <div class="read-progress"><div class="read-progress__fill"></div></div>
+
 <div class="topbar"><div class="container topbar__row"><div class="topbar__left"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div><div class="topbar__right"><span>Mon–Sat · 10:00–19:00</span></div></div></div>
 
 <header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya Consulting</strong><span>Tax · Compliance · ERP</span></span></a><nav class="nav__menu"><a href="../index.html">Home</a><a href="../about.html">About</a><span class="has-sub"><a href="../services.html">Services</a><div class="submenu"><a href="../services/gst-filing.html">GST Services</a><a href="../services/itr-filing.html">Income Tax / ITR</a><a href="../services/company-registration.html">Business Registration</a><a href="../services/erp-consulting.html">ERP Consulting</a><a href="../services.html">All Services →</a></div></span><a class="is-active" href="../resources.html">Guides</a><a href="../contact.html">Contact</a></nav><div class="nav__cta"><a class="btn btn--ghost" href="tel:+919211719725">Call Now</a><a class="btn btn--primary" href="../contact.html">Free Consultation</a></div><button class="nav__toggle" aria-label="Open menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></header>
 
 <div class="mobile-panel" id="mobilePanel"><div class="mobile-panel__inner"><div class="mobile-panel__head"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya</strong><span>Consulting</span></span></a><button class="mobile-panel__close nav__toggle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="../index.html">Home</a><a href="../about.html">About Us</a><a href="../services.html">Services</a><a href="../resources.html">Guides</a><a href="../contact.html">Contact</a><div class="mobile-panel__cta"><a class="btn btn--whatsapp" href="https://wa.me/919211719725" target="_blank" rel="noopener">WhatsApp Us</a><a class="btn btn--primary" href="tel:+919211719725">Call Now</a></div></div></div>
 
-<section class="article-header"><div class="article-header__inner">
-  <div class="breadcrumb"><a href="../index.html">Home</a> <span>/</span> <a href="../resources.html">Guides</a> <span>/</span> E-invoicing</div>
-  <div class="article-meta"><span class="chip">GST</span><span>· 7 min read</span><span class="meta-sep">·</span><span>Updated Jan 2026</span></div>
-  <h1>E-invoicing under GST — who needs it and how</h1>
-  <p class="lede">Not "email an invoice". E-invoicing means registering each B2B invoice with the government before sending it.</p>
-</div></section>
-
-<article class="section"><div class="article-body">
-
-  <div class="tldr"><div class="tldr__title">🪙 In 60 seconds</div><ul>
-    <li>Currently mandatory for taxpayers with aggregate turnover &gt; <strong>₹5 crore</strong> (from 1 Aug 2023).</li>
-    <li>Each B2B invoice must be reported to the <strong>Invoice Registration Portal (IRP)</strong> to get an <strong>IRN</strong> + <strong>QR code</strong>.</li>
-    <li>Applies to B2B, exports, RCM supplies — not to B2C below ₹2.5L or composition dealers.</li>
-    <li>Invoice without valid IRN is invalid → buyer can't claim ITC.</li>
-  </ul></div>
-
-  <h2>What is e-invoicing exactly?</h2>
-  <p>Before sending an invoice to your buyer, you upload its data (in a standard JSON format) to the government's IRP. The IRP:</p>
-  <ul>
-    <li>Validates the data</li>
-    <li>Issues a unique 64-character <strong>Invoice Reference Number (IRN)</strong></li>
-    <li>Generates a <strong>QR code</strong> embedding key invoice data</li>
-    <li>Sends the data to GSTN (auto-populates GSTR-1) and to NIC e-way bill portal</li>
-  </ul>
-  <p>You then print the invoice with the IRN and QR code on it and send to the buyer.</p>
-
-  <h2>Who needs to e-invoice (turnover thresholds)</h2>
-  <table class="data-table">
-    <thead><tr><th>Threshold</th><th>Effective from</th></tr></thead>
-    <tbody>
-      <tr><td>&gt; ₹500 cr</td><td>1 Oct 2020</td></tr>
-      <tr><td>&gt; ₹100 cr</td><td>1 Jan 2021</td></tr>
-      <tr><td>&gt; ₹50 cr</td><td>1 Apr 2021</td></tr>
-      <tr><td>&gt; ₹20 cr</td><td>1 Apr 2022</td></tr>
-      <tr><td>&gt; ₹10 cr</td><td>1 Oct 2022</td></tr>
-      <tr><td>&gt; ₹5 cr</td><td>1 Aug 2023 (current)</td></tr>
-    </tbody>
-  </table>
-  <p style="font-size:.85rem;color:var(--ink-500)">"Turnover" = aggregate turnover in any preceding FY since 2017-18. Once you cross, you stay covered.</p>
-
-  <h2>What's NOT covered</h2>
-  <ul>
-    <li>SEZ developers (SEZ units are covered)</li>
-    <li>Insurance, banking, financial institutions, NBFCs</li>
-    <li>Goods Transport Agency (GTA)</li>
-    <li>Passenger transportation services</li>
-    <li>Multiplex / cinema ticket suppliers</li>
-    <li>B2C invoices below ₹2.5L (B2C above ₹2.5L still need only QR, not IRN)</li>
-    <li>Composition dealers</li>
-  </ul>
-
-  <h2>The flow</h2>
-  <div class="mermaid-wrap">
-<pre class="mermaid">
-flowchart LR
-  ERP[Your billing system / ERP] -->|JSON| IRP[Invoice Registration Portal]
-  IRP -->|IRN + QR| ERP
-  ERP -->|Final invoice with IRN/QR| Buyer
-  IRP --> GSTN[GSTN<br/>auto GSTR-1]
-  IRP --> EWB[E-way Bill Portal]
-</pre>
+<section class="hero-illust">
+  <div class="hero-illust__inner">
+    <div class="hero-illust__text">
+      <div class="hero-illust__breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../resources.html">Guides</a><span>›</span><span>E-invoicing</span></div>
+      <div class="hero-illust__meta"><span class="chip">GST</span><span>· 7 min read</span><span>· Updated Jan 2026</span></div>
+      <h1>E-invoicing under GST — what it actually is</h1>
+      <p class="lede">Not just emailing a PDF. It means registering every B2B invoice with the government <em>before</em> sending it.</p>
+    </div>
+    <div class="hero-illust__art-wrap">
+      <svg class="hero-illust__art illust-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="160" cy="220" rx="160" ry="18" fill="#f0e9d5"/>
+        <!-- invoice with QR -->
+        <rect x="50" y="40" width="160" height="180" rx="6" fill="#fff" stroke="#0a1f44" stroke-width="2"/>
+        <rect x="50" y="40" width="160" height="24" rx="6" fill="#0a1f44"/>
+        <text x="130" y="58" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="800" fill="#c9a961">TAX INVOICE</text>
+        <rect x="60" y="75" width="100" height="6" rx="1" fill="#dfe5f0"/>
+        <rect x="60" y="86" width="80" height="6" rx="1" fill="#dfe5f0"/>
+        <rect x="60" y="100" width="140" height="20" rx="2" fill="#f0e9d5"/>
+        <text x="65" y="113" font-family="Plus Jakarta Sans, sans-serif" font-size="7" fill="#946e2c">IRN: 35a4fe1...c8d2</text>
+        <rect x="60" y="125" width="60" height="6" rx="1" fill="#dfe5f0"/>
+        <rect x="60" y="135" width="80" height="6" rx="1" fill="#dfe5f0"/>
+        <rect x="60" y="145" width="60" height="6" rx="1" fill="#dfe5f0"/>
+        <!-- QR code -->
+        <rect x="140" y="155" width="60" height="60" fill="#fff" stroke="#0a1f44" stroke-width="1"/>
+        <g fill="#0a1f44">
+          <rect x="145" y="160" width="6" height="6"/><rect x="155" y="160" width="6" height="6"/><rect x="175" y="160" width="6" height="6"/><rect x="185" y="160" width="6" height="6"/>
+          <rect x="145" y="170" width="6" height="6"/><rect x="165" y="170" width="6" height="6"/><rect x="185" y="170" width="6" height="6"/>
+          <rect x="155" y="180" width="6" height="6"/><rect x="175" y="180" width="6" height="6"/>
+          <rect x="145" y="190" width="6" height="6"/><rect x="165" y="190" width="6" height="6"/><rect x="185" y="190" width="6" height="6"/>
+          <rect x="155" y="200" width="6" height="6"/><rect x="175" y="200" width="6" height="6"/>
+        </g>
+        <!-- govt building badge -->
+        <circle cx="265" cy="70" r="30" fill="#c9a961"/>
+        <text x="265" y="68" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="8" font-weight="700" fill="#0a1f44">VERIFIED</text>
+        <text x="265" y="82" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="800" fill="#0a1f44">✓</text>
+        <path d="M220 100 Q240 130 200 145" stroke="#946e2c" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
   </div>
+</section>
 
-  <h2>How to generate an e-invoice</h2>
-  <ol class="steps">
-    <li><h3>Get onboarded on the IRP</h3><p>Visit <a href="https://einvoice1.gst.gov.in" target="_blank" rel="noopener noreferrer nofollow">einvoice1.gst.gov.in</a> → register your GSTIN. Set up API credentials if integrating via ERP/software.</p></li>
-    <li><h3>Pick a method</h3><p>3 ways:</p><ul><li><strong>Direct API integration</strong> from your ERP / accounting software — best for high volume</li><li><strong>GSP / ASP service</strong> — third-party gateway (e.g., ClearTax, Masters India, IRIS)</li><li><strong>Bulk upload</strong> — on the IRP portal manually (good for &lt; 100 invoices/month)</li></ul></li>
-    <li><h3>Prepare invoice in standard schema</h3><p>The e-invoice schema (Schema v1.1) specifies ~140 fields, of which ~30 are mandatory. Your software handles mapping.</p></li>
-    <li><h3>Upload &amp; receive IRN</h3><p>Send JSON to IRP. Get back IRN + QR code (instantaneous, milliseconds).</p></li>
-    <li><h3>Include IRN/QR on the invoice</h3><p>Print the invoice with IRN (64 chars) and QR code visible. Send to buyer.</p></li>
-    <li><h3>Verify GSTR-1 auto-population</h3><p>By default, every e-invoiced invoice flows to your GSTR-1. Verify before filing — sometimes credit notes or amendments don't flow correctly.</p></li>
-  </ol>
+<article class="section">
+  <div class="article-body article-body--story">
 
-  <h2>Common mistakes</h2>
-  <div class="callout callout--warn"><div class="callout__icon">⚠️</div><div class="callout__body"><strong>Mistake — issuing invoice before getting IRN</strong>An invoice without IRN (when you're covered) is legally invalid. Buyer loses ITC. Always generate IRN first, then print + dispatch.</div></div>
-  <div class="callout callout--warn"><div class="callout__icon">⚠️</div><div class="callout__body"><strong>Mistake — wrong HSN / GSTIN of buyer</strong>IRP rejects. You get an error. Fix the source data — don't use a different invoice number.</div></div>
-  <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong>Pro tip</strong>Cancel-and-reissue window is <strong>24 hours</strong> from IRN generation. After that, only credit notes / debit notes can correct.</div></div>
+    <div class="story-opener">
+      <div class="story-opener__avatar" aria-hidden="true">M</div>
+      <div class="story-opener__body">
+        <span class="story-opener__name">Meera · 41 · Apparel exporter, ₹8 cr turnover</span>
+        <p>Meera's company hit ₹7.5 cr last FY. On 1 August this year her CA sent her a panic message — <em>"You're now covered by e-invoicing. Every B2B invoice must get an IRN."</em></p>
+        <p>She thought she already did e-invoices — she emails them as PDFs! Spoiler: that's not what e-invoicing means.</p>
+      </div>
+    </div>
 
-  <blockquote class="pull-quote"><p>E-invoicing isn't extra work — it's auto-data-entry into GSTR-1, GSTR-2B and e-way bill. Once set up right, it saves time. The pain is the setup, not the daily use.</p></blockquote>
+    <div class="tldr">
+      <div class="tldr__title">🪙 In 60 seconds</div>
+      <ul>
+        <li>Mandatory if aggregate turnover &gt; <strong>₹5 cr</strong> (from 1 Aug 2023).</li>
+        <li>Every B2B invoice must be reported to the <strong>IRP (Invoice Registration Portal)</strong> to get an <strong>IRN</strong> + <strong>QR code</strong>.</li>
+        <li>Applies to B2B, exports, RCM. Not B2C below ₹2.5L, not composition dealers.</li>
+        <li>Invoice without a valid IRN (when you're covered) = invalid → buyer can't claim ITC.</li>
+      </ul>
+    </div>
 
-  <h2>FAQs</h2>
-  <div class="faq">
-    <div class="faq__item is-open"><button class="faq__q">Do I need e-invoicing for B2C sales?</button><div class="faq__a"><p>No IRN required for B2C. But if your turnover &gt; ₹500 cr, you must display a dynamic QR code on B2C invoices.</p></div></div>
-    <div class="faq__item"><button class="faq__q">Can I cancel an e-invoice?</button><div class="faq__a"><p>Yes, within 24 hours of IRN generation. After 24 hours, only credit/debit notes can adjust.</p></div></div>
-    <div class="faq__item"><button class="faq__q">What if IRP is down?</button><div class="faq__a"><p>You can issue the invoice without IRN temporarily. Once IRP is back, generate IRN within 7 days (auto-tracking by the system).</p></div></div>
-    <div class="faq__item"><button class="faq__q">Does e-invoicing replace e-way bill?</button><div class="faq__a"><p>No, but e-invoice IRN can be used to generate e-way bill directly (data flows automatically). Two separate compliance requirements still.</p></div></div>
-    <div class="faq__item"><button class="faq__q">Threshold is based on which year's turnover?</button><div class="faq__a"><p>Any preceding FY since 2017-18. Once you crossed in any FY, you remain covered going forward.</p></div></div>
+    <h2>What e-invoicing actually is</h2>
+    <p>Before you send the invoice to your buyer, you upload its data to the government's <strong>Invoice Registration Portal (IRP)</strong>. The IRP does four things, in milliseconds:</p>
+
+    <p>👉 Validates the data<br>
+    👉 Issues a unique 64-character <strong>Invoice Reference Number (IRN)</strong><br>
+    👉 Generates a <strong>QR code</strong> that embeds key invoice data<br>
+    👉 Auto-pushes the data to GSTN (your GSTR-1) and the NIC e-way bill portal</p>
+
+    <p>You then print the invoice <em>with the IRN and QR code on it</em> and send to the buyer. Without these, the invoice is legally invalid.</p>
+
+    <h2>Are you covered?</h2>
+
+    <div class="viz-flow">
+      <div class="viz-step">
+        <div class="viz-step__num">2020</div>
+        <div class="viz-step__body">
+          <strong>&gt; ₹500 cr — 1 Oct 2020</strong>
+          <p>The first batch of large enterprises.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">2021</div>
+        <div class="viz-step__body">
+          <strong>&gt; ₹100 cr (Jan) → &gt; ₹50 cr (Apr)</strong>
+          <p>Mid-large rolled in.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">2022</div>
+        <div class="viz-step__body">
+          <strong>&gt; ₹20 cr (Apr) → &gt; ₹10 cr (Oct)</strong>
+          <p>SMEs got covered.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">2023</div>
+        <div class="viz-step__body">
+          <strong>&gt; ₹5 cr — 1 Aug 2023 (current)</strong>
+          <p>Most mid-sized businesses. Threshold likely to drop further.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:12px"><strong>Turnover = aggregate turnover in any preceding FY since 2017-18.</strong> Crossed it once? You stay covered.</p>
+
+    <h2>What's NOT covered (even if you cross the threshold)</h2>
+    <ul class="checklist">
+      <li>SEZ developers (but SEZ units are covered)</li>
+      <li>Insurance, banking, financial institutions, NBFCs</li>
+      <li>Goods Transport Agency (GTA)</li>
+      <li>Passenger transportation services</li>
+      <li>Multiplex / cinema ticket suppliers</li>
+      <li>B2C invoices below ₹2.5L (above ₹2.5L need only QR, not IRN)</li>
+      <li>Composition dealers</li>
+    </ul>
+
+    <h2>The 6-step flow</h2>
+
+    <div class="viz-flow">
+      <div class="viz-step">
+        <div class="viz-step__num">1</div>
+        <div class="viz-step__body">
+          <strong>Onboard on the IRP</strong>
+          <p><a href="https://einvoice1.gst.gov.in" target="_blank" rel="noopener noreferrer nofollow">einvoice1.gst.gov.in</a> → register your GSTIN. Get API credentials if integrating from ERP.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">2</div>
+        <div class="viz-step__body">
+          <strong>Pick a method</strong>
+          <p>API integration from your billing system, or a GSP / ASP service (ClearTax, Masters India, IRIS), or bulk upload on the portal (under ~100 invoices/month).</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">3</div>
+        <div class="viz-step__body">
+          <strong>Prepare invoice in the standard JSON</strong>
+          <p>Schema v1.1 — ~140 fields, ~30 mandatory. Your software handles the mapping.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">4</div>
+        <div class="viz-step__body">
+          <strong>Upload &amp; receive IRN</strong>
+          <p>Send JSON to IRP. Get back IRN + QR (instant).</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">5</div>
+        <div class="viz-step__body">
+          <strong>Print invoice with IRN + QR</strong>
+          <p>Send to buyer. They scan the QR to verify.</p>
+        </div>
+      </div>
+      <div class="viz-step">
+        <div class="viz-step__num">6</div>
+        <div class="viz-step__body">
+          <strong>Verify GSTR-1 auto-population</strong>
+          <p>Every e-invoiced invoice flows to your GSTR-1 automatically. Verify before filing — amendments and credit notes sometimes need manual check.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>The 3 most-common mistakes</h2>
+
+    <p>👉 <strong>Issuing the invoice before getting IRN.</strong> An invoice without IRN (when you're covered) is legally invalid. Buyer can't claim ITC. Always: generate IRN first, then print + dispatch.<br>
+    👉 <strong>Wrong HSN or buyer GSTIN.</strong> The IRP rejects. You get an error code. <strong>Fix the source data — don't change the invoice number to work around it.</strong><br>
+    👉 <strong>Missing the 24-hour cancellation window.</strong> Cancel-and-reissue is only allowed within <strong>24 hours of IRN generation</strong>. After that, only credit / debit notes can correct.</p>
+
+    <div class="sticky-note">
+      <span class="sticky-note__label">💡 The hidden upside</span>
+      <p>E-invoicing isn't extra work once it's set up. Same data flows automatically into GSTR-1, GSTR-2B (your buyer's), and the e-way bill system. No double entry. The pain is the setup; the daily use is a time-saver.</p>
+    </div>
+
+    <h2>How to pick a method — for your scale</h2>
+
+    <div class="compare-cards compare-cards--3">
+      <div class="compare-card">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Direct API</h3>
+            <p class="compare-card__tagline">High volume</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Your ERP / billing software talks to IRP directly. Best for 500+ invoices/month. Initial dev work, then zero touch.</p>
+      </div>
+      <div class="compare-card compare-card--pick">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9"/><path d="M21 3v6h-6"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">GSP / ASP</h3>
+            <p class="compare-card__tagline">Middle ground</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">ClearTax, Masters India, IRIS, etc. Pre-built connectors to Tally / Zoho / SAP. Sweet spot for 50–500 invoices/month.</p>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Bulk upload</h3>
+            <p class="compare-card__tagline">Manual, low volume</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Upload Excel / JSON on the IRP portal. Free, manual, fine for &lt; 100 invoices/month.</p>
+      </div>
+    </div>
+
+    <div class="character-quote">
+      <p>The pain of e-invoicing is the setup — once a system, never again. Day 1 to day 365, the daily use is one click.</p>
+      <footer>— Meera, 3 months after going live</footer>
+    </div>
+
+    <h2>Quick answers</h2>
+    <div class="faq">
+      <div class="faq__item is-open"><button class="faq__q">Do I need e-invoicing for B2C sales?</button><div class="faq__a"><p>No IRN required for B2C. But if your turnover &gt; ₹500 cr, you must display a dynamic QR code on B2C invoices.</p></div></div>
+      <div class="faq__item"><button class="faq__q">Can I cancel an e-invoice?</button><div class="faq__a"><p>Yes, within 24 hours of IRN generation. After that window, only credit / debit notes can adjust.</p></div></div>
+      <div class="faq__item"><button class="faq__q">What if the IRP is down?</button><div class="faq__a"><p>You can issue the invoice without IRN temporarily. Once IRP is back, generate IRN within 7 days (system auto-tracks).</p></div></div>
+      <div class="faq__item"><button class="faq__q">Does e-invoicing replace e-way bill?</button><div class="faq__a"><p>No, but the e-invoice IRN can be used to generate an e-way bill directly (data flows automatically). Two separate compliance requirements still.</p></div></div>
+      <div class="faq__item"><button class="faq__q">Threshold is based on which year's turnover?</button><div class="faq__a"><p>Any preceding FY since 2017-18. Once you crossed it in any FY, you remain covered going forward — even if turnover drops later.</p></div></div>
+    </div>
+
+    <a class="next-up" href="e-way-bill-guide.html">
+      <div class="next-up__icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+      <div class="next-up__body"><div class="next-up__label">The other compliance for goods movement</div><div class="next-up__title">E-way bill — when and how to generate one</div></div>
+      <div class="next-up__arrow"><svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></div>
+    </a>
+
+    <h2>When you might want help</h2>
+    <p>The hard part is the 2-week setup — picking the right GSP / ASP, mapping your invoice fields to the schema, training the billing team, and handling exceptions (RCM, exports, credit notes). After that it runs itself.</p>
+
+    <div class="cta-strip reveal"><div><h2>Need e-invoicing setup?</h2><p>API integration, schema mapping, training, go-live support. Live in 2 weeks.</p></div><div class="cta-strip__btns"><a class="btn btn--gold btn--lg" href="https://wa.me/919211719725?text=Hello%20Aarvya%2C%20e-invoicing%20setup." target="_blank" rel="noopener">WhatsApp Now</a><a class="btn btn--ghost-light btn--lg" href="../contact.html">Send a Message</a></div></div>
+
+    <div class="helpful"><p>Was this guide helpful?</p><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20E-invoicing">👍 Yes</a><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20E-invoicing%20could%20be%20better">👎 Could be better</a></div>
+
+    <div class="related"><h3>Read next</h3><div class="related__grid">
+      <a class="related__card" href="e-way-bill-guide.html"><span class="chip">GST</span><h4>E-way bill — when and how</h4><p>The other compliance for moving goods.</p></a>
+      <a class="related__card" href="input-tax-credit-explained.html"><span class="chip">GST</span><h4>Input Tax Credit</h4><p>Why e-invoicing matters for ITC chains.</p></a>
+      <a class="related__card" href="gstr-1-3b-9-explained.html"><span class="chip">GST</span><h4>GSTR-1, 3B, 9 explained</h4><p>How e-invoices flow into returns.</p></a>
+    </div></div>
+
   </div>
-
-  <div class="cta-strip reveal"><div><h2>Need e-invoicing setup?</h2><p>API integration, schema mapping, training. We get you live in 2 weeks.</p></div><div class="cta-strip__btns"><a class="btn btn--gold btn--lg" href="https://wa.me/919211719725?text=Hello%20Aarvya%2C%20e-invoicing%20setup." target="_blank" rel="noopener">WhatsApp Now</a><a class="btn btn--ghost-light btn--lg" href="../contact.html">Send a Message</a></div></div>
-
-  <div class="helpful"><p>Was this guide helpful?</p><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20E-invoicing">👍 Yes</a><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20E-invoicing%20could%20be%20better">👎 Could be better</a></div>
-
-  <div class="related"><h3>Read next</h3><div class="related__grid">
-    <a class="related__card" href="e-way-bill-guide.html"><span class="chip">GST</span><h4>E-way bill — when and how</h4><p>The other compliance for moving goods.</p></a>
-    <a class="related__card" href="input-tax-credit-explained.html"><span class="chip">GST</span><h4>Input Tax Credit explained</h4><p>Why e-invoicing matters for ITC chains.</p></a>
-    <a class="related__card" href="gstr-1-3b-9-explained.html"><span class="chip">GST</span><h4>GSTR-1, 3B, 9 explained</h4><p>How e-invoices flow into returns.</p></a>
-  </div></div>
-
-</div></article>
+</article>
 
 <footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a class="brand" href="../index.html" style="margin-bottom:16px"><span class="brand__mark">A</span><span class="brand__name"><strong style="color:#fff">Aarvya Consulting</strong><span style="color:#8794b1">Tax · Compliance · ERP</span></span></a><p>Professional services in taxation, compliance, accounting, audit, ERP and business advisory.</p><p style="font-family:var(--font-display);font-style:italic;color:var(--gold-400);margin-top:14px">"Driven by Accuracy, Powered by Trust."</p></div><div><h4>Services</h4><ul class="footer__list"><li><a href="../services/itr-filing.html">Income Tax &amp; TDS</a></li><li><a href="../services/gst-filing.html">GST Services</a></li><li><a href="../services/company-registration.html">Business Registration</a></li><li><a href="../services/erp-consulting.html">ERP Consulting</a></li><li><a href="../services.html">All services</a></li></ul></div><div><h4>Company</h4><ul class="footer__list"><li><a href="../about.html">About Us</a></li><li><a href="../resources.html">Guides &amp; Resources</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li></ul></div><div><h4>Contact</h4><div class="footer__contact"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div></div></div><div class="footer__bottom"><span>© <span data-year>2025</span> Aarvya Consulting. All rights reserved.</span><span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span></div></div></footer>
 
