@@ -883,22 +883,37 @@
   position: relative;
 }
 
-/* ---- conversational body adjustments — tighter, friendlier ---- */
+/* ---- conversational body adjustments — tighter, friendlier ----
+   Scoped via > (direct children only) so we don't break nested
+   paragraphs inside .character-quote, .cta-strip, .story-opener,
+   .sticky-note, .compare-card, .cost-pill, etc. — those components
+   own their own paragraph styling. */
 .article-body--story { padding-top: 0; }
-.article-body--story h2 {
+.article-body--story > h2 {
   font-family: var(--font-display);
   font-size: clamp(1.35rem, 4.4vw, 1.7rem);
   margin-top: 1.8em;
   color: var(--navy-900);
   line-height: 1.25;
 }
-.article-body--story h2:first-of-type { margin-top: 1.2em; }
-.article-body--story p { font-size: 1.02rem; line-height: 1.72; color: var(--ink-700); }
-.article-body--story p strong { color: var(--navy-900); }
+.article-body--story > h2:first-of-type { margin-top: 1.2em; }
+.article-body--story > h3 { color: var(--navy-900); font-size: 1.1rem; margin-top: 1.4em; }
+.article-body--story > p { font-size: 1.02rem; line-height: 1.72; color: var(--ink-700); }
+.article-body--story > p strong { color: var(--navy-900); }
 .article-body--story > p:first-of-type::first-line { font-weight: 500; }
+.article-body--story > ul, .article-body--story > ol { font-size: 1.02rem; line-height: 1.72; color: var(--ink-700); }
+.article-body--story > ul > li, .article-body--story > ol > li { margin-bottom: 6px; }
 
 /* Friendlier inline emphasis on long-form prose */
 .article-body--story em { color: var(--navy-700); font-style: italic; }
+
+/* Belt-and-braces: explicit colors on dark-bg components in case
+   any selector tries to win specificity against them */
+.character-quote p { color: #fff; }
+.character-quote footer { color: var(--gold-300); }
+.article-body--story .cta-strip h2 { color: #fff; }
+.article-body--story .cta-strip p { color: #c2cae0; }
+.article-body--story .character-quote p { color: #fff; }
 
 /* ---- Reusable inline-SVG illustration sizing ---- */
 .illust-svg { width: 100%; height: auto; display: block; max-width: 100%; }
