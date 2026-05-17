@@ -53,6 +53,17 @@
 .article-body h3 { font-size: 1.15rem; margin-top: 1.6em; margin-bottom: .4em; color: var(--navy-800); }
 .article-body p, .article-body li { font-size: 1.02rem; line-height: 1.75; color: var(--ink-700); }
 .article-body p + p { margin-top: 0; }
+
+/* Dark-background components MUST keep their light text — these
+   article-body rules above kept fighting them. Specificity-3 wins. */
+.article-body .cta-strip { color: #fff; }
+.article-body .cta-strip h2,
+.article-body .cta-strip h2 a { color: #fff !important; font-family: var(--font-display); }
+.article-body .cta-strip p { color: #c2cae0 !important; font-size: 1rem; }
+.article-body .character-quote p { color: #fff !important; }
+.article-body .character-quote footer { color: var(--gold-300) !important; }
+.article-body .why-visual h3,
+.article-body .why-visual p { color: #fff; }
 .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 1.2em; }
 .article-body ul li, .article-body ol li { margin-bottom: 8px; }
 .article-body a:not(.btn):not(.chip) { color: var(--navy-700); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
