@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a1f44" />
+<title>Free Calculators — GST, Salary, HRA, Capital Gains, TDS, EMI | Aarvya Consulting</title>
+<meta name="description" content="Six fast, accurate calculators for everyday tax decisions — GST, take-home salary, HRA exemption, capital gains, TDS, and EMI. No login. Free." />
+<meta name="keywords" content="GST calculator, salary take-home calculator India, HRA exemption calculator, capital gains calculator, TDS calculator, EMI calculator" />
+<link rel="canonical" href="https://aarvyaconsulting.com/calculators.html" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Free Calculators — Aarvya Consulting" />
+<meta property="og:description" content="GST, salary, HRA, capital gains, TDS, EMI — all in one place. No login. Free." />
+<meta property="og:url" content="https://aarvyaconsulting.com/calculators.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="stylesheet" href="resources/_shared.css" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a1f44'/><text x='50%' y='58%' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23c9a961'>A</text></svg>" />
+<style>
+.calc-page{background:var(--bg-cream,#faf7ef);padding:32px 0 80px}
+.calc-hero{text-align:center;padding:32px 16px 24px}
+.calc-hero h1{font-family:var(--font-display);font-size:clamp(1.7rem,5vw,2.4rem);color:var(--navy-900);margin:0 0 10px}
+.calc-hero p{color:var(--ink-600);max-width:640px;margin:0 auto;font-size:1.05rem;line-height:1.6}
+.calc-tabs{max-width:920px;margin:24px auto 0;padding:0 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.calc-tabs::-webkit-scrollbar{display:none}
+.calc-tab{flex:0 0 auto;background:#fff;border:1px solid #e3dccb;color:var(--navy-800);padding:10px 16px;border-radius:999px;font-family:var(--font-sans);font-weight:600;font-size:.9rem;cursor:pointer;transition:.18s;white-space:nowrap}
+.calc-tab:hover{border-color:var(--gold-500);color:var(--navy-900)}
+.calc-tab.is-active{background:var(--navy-900);color:var(--gold-500);border-color:var(--navy-900)}
+.calc-panel{max-width:920px;margin:18px auto 0;padding:0 16px;display:none}
+.calc-panel.is-active{display:block}
+.calc-card{background:#fff;border:1px solid #ece5d2;border-radius:18px;padding:24px;box-shadow:0 8px 30px rgba(10,31,68,.06)}
+.calc-card h2{font-family:var(--font-display);font-size:1.4rem;color:var(--navy-900);margin:0 0 8px}
+.calc-card .sub{color:var(--ink-600);font-size:.95rem;margin-bottom:20px}
+.calc-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:640px){.calc-grid{grid-template-columns:1fr 1fr}}
+.calc-field{display:flex;flex-direction:column;gap:6px}
+.calc-field label{font-weight:600;color:var(--navy-800);font-size:.9rem}
+.calc-field input,.calc-field select{padding:11px 14px;border:1px solid #d8d0bd;border-radius:10px;font-size:1rem;font-family:var(--font-sans);background:#fff;color:var(--navy-900);transition:.15s}
+.calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--gold-500);box-shadow:0 0 0 3px rgba(201,169,97,.18)}
+.calc-field small{color:var(--ink-500);font-size:.8rem}
+.calc-result{margin-top:22px;padding:20px;background:linear-gradient(135deg,#0a1f44 0%,#1d3266 100%);border-radius:14px;color:#fff}
+.calc-result h3{color:#c9a961;font-family:var(--font-display);font-size:1rem;margin:0 0 10px;letter-spacing:.4px;text-transform:uppercase;font-weight:700}
+.calc-result-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.12);font-size:.95rem}
+.calc-result-row:last-of-type{border-bottom:none}
+.calc-result-row strong{font-weight:600;color:#c2cae0}
+.calc-result-row span{font-weight:700;color:#fff;font-size:1rem}
+.calc-result-final{background:#c9a961;color:#0a1f44;padding:14px 16px;border-radius:10px;margin-top:14px;display:flex;justify-content:space-between;align-items:center}
+.calc-result-final strong{font-family:var(--font-display);font-size:1rem}
+.calc-result-final span{font-family:var(--font-sans);font-weight:800;font-size:1.4rem}
+.calc-note{margin-top:16px;padding:12px 14px;background:#fff8e7;border-left:3px solid #c9a961;border-radius:0 8px 8px 0;font-size:.85rem;color:var(--ink-700);line-height:1.5}
+.calc-cta{margin-top:30px;background:linear-gradient(135deg,#0a1f44 0%,#1d3266 100%);border-radius:16px;padding:26px;text-align:center;color:#fff}
+.calc-cta h3{font-family:var(--font-display);color:#fff;font-size:1.3rem;margin:0 0 8px}
+.calc-cta p{color:#c2cae0;margin:0 0 16px}
+.calc-cta .btn{margin:0 6px 8px}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="container topbar__row"><div class="topbar__left"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div><div class="topbar__right"><span>Mon–Sat · 10:00–19:00</span></div></div></div>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya Consulting</strong><span>Tax · Compliance · ERP</span></span></a>
+    <nav class="nav__menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <span class="has-sub"><a href="services.html">Services</a>
+        <div class="submenu"><a href="services/gst-filing.html">GST Services</a><a href="services/itr-filing.html">Income Tax / ITR</a><a href="services/company-registration.html">Business Registration</a><a href="services/erp-consulting.html">ERP Consulting</a><a href="services.html">All Services →</a></div>
+      </span>
+      <a href="resources.html">Guides</a>
+      <a class="is-active" href="calculators.html">Calculators</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav__cta"><a class="btn btn--ghost" href="tel:+919211719725">Call Now</a><a class="btn btn--primary" href="contact.html">Free Consultation</a></div>
+    <button class="nav__toggle" aria-label="Open menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel"><div class="mobile-panel__inner"><div class="mobile-panel__head"><a class="brand" href="index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya</strong><span>Consulting</span></span></a><button class="mobile-panel__close nav__toggle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="resources.html">Guides</a><a href="calculators.html">Calculators</a><a href="contact.html">Contact</a><div class="mobile-panel__cta"><a class="btn btn--whatsapp" href="https://wa.me/919211719725" target="_blank" rel="noopener">WhatsApp Us</a><a class="btn btn--primary" href="tel:+919211719725">Call Now</a></div></div></div>
+
+<section class="calc-page">
+
+  <div class="calc-hero">
+    <h1>Free calculators — six everyday tax decisions, instant</h1>
+    <p>GST, take-home salary, HRA exemption, capital gains, TDS on payments, EMI. No login. Numbers stay in your browser.</p>
+  </div>
+
+  <div class="calc-tabs" role="tablist">
+    <button class="calc-tab is-active" data-tab="gst">GST</button>
+    <button class="calc-tab" data-tab="salary">Take-home salary</button>
+    <button class="calc-tab" data-tab="hra">HRA exemption</button>
+    <button class="calc-tab" data-tab="capgain">Capital gains</button>
+    <button class="calc-tab" data-tab="tds">TDS</button>
+    <button class="calc-tab" data-tab="emi">EMI</button>
+  </div>
+
+  <!-- ============ GST CALCULATOR ============ -->
+  <div class="calc-panel is-active" data-panel="gst">
+    <div class="calc-card">
+      <h2>GST calculator</h2>
+      <p class="sub">Add GST to a base amount, or extract GST from an inclusive amount.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="gst-amount">Amount (₹)</label>
+          <input id="gst-amount" type="number" value="1000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="gst-rate">GST rate</label>
+          <select id="gst-rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="gst-mode">Mode</label>
+          <select id="gst-mode"><option value="add">Add GST (exclusive)</option><option value="extract">Extract GST (inclusive)</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="gst-type">Type of supply</label>
+          <select id="gst-type"><option value="intra">Intra-state (CGST+SGST)</option><option value="inter">Inter-state (IGST)</option></select>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Base amount</strong><span id="gst-base">₹1,000.00</span></div>
+        <div class="calc-result-row"><strong id="gst-split-1-label">CGST (9%)</strong><span id="gst-split-1">₹90.00</span></div>
+        <div class="calc-result-row"><strong id="gst-split-2-label">SGST (9%)</strong><span id="gst-split-2">₹90.00</span></div>
+        <div class="calc-result-final"><strong id="gst-final-label">Total payable</strong><span id="gst-final">₹1,180.00</span></div>
+      </div>
+      <div class="calc-note">Inclusive mode: enter the gross amount that already includes GST — we extract the tax. Useful when working from MRP or all-in price.</div>
+    </div>
+  </div>
+
+  <!-- ============ TAKE-HOME SALARY ============ -->
+  <div class="calc-panel" data-panel="salary">
+    <div class="calc-card">
+      <h2>Take-home salary (Old vs New regime)</h2>
+      <p class="sub">Both regimes, slab-correct for FY 25-26. Standard deduction + Section 87A rebate applied.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="sal-ctc">Annual gross / CTC (₹)</label>
+          <input id="sal-ctc" type="number" value="1500000" min="0" step="any" />
+          <small>Use gross salary or full CTC (we treat employer PF/NPS as already excluded).</small>
+        </div>
+        <div class="calc-field">
+          <label for="sal-deductions">Old-regime deductions (₹)</label>
+          <input id="sal-deductions" type="number" value="200000" min="0" step="any" />
+          <small>80C + 80D + 80CCD(1B) + home-loan int + HRA exempt + LTA, etc.</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Old regime</h3>
+        <div class="calc-result-row"><strong>Taxable income</strong><span id="sal-old-taxable">—</span></div>
+        <div class="calc-result-row"><strong>Income tax + cess</strong><span id="sal-old-tax">—</span></div>
+        <div class="calc-result-final"><strong>Take-home (annual)</strong><span id="sal-old-net">—</span></div>
+        <h3 style="margin-top:18px">New regime</h3>
+        <div class="calc-result-row"><strong>Taxable income</strong><span id="sal-new-taxable">—</span></div>
+        <div class="calc-result-row"><strong>Income tax + cess</strong><span id="sal-new-tax">—</span></div>
+        <div class="calc-result-final"><strong>Take-home (annual)</strong><span id="sal-new-net">—</span></div>
+        <div class="calc-result-row" style="margin-top:14px;font-size:1rem"><strong style="color:#c9a961">Winner</strong><span id="sal-winner" style="color:#c9a961;font-size:1.1rem">—</span></div>
+      </div>
+      <div class="calc-note">Approximation. Real numbers vary with regime-specific exemptions, surcharge thresholds (above ₹50L), and rebate eligibility. Run both before picking a regime each year — see our <a href="resources/old-vs-new-tax-regime.html">old vs new guide</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ HRA EXEMPTION ============ -->
+  <div class="calc-panel" data-panel="hra">
+    <div class="calc-card">
+      <h2>HRA exemption calculator</h2>
+      <p class="sub">Exemption under Sec 10(13A) = least of three. Old regime only.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="hra-basic">Annual basic salary (₹)</label>
+          <input id="hra-basic" type="number" value="600000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="hra-received">HRA received (₹/year)</label>
+          <input id="hra-received" type="number" value="300000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="hra-rent">Annual rent paid (₹)</label>
+          <input id="hra-rent" type="number" value="300000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="hra-metro">Live in metro?</label>
+          <select id="hra-metro"><option value="yes">Yes (Delhi / Mumbai / Chennai / Kolkata)</option><option value="no">No</option></select>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>The three candidates</h3>
+        <div class="calc-result-row"><strong>HRA received</strong><span id="hra-c1">—</span></div>
+        <div class="calc-result-row"><strong id="hra-c2-label">50% of basic</strong><span id="hra-c2">—</span></div>
+        <div class="calc-result-row"><strong>Rent − 10% basic</strong><span id="hra-c3">—</span></div>
+        <div class="calc-result-final"><strong>Exempt (least of three)</strong><span id="hra-exempt">—</span></div>
+        <div class="calc-result-row" style="margin-top:10px"><strong>Taxable HRA</strong><span id="hra-taxable">—</span></div>
+      </div>
+      <div class="calc-note">For rent &gt; ₹1L/year, you'll also need landlord's PAN at filing time. See our <a href="resources/salary-structure-for-tax-savings.html">salary-structure guide</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ CAPITAL GAINS ============ -->
+  <div class="calc-panel" data-panel="capgain">
+    <div class="calc-card">
+      <h2>Capital gains calculator</h2>
+      <p class="sub">Equity / equity MF — STCG 15% / LTCG 10% above ₹1L. Other assets — slab / 20% with indexation.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="cg-asset">Asset type</label>
+          <select id="cg-asset">
+            <option value="equity">Listed equity / Equity MF (STT paid)</option>
+            <option value="property">Property / land</option>
+            <option value="gold">Gold / unlisted shares</option>
+            <option value="debt">Debt MF (purchased after 1 Apr 2023)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="cg-holding">Holding period (months)</label>
+          <input id="cg-holding" type="number" value="18" min="0" step="1" />
+        </div>
+        <div class="calc-field">
+          <label for="cg-cost">Cost of acquisition (₹)</label>
+          <input id="cg-cost" type="number" value="500000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="cg-sale">Sale price (₹)</label>
+          <input id="cg-sale" type="number" value="800000" min="0" step="any" />
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Gain type</strong><span id="cg-type">—</span></div>
+        <div class="calc-result-row"><strong>Gross gain</strong><span id="cg-gain">—</span></div>
+        <div class="calc-result-row"><strong>Exemption (₹1L for equity LTCG)</strong><span id="cg-exempt">—</span></div>
+        <div class="calc-result-row"><strong>Taxable gain</strong><span id="cg-taxable">—</span></div>
+        <div class="calc-result-final"><strong id="cg-rate-label">Tax payable</strong><span id="cg-tax">—</span></div>
+      </div>
+      <div class="calc-note">Indexation benefit on property / unlisted shares not auto-applied here — depends on year-of-purchase CII. For listed equity, the calculator handles ₹1L Sec 112A exemption correctly.</div>
+    </div>
+  </div>
+
+  <!-- ============ TDS CALCULATOR ============ -->
+  <div class="calc-panel" data-panel="tds">
+    <div class="calc-card">
+      <h2>TDS on payments calculator</h2>
+      <p class="sub">Most common TDS sections — pick what you're paying, see the rate, threshold, and exact deduction.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="tds-section">Type of payment</label>
+          <select id="tds-section">
+            <option value="194C-ind">Contractor — individual (194C)</option>
+            <option value="194C-other">Contractor — non-individual (194C)</option>
+            <option value="194J">Professional / technical fees (194J)</option>
+            <option value="194I-b">Rent — land/building/furniture (194I)</option>
+            <option value="194I-a">Rent — plant/machinery (194I)</option>
+            <option value="194H">Commission / brokerage (194H)</option>
+            <option value="194-IA">Property purchase (194-IA)</option>
+            <option value="194Q">Purchase of goods (194Q)</option>
+            <option value="194S">Crypto / VDA transfer (194S)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="tds-amount">Payment amount (₹)</label>
+          <input id="tds-amount" type="number" value="50000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="tds-pan">Payee provided PAN?</label>
+          <select id="tds-pan"><option value="yes">Yes</option><option value="no">No (206AA — higher rate)</option></select>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Threshold</strong><span id="tds-threshold">—</span></div>
+        <div class="calc-result-row"><strong>Applicable rate</strong><span id="tds-rate">—</span></div>
+        <div class="calc-result-row"><strong>Above threshold?</strong><span id="tds-above">—</span></div>
+        <div class="calc-result-final"><strong>TDS to deduct</strong><span id="tds-deduct">—</span></div>
+        <div class="calc-result-row" style="margin-top:10px"><strong>Net payable to payee</strong><span id="tds-net">—</span></div>
+      </div>
+      <div class="calc-note">Threshold logic: 194C uses single-payment ₹30k OR aggregate ₹1L. Crypto threshold is ₹50k/yr individuals, ₹10k businesses. Full table in our <a href="resources/tds-rates-master.html">TDS rates master</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ EMI ============ -->
+  <div class="calc-panel" data-panel="emi">
+    <div class="calc-card">
+      <h2>EMI calculator</h2>
+      <p class="sub">Standard reducing-balance EMI. Works for home loan, car loan, personal loan, business loan.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="emi-principal">Loan amount (₹)</label>
+          <input id="emi-principal" type="number" value="3000000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="emi-rate">Interest rate (% p.a.)</label>
+          <input id="emi-rate" type="number" value="9" min="0" step="0.01" />
+        </div>
+        <div class="calc-field">
+          <label for="emi-tenure">Tenure (years)</label>
+          <input id="emi-tenure" type="number" value="20" min="0" step="1" />
+        </div>
+        <div class="calc-field">
+          <label>&nbsp;</label>
+          <span style="color:var(--ink-500);font-size:.85rem;padding:11px 0">EMI = P × r × (1+r)ⁿ / ((1+r)ⁿ − 1)</span>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Total months</strong><span id="emi-months">—</span></div>
+        <div class="calc-result-row"><strong>Total interest payable</strong><span id="emi-interest">—</span></div>
+        <div class="calc-result-row"><strong>Total payment</strong><span id="emi-total">—</span></div>
+        <div class="calc-result-final"><strong>Monthly EMI</strong><span id="emi-monthly">—</span></div>
+      </div>
+      <div class="calc-note">For home loans, the interest portion (up to ₹2L self-occupied) is deductible under Sec 24(b) and Section 80C covers principal repayment (up to ₹1.5L) — both old regime only.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:30px auto 0;padding:0 16px">
+    <div class="calc-cta">
+      <h3>Numbers look complicated? We do the actual filing.</h3>
+      <p>Real CA / ERP / GST help. Fixed-fee. No surprises.</p>
+      <a class="btn btn--gold btn--lg" href="https://wa.me/919211719725?text=Hello%20Aarvya%2C%20I%20saw%20your%20calculators." target="_blank" rel="noopener">WhatsApp Now</a>
+      <a class="btn btn--ghost-light btn--lg" href="contact.html">Send a Message</a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a class="brand" href="index.html" style="margin-bottom:16px"><span class="brand__mark">A</span><span class="brand__name"><strong style="color:#fff">Aarvya Consulting</strong><span style="color:#8794b1">Tax · Compliance · ERP</span></span></a><p>Professional services in taxation, compliance, accounting, audit, ERP and business advisory.</p><p style="font-family:var(--font-display);font-style:italic;color:var(--gold-400);margin-top:14px">"Driven by Accuracy, Powered by Trust."</p></div><div><h4>Services</h4><ul class="footer__list"><li><a href="services/itr-filing.html">Income Tax &amp; TDS</a></li><li><a href="services/gst-filing.html">GST Services</a></li><li><a href="services/company-registration.html">Business Registration</a></li><li><a href="services/erp-consulting.html">ERP Consulting</a></li><li><a href="services.html">All services</a></li></ul></div><div><h4>Company</h4><ul class="footer__list"><li><a href="about.html">About Us</a></li><li><a href="resources.html">Guides &amp; Resources</a></li><li><a href="calculators.html">Calculators</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms</a></li></ul></div><div><h4>Contact</h4><div class="footer__contact"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div></div></div><div class="footer__bottom"><span>© <span data-year>2025</span> Aarvya Consulting. All rights reserved.</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span></div></div></footer>
+
+<div class="mobile-actions"><a class="call" href="tel:+919211719725">Call Now</a><a class="wa" href="https://wa.me/919211719725" target="_blank" rel="noopener">WhatsApp Us</a></div>
+<a class="fab-wa" href="https://wa.me/919211719725" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 1.64 6L0 24l6.18-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.5-8.5Z"/></svg></a>
+
+<script src="assets/js/main.js" defer></script>
+
+<script>
+(function(){
+  // --- Tab switching ---
+  const tabs = document.querySelectorAll('.calc-tab');
+  const panels = document.querySelectorAll('.calc-panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('is-active'));
+    panels.forEach(p => p.classList.remove('is-active'));
+    t.classList.add('is-active');
+    document.querySelector('[data-panel="'+t.dataset.tab+'"]').classList.add('is-active');
+    window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth'});
+  }));
+
+  // --- Formatting helpers ---
+  const fmt = n => '₹' + (isFinite(n)?n:0).toLocaleString('en-IN', {maximumFractionDigits:2, minimumFractionDigits:2});
+  const fmtInt = n => '₹' + Math.round(isFinite(n)?n:0).toLocaleString('en-IN');
+
+  // --- GST CALCULATOR ---
+  function calcGST(){
+    const amt = +document.getElementById('gst-amount').value || 0;
+    const rate = +document.getElementById('gst-rate').value;
+    const mode = document.getElementById('gst-mode').value;
+    const type = document.getElementById('gst-type').value;
+    let base, tax;
+    if(mode === 'add'){ base = amt; tax = amt * rate / 100; }
+    else { base = amt / (1 + rate/100); tax = amt - base; }
+    document.getElementById('gst-base').textContent = fmt(base);
+    if(type === 'intra'){
+      document.getElementById('gst-split-1-label').textContent = 'CGST ('+(rate/2)+'%)';
+      document.getElementById('gst-split-2-label').textContent = 'SGST ('+(rate/2)+'%)';
+      document.getElementById('gst-split-1').textContent = fmt(tax/2);
+      document.getElementById('gst-split-2').textContent = fmt(tax/2);
+      document.getElementById('gst-split-2-label').parentElement.style.display = '';
+    } else {
+      document.getElementById('gst-split-1-label').textContent = 'IGST ('+rate+'%)';
+      document.getElementById('gst-split-1').textContent = fmt(tax);
+      document.getElementById('gst-split-2-label').parentElement.style.display = 'none';
+    }
+    const total = mode==='add' ? base + tax : amt;
+    document.getElementById('gst-final-label').textContent = mode==='add' ? 'Total payable' : 'Tax component';
+    document.getElementById('gst-final').textContent = mode==='add' ? fmt(total) : fmt(tax);
+  }
+  ['gst-amount','gst-rate','gst-mode','gst-type'].forEach(id => document.getElementById(id).addEventListener('input', calcGST));
+  calcGST();
+
+  // --- SALARY ---
+  function taxOld(ti){
+    let t=0;
+    if(ti<=250000) t=0;
+    else if(ti<=500000) t=(ti-250000)*0.05;
+    else if(ti<=1000000) t=12500+(ti-500000)*0.2;
+    else t=112500+(ti-1000000)*0.3;
+    if(ti<=500000) t = Math.min(t, Math.max(0, ti-250000)*0.05); // rebate 87A
+    if(ti<=500000) t = 0; // 87A full rebate up to 5L old
+    return t * 1.04; // 4% cess
+  }
+  function taxNew(ti){
+    let t=0;
+    const slabs = [
+      [300000, 0],
+      [700000, 0.05],
+      [1000000, 0.10],
+      [1200000, 0.15],
+      [1500000, 0.20],
+      [Infinity, 0.30]
+    ];
+    let prev = 0;
+    for(const [limit, rate] of slabs){
+      if(ti <= limit){ t += (ti - prev) * rate; break; }
+      else { t += (limit - prev) * rate; prev = limit; }
+    }
+    if(ti <= 700000) t = 0; // 87A rebate up to 7L new
+    return t * 1.04;
+  }
+  function calcSalary(){
+    const ctc = +document.getElementById('sal-ctc').value || 0;
+    const ded = +document.getElementById('sal-deductions').value || 0;
+    // Old: std deduction 50k + user deductions
+    const oldTaxable = Math.max(0, ctc - 50000 - ded);
+    const oldTax = taxOld(oldTaxable);
+    // New: std deduction 75k
+    const newTaxable = Math.max(0, ctc - 75000);
+    const newTax = taxNew(newTaxable);
+    document.getElementById('sal-old-taxable').textContent = fmtInt(oldTaxable);
+    document.getElementById('sal-old-tax').textContent = fmtInt(oldTax);
+    document.getElementById('sal-old-net').textContent = fmtInt(ctc - oldTax);
+    document.getElementById('sal-new-taxable').textContent = fmtInt(newTaxable);
+    document.getElementById('sal-new-tax').textContent = fmtInt(newTax);
+    document.getElementById('sal-new-net').textContent = fmtInt(ctc - newTax);
+    if(oldTax === newTax) document.getElementById('sal-winner').textContent = 'Tied';
+    else document.getElementById('sal-winner').textContent = oldTax < newTax ? 'Old saves '+fmtInt(newTax - oldTax) : 'New saves '+fmtInt(oldTax - newTax);
+  }
+  ['sal-ctc','sal-deductions'].forEach(id => document.getElementById(id).addEventListener('input', calcSalary));
+  calcSalary();
+
+  // --- HRA ---
+  function calcHRA(){
+    const basic = +document.getElementById('hra-basic').value || 0;
+    const rec = +document.getElementById('hra-received').value || 0;
+    const rent = +document.getElementById('hra-rent').value || 0;
+    const metro = document.getElementById('hra-metro').value === 'yes';
+    const pct = metro ? 0.5 : 0.4;
+    const c1 = rec;
+    const c2 = basic * pct;
+    const c3 = Math.max(0, rent - basic * 0.1);
+    const exempt = Math.min(c1, c2, c3);
+    document.getElementById('hra-c1').textContent = fmtInt(c1);
+    document.getElementById('hra-c2-label').textContent = (metro?'50%':'40%')+' of basic';
+    document.getElementById('hra-c2').textContent = fmtInt(c2);
+    document.getElementById('hra-c3').textContent = fmtInt(c3);
+    document.getElementById('hra-exempt').textContent = fmtInt(exempt);
+    document.getElementById('hra-taxable').textContent = fmtInt(Math.max(0, rec - exempt));
+  }
+  ['hra-basic','hra-received','hra-rent','hra-metro'].forEach(id => document.getElementById(id).addEventListener('input', calcHRA));
+  calcHRA();
+
+  // --- CAPITAL GAINS ---
+  function calcCapGain(){
+    const asset = document.getElementById('cg-asset').value;
+    const months = +document.getElementById('cg-holding').value || 0;
+    const cost = +document.getElementById('cg-cost').value || 0;
+    const sale = +document.getElementById('cg-sale').value || 0;
+    const gain = Math.max(0, sale - cost);
+    let longThreshold, ltcgRate, stcgRate, exempt = 0;
+    if(asset === 'equity'){ longThreshold = 12; ltcgRate = 0.10; stcgRate = 0.15; }
+    else if(asset === 'property' || asset === 'gold'){ longThreshold = 24; ltcgRate = 0.20; stcgRate = 0; /* slab */ }
+    else { longThreshold = Infinity; ltcgRate = 0; stcgRate = 0; /* debt MF post Apr-23: slab */ }
+    let isLong = months > longThreshold;
+    let typeLabel, taxable, tax, rateLabel;
+    if(asset === 'debt'){
+      typeLabel = 'Slab rate (added to total income)';
+      taxable = gain; tax = 0; rateLabel = 'Slab-taxed — add to income';
+    } else if(isLong){
+      typeLabel = 'LTCG';
+      if(asset === 'equity'){ exempt = Math.min(gain, 100000); taxable = Math.max(0, gain - 100000); tax = taxable * ltcgRate; rateLabel='Tax @ 10% (above ₹1L)'; }
+      else { taxable = gain; tax = gain * ltcgRate; rateLabel='Tax @ 20% (indexation not applied)'; }
+    } else {
+      typeLabel = 'STCG';
+      if(asset === 'equity'){ taxable = gain; tax = gain * stcgRate; rateLabel='Tax @ 15% (Sec 111A)'; }
+      else { taxable = gain; tax = 0; rateLabel='Slab-taxed — add to income'; }
+    }
+    document.getElementById('cg-type').textContent = typeLabel;
+    document.getElementById('cg-gain').textContent = fmtInt(gain);
+    document.getElementById('cg-exempt').textContent = fmtInt(exempt);
+    document.getElementById('cg-taxable').textContent = fmtInt(taxable);
+    document.getElementById('cg-rate-label').textContent = rateLabel;
+    document.getElementById('cg-tax').textContent = (asset === 'debt' || (!isLong && asset !== 'equity')) ? '—' : fmtInt(tax);
+  }
+  ['cg-asset','cg-holding','cg-cost','cg-sale'].forEach(id => document.getElementById(id).addEventListener('input', calcCapGain));
+  calcCapGain();
+
+  // --- TDS ---
+  const tdsTable = {
+    '194C-ind': {threshold:30000, aggregate:100000, rate:0.01, label:'1% (individual contractor)'},
+    '194C-other': {threshold:30000, aggregate:100000, rate:0.02, label:'2% (non-individual contractor)'},
+    '194J': {threshold:30000, rate:0.10, label:'10%'},
+    '194I-b': {threshold:240000, rate:0.10, label:'10% (land/building)'},
+    '194I-a': {threshold:240000, rate:0.02, label:'2% (plant/machinery)'},
+    '194H': {threshold:15000, rate:0.05, label:'5%'},
+    '194-IA': {threshold:5000000, rate:0.01, label:'1% (property buyer)'},
+    '194Q': {threshold:5000000, rate:0.001, label:'0.1%'},
+    '194S': {threshold:50000, rate:0.01, label:'1% (crypto/VDA)'}
+  };
+  function calcTDS(){
+    const sec = document.getElementById('tds-section').value;
+    const amt = +document.getElementById('tds-amount').value || 0;
+    const hasPan = document.getElementById('tds-pan').value === 'yes';
+    const info = tdsTable[sec];
+    const above = amt > info.threshold;
+    let rate = info.rate;
+    if(!hasPan){ rate = Math.max(rate * 1.2, 0.20); }
+    const tds = above ? amt * rate : 0;
+    document.getElementById('tds-threshold').textContent = fmtInt(info.threshold) + (info.aggregate ? ' single / '+fmtInt(info.aggregate)+' aggregate' : '');
+    document.getElementById('tds-rate').textContent = hasPan ? info.label : (Math.round(rate*10000)/100)+'% (no PAN, 206AA)';
+    document.getElementById('tds-above').textContent = above ? 'Yes — TDS applies' : 'No — below threshold';
+    document.getElementById('tds-deduct').textContent = fmtInt(tds);
+    document.getElementById('tds-net').textContent = fmtInt(amt - tds);
+  }
+  ['tds-section','tds-amount','tds-pan'].forEach(id => document.getElementById(id).addEventListener('input', calcTDS));
+  calcTDS();
+
+  // --- EMI ---
+  function calcEMI(){
+    const p = +document.getElementById('emi-principal').value || 0;
+    const ratePct = +document.getElementById('emi-rate').value || 0;
+    const years = +document.getElementById('emi-tenure').value || 0;
+    const n = years * 12;
+    const r = ratePct / 100 / 12;
+    let emi = 0;
+    if(r === 0) emi = p / n;
+    else emi = p * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
+    const total = emi * n;
+    const interest = total - p;
+    document.getElementById('emi-months').textContent = n + ' months';
+    document.getElementById('emi-interest').textContent = fmtInt(interest);
+    document.getElementById('emi-total').textContent = fmtInt(total);
+    document.getElementById('emi-monthly').textContent = fmtInt(emi);
+  }
+  ['emi-principal','emi-rate','emi-tenure'].forEach(id => document.getElementById(id).addEventListener('input', calcEMI));
+  calcEMI();
+})();
+</script>
+
+</body>
+</html>
