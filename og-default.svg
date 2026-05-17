@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06163a"/>
+      <stop offset="100%" stop-color="#1d3266"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#c9a961" fill-opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <!-- Logo block -->
+  <rect x="80" y="80" width="110" height="110" rx="20" fill="#c9a961"/>
+  <text x="135" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#06163a">A</text>
+  <!-- Brand name -->
+  <text x="220" y="130" font-family="Playfair Display, Georgia, serif" font-size="44" font-weight="700" fill="#ffffff">Aarvya Consulting</text>
+  <text x="222" y="172" font-family="Plus Jakarta Sans, sans-serif" font-size="20" fill="#c9a961" letter-spacing="2">TAX · COMPLIANCE · ERP</text>
+  <!-- Headline area -->
+  <text x="80" y="320" font-family="Playfair Display, Georgia, serif" font-size="64" font-weight="700" fill="#ffffff">Free guides</text>
+  <text x="80" y="396" font-family="Playfair Display, Georgia, serif" font-size="64" font-weight="700" fill="#ffffff">on tax, GST &amp; compliance.</text>
+  <text x="80" y="468" font-family="Plus Jakarta Sans, sans-serif" font-size="28" fill="#c2cae0">Plain English. Real numbers. No jargon.</text>
+  <!-- Footer line -->
+  <rect x="80" y="530" width="120" height="3" fill="#c9a961"/>
+  <text x="80" y="568" font-family="Plus Jakarta Sans, sans-serif" font-size="20" font-weight="600" fill="#c9a961">aarvyaconsulting.com</text>
+  <text x="1120" y="568" text-anchor="end" font-family="Playfair Display, Georgia, serif" font-size="22" font-style="italic" fill="#c2cae0">Driven by Accuracy, Powered by Trust</text>
+</svg>
