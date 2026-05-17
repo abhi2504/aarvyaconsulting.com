@@ -122,22 +122,35 @@
 .checklist li.is-checked::before, .checklist li:hover::before { background-size: 14px 14px; border-color: var(--success); }
 .checklist li.is-checked { background: #f5fbf7; }
 
-/* Step-by-step */
+/* Step-by-step
+   Layout: numbered circle in col 1 (pinned to row 1),
+   ALL content (h3 + paragraphs + lists) explicitly in col 2 so a step
+   with multiple <p> elements doesn't spill back into the 44px column. */
 .steps { list-style: none; padding: 0; margin: 28px 0; counter-reset: step; }
 .steps > li {
-  display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 22px 0;
-  border-bottom: 1px solid var(--line); counter-increment: step;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 6px 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  counter-increment: step;
 }
 .steps > li:last-child { border-bottom: none; }
 .steps > li::before {
-  content: counter(step); grid-row: span 2;
+  content: counter(step);
+  grid-column: 1;
+  grid-row: 1;
   width: 44px; height: 44px; border-radius: 999px;
   background: linear-gradient(135deg, var(--navy-800), var(--navy-600));
   color: var(--gold-400); display: grid; place-items: center;
   font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
 }
-.steps > li h3 { margin: 0 0 6px; font-size: 1.08rem; color: var(--ink-900); }
+/* every child of a step (h3, p, ul, ol, etc.) stays in column 2 */
+.steps > li > * { grid-column: 2; min-width: 0; }
+.steps > li h3 { margin: 0 0 4px; font-size: 1.08rem; color: var(--ink-900); }
 .steps > li p { margin: 0 0 6px; color: var(--ink-700); font-size: .98rem; }
+.steps > li p:last-child { margin-bottom: 0; }
+.steps > li ul, .steps > li ol { margin: 6px 0 0; padding-left: 20px; color: var(--ink-700); font-size: .96rem; }
 .steps > li a { color: var(--navy-700); }
 
 /* Mermaid container */
@@ -457,10 +470,11 @@
   .article-body .data-table th, .article-body .data-table td { padding: 10px 12px; }
 
   /* Steps — smaller numbered circle on mobile */
-  .steps > li { grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 0; }
+  .steps > li { grid-template-columns: 36px 1fr; gap: 4px 12px; padding: 16px 0; }
   .steps > li::before { width: 36px; height: 36px; font-size: .95rem; }
   .steps > li h3 { font-size: 1rem; }
   .steps > li p { font-size: .94rem; }
+  .steps > li ul, .steps > li ol { font-size: .92rem; padding-left: 18px; }
 
   /* Mermaid wrap — full-bleed-ish on mobile so diagrams have room to breathe */
   .mermaid-wrap {
