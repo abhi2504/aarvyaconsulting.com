@@ -116,6 +116,13 @@
     <button class="calc-tab" data-tab="capgain">Capital gains</button>
     <button class="calc-tab" data-tab="tds">TDS</button>
     <button class="calc-tab" data-tab="emi">EMI</button>
+    <button class="calc-tab" data-tab="advance-tax">Advance Tax</button>
+    <button class="calc-tab" data-tab="rebate-87a">87A Rebate</button>
+    <button class="calc-tab" data-tab="residential">Residential Status</button>
+    <button class="calc-tab" data-tab="gratuity">Gratuity</button>
+    <button class="calc-tab" data-tab="sip">SIP</button>
+    <button class="calc-tab" data-tab="ppf">PPF</button>
+    <button class="calc-tab" data-tab="nps">NPS</button>
   </div>
 
   <!-- ============ GST CALCULATOR ============ -->
@@ -514,6 +521,266 @@
     </div>
   </div>
 
+  <!-- ============ ADVANCE TAX ============ -->
+  <div class="calc-panel" data-panel="advance-tax">
+    <div class="calc-card">
+      <h2>Advance tax calculator (Sec 234B / 234C)</h2>
+      <p class="sub">If total tax after TDS exceeds ₹10,000, advance tax kicks in. Spread across 4 quarters or pay Sec 234C interest.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="adv-total-tax">Total annual tax liability (₹)</label>
+          <input id="adv-total-tax" type="number" value="200000" min="0" step="any" />
+          <small>From the Salary calc, or your own estimate.</small>
+        </div>
+        <div class="calc-field">
+          <label for="adv-tds">TDS deducted / expected this year (₹)</label>
+          <input id="adv-tds" type="number" value="50000" min="0" step="any" />
+          <small>Salary TDS + 194-section TDS + TCS.</small>
+        </div>
+        <div class="calc-field">
+          <label for="adv-presumptive">Filing under presumptive (44AD/44ADA)?</label>
+          <select id="adv-presumptive"><option value="no">No</option><option value="yes">Yes</option></select>
+          <small>Presumptive filers pay 100% by 15 Mar — no quarterly schedule.</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Quarterly schedule</h3>
+        <div class="calc-result-row"><strong>Net tax owed (after TDS)</strong><span id="adv-net">—</span></div>
+        <div class="calc-result-row"><strong>Q1 — by 15 Jun (15% cumulative)</strong><span id="adv-q1">—</span></div>
+        <div class="calc-result-row"><strong>Q2 — by 15 Sep (45% cumulative)</strong><span id="adv-q2">—</span></div>
+        <div class="calc-result-row"><strong>Q3 — by 15 Dec (75% cumulative)</strong><span id="adv-q3">—</span></div>
+        <div class="calc-result-final"><strong>Q4 — by 15 Mar (100%)</strong><span id="adv-q4">—</span></div>
+      </div>
+      <div class="calc-note">Pay via Challan 280 on income tax portal (code 100 — advance tax). Save BSR + challan number for ITR. Sec 234C charges 1% per month for each quarter shortfall. See <a href="resources/refund-shrank-234abc-interest.html">why your refund shrank by ₹14,237</a> for the math.</div>
+    </div>
+  </div>
+
+  <!-- ============ 87A REBATE ============ -->
+  <div class="calc-panel" data-panel="rebate-87a">
+    <div class="calc-card">
+      <h2>Section 87A rebate calculator</h2>
+      <p class="sub">Rebate makes your final tax ₹0 if taxable income is at or below the threshold. ₹12L new regime / ₹5L old regime (FY 25-26).</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="reb-ti">Taxable income (₹)</label>
+          <input id="reb-ti" type="number" value="1100000" min="0" step="any" />
+          <small>Income <em>after</em> standard deduction and all eligible deductions.</small>
+        </div>
+        <div class="calc-field">
+          <label for="reb-regime">Regime</label>
+          <select id="reb-regime">
+            <option value="new">New regime (FY 25-26)</option>
+            <option value="old">Old regime</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Slab tax (before rebate)</strong><span id="reb-slab">—</span></div>
+        <div class="calc-result-row"><strong>Eligible for rebate?</strong><span id="reb-eligible">—</span></div>
+        <div class="calc-result-row"><strong>Rebate applied</strong><span id="reb-rebate">—</span></div>
+        <div class="calc-result-row"><strong>Marginal relief</strong><span id="reb-marginal">—</span></div>
+        <div class="calc-result-final"><strong>Final tax (incl. 4% cess)</strong><span id="reb-final">—</span></div>
+      </div>
+      <div class="calc-note">New regime FY 25-26: rebate up to ₹60K; full rebate if taxable ≤ ₹12L. Marginal relief between ₹12L and ~₹12.74L caps tax at (income − ₹12L). Old regime: ₹12.5K rebate cap, ₹5L threshold. See <a href="resources/old-vs-new-tax-regime.html">old vs new regime guide</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ RESIDENTIAL STATUS ============ -->
+  <div class="calc-panel" data-panel="residential">
+    <div class="calc-card">
+      <h2>Residential status (Section 6) — NR / RNOR / R-OR</h2>
+      <p class="sub">India doesn't do "split year". Counting days correctly is what decides whether your foreign salary is taxable here.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="res-days-pyt">Days in India this PY (1 Apr – 31 Mar)</label>
+          <input id="res-days-pyt" type="number" value="200" min="0" max="366" step="1" />
+        </div>
+        <div class="calc-field">
+          <label for="res-status">Movement this year</label>
+          <select id="res-status">
+            <option value="normal">Resident living in India year-round</option>
+            <option value="employment">Leaving India for employment outside</option>
+            <option value="visiting">Indian citizen / PIO visiting India</option>
+          </select>
+          <small>Affects the 60-day relaxation under Test 2.</small>
+        </div>
+        <div class="calc-field">
+          <label for="res-income-high">Indian-source income &gt; ₹15L?</label>
+          <select id="res-income-high"><option value="no">No</option><option value="yes">Yes</option></select>
+          <small>For visiting citizens with high Indian income, the relaxation is 120 days not 182.</small>
+        </div>
+        <div class="calc-field">
+          <label for="res-days-4">Total days in India over previous 4 PYs</label>
+          <input id="res-days-4" type="number" value="1500" min="0" max="1464" step="1" />
+          <small>For the 60+365 secondary test.</small>
+        </div>
+        <div class="calc-field">
+          <label for="res-days-7">Total days in India over previous 7 PYs</label>
+          <input id="res-days-7" type="number" value="2500" min="0" max="2557" step="1" />
+          <small>Need ≥ 730 for ordinarily-resident.</small>
+        </div>
+        <div class="calc-field">
+          <label for="res-resident-10">Resident in how many of last 10 PYs</label>
+          <input id="res-resident-10" type="number" value="8" min="0" max="10" step="1" />
+          <small>Need ≥ 2 for ordinarily-resident.</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Verdict</h3>
+        <div class="calc-result-row"><strong>Test 1 (≥182 days in PY)</strong><span id="res-t1">—</span></div>
+        <div class="calc-result-row"><strong>Test 2 (60+365 day rule)</strong><span id="res-t2">—</span></div>
+        <div class="calc-result-row"><strong>Ordinarily-resident sub-tests</strong><span id="res-or">—</span></div>
+        <div class="calc-result-final"><strong>Your status</strong><span id="res-verdict">—</span></div>
+      </div>
+      <div class="calc-note">R-OR: global income taxable. RNOR: Indian income + foreign business controlled from India. NR: only Indian-source income. See <a href="resources/moved-abroad-residential-status.html">moved abroad mid-year</a> for the full walkthrough.</div>
+    </div>
+  </div>
+
+  <!-- ============ GRATUITY ============ -->
+  <div class="calc-panel" data-panel="gratuity">
+    <div class="calc-card">
+      <h2>Gratuity calculator (Payment of Gratuity Act)</h2>
+      <p class="sub">Last drawn salary × 15/26 × years for covered employees. Tax exempt up to ₹20L (Sec 10(10)). 5-year minimum service.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="grat-salary">Last drawn monthly salary (Basic + DA, ₹)</label>
+          <input id="grat-salary" type="number" value="80000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="grat-years">Years of service</label>
+          <input id="grat-years" type="number" value="10" min="0" step="1" />
+          <small>Round up if last year is ≥ 6 months.</small>
+        </div>
+        <div class="calc-field">
+          <label for="grat-covered">Covered under Payment of Gratuity Act?</label>
+          <select id="grat-covered"><option value="yes">Yes (most ≥10-employee companies)</option><option value="no">No</option></select>
+        </div>
+        <div class="calc-field">
+          <label for="grat-government">Government employee?</label>
+          <select id="grat-government"><option value="no">No (private sector)</option><option value="yes">Yes</option></select>
+          <small>Government gratuity is fully exempt — no ₹20L cap.</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Eligible?</strong><span id="grat-eligible">—</span></div>
+        <div class="calc-result-row"><strong>Formula applied</strong><span id="grat-formula">—</span></div>
+        <div class="calc-result-row"><strong>Gratuity payable</strong><span id="grat-payable">—</span></div>
+        <div class="calc-result-row"><strong>Tax-exempt portion</strong><span id="grat-exempt">—</span></div>
+        <div class="calc-result-final"><strong>Taxable portion</strong><span id="grat-taxable">—</span></div>
+      </div>
+      <div class="calc-note">5-year minimum service applies, with exceptions for death / disability. ₹20L exemption is lifetime, across all employers. See our <a href="resources/gratuity-leave-encashment.html">gratuity &amp; leave encashment guide</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ SIP ============ -->
+  <div class="calc-panel" data-panel="sip">
+    <div class="calc-card">
+      <h2>SIP calculator</h2>
+      <p class="sub">Systematic Investment Plan — monthly investing. Optional annual step-up matches typical salary growth.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="sip-monthly">Monthly investment (₹)</label>
+          <input id="sip-monthly" type="number" value="10000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="sip-rate">Expected annual return (%)</label>
+          <input id="sip-rate" type="number" value="12" min="0" step="0.1" />
+          <small>Equity MF long-term ~12–14%, debt ~7–8%, hybrid ~10%.</small>
+        </div>
+        <div class="calc-field">
+          <label for="sip-years">Tenure (years)</label>
+          <input id="sip-years" type="number" value="15" min="1" step="1" />
+        </div>
+        <div class="calc-field">
+          <label for="sip-stepup">Annual step-up (%)</label>
+          <input id="sip-stepup" type="number" value="0" min="0" max="100" step="0.5" />
+          <small>SIP amount grows by this % every year. 10% mirrors typical salary growth.</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Total invested</strong><span id="sip-invested">—</span></div>
+        <div class="calc-result-row"><strong>Returns earned</strong><span id="sip-returns">—</span></div>
+        <div class="calc-result-final"><strong>Maturity value</strong><span id="sip-maturity">—</span></div>
+      </div>
+      <div class="calc-note">Equity MF: LTCG 12.5% above ₹1.25L (held &gt;12 months); STCG 20%. Debt MF post-Apr-23: always slab-taxed. See <a href="resources/capital-gains-explained.html">capital gains guide</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ PPF ============ -->
+  <div class="calc-panel" data-panel="ppf">
+    <div class="calc-card">
+      <h2>PPF maturity calculator</h2>
+      <p class="sub">Public Provident Fund — 15-year lock-in, EEE tax (deposit / interest / maturity all exempt). Current rate 7.1% (Q4 FY 25-26).</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="ppf-annual">Annual contribution (₹, max ₹1.5L)</label>
+          <input id="ppf-annual" type="number" value="150000" min="0" max="150000" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="ppf-rate">PPF interest rate (%)</label>
+          <input id="ppf-rate" type="number" value="7.1" min="0" step="0.1" />
+          <small>Govt reviews quarterly.</small>
+        </div>
+        <div class="calc-field">
+          <label for="ppf-years">Tenure (years)</label>
+          <input id="ppf-years" type="number" value="15" min="1" max="50" step="1" />
+          <small>Default 15. Extend in 5-year blocks for 20, 25, 30…</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Total deposits</strong><span id="ppf-invested">—</span></div>
+        <div class="calc-result-row"><strong>Interest earned</strong><span id="ppf-interest">—</span></div>
+        <div class="calc-result-final"><strong>Maturity value</strong><span id="ppf-maturity">—</span></div>
+      </div>
+      <div class="calc-note">Deposit qualifies for Sec 80C (old regime). Interest and maturity are tax-free (EEE). Deposit by 5th of each month for full interest that month. See <a href="resources/section-80c-80u-deductions.html">80C–80U deductions</a>.</div>
+    </div>
+  </div>
+
+  <!-- ============ NPS ============ -->
+  <div class="calc-panel" data-panel="nps">
+    <div class="calc-card">
+      <h2>NPS retirement corpus &amp; tax saving</h2>
+      <p class="sub">National Pension System — accumulate till 60, then 40% lumpsum tax-free + 60% mandatory annuity. Extra ₹50K deduction under 80CCD(1B) above the 80C cap.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="nps-monthly">Monthly contribution (₹)</label>
+          <input id="nps-monthly" type="number" value="5000" min="0" step="any" />
+        </div>
+        <div class="calc-field">
+          <label for="nps-age-now">Current age</label>
+          <input id="nps-age-now" type="number" value="30" min="18" max="75" step="1" />
+        </div>
+        <div class="calc-field">
+          <label for="nps-age-ret">Withdrawal age (max 75)</label>
+          <input id="nps-age-ret" type="number" value="60" min="18" max="75" step="1" />
+        </div>
+        <div class="calc-field">
+          <label for="nps-rate">Expected return (%)</label>
+          <input id="nps-rate" type="number" value="10" min="0" step="0.1" />
+          <small>Auto-choice C scheme has historically returned ~9–11% over 20+ years.</small>
+        </div>
+        <div class="calc-field">
+          <label for="nps-marginal">Marginal tax rate (%, old regime only)</label>
+          <input id="nps-marginal" type="number" value="31.2" min="0" max="42.744" step="0.01" />
+          <small>For the 80CCD(1B) tax-saving calculation. Use 31.2% (30% slab + 4% cess) for top slab.</small>
+        </div>
+      </div>
+      <div class="calc-result">
+        <h3>Result</h3>
+        <div class="calc-result-row"><strong>Total invested</strong><span id="nps-invested">—</span></div>
+        <div class="calc-result-row"><strong>Corpus at withdrawal age</strong><span id="nps-corpus">—</span></div>
+        <div class="calc-result-row"><strong>40% lumpsum (tax-free)</strong><span id="nps-lumpsum">—</span></div>
+        <div class="calc-result-row"><strong>60% mandatory annuity (taxable as pension)</strong><span id="nps-annuity">—</span></div>
+        <div class="calc-result-final"><strong>Annual tax saved via 80CCD(1B)</strong><span id="nps-tax-saved">—</span></div>
+      </div>
+      <div class="calc-note">80CCD(1B) saves up to ₹15.6K/yr at the 31.2% top slab on a ₹50K contribution. Old regime only — new regime doesn't allow this. The 60% annuity portion at withdrawal is taxed as pension income in the year received.</div>
+    </div>
+  </div>
+
   <!-- CTA -->
   <div style="max-width:920px;margin:30px auto 0;padding:0 16px">
     <div class="calc-cta">
@@ -855,6 +1122,216 @@
   }
   ['emi-principal','emi-rate','emi-tenure','emi-fee','emi-prepay','emi-prepay-month','emi-marginal-tax','emi-24b','emi-80c'].forEach(id => document.getElementById(id).addEventListener('input', calcEMI));
   calcEMI();
+
+  // --- ADVANCE TAX (Sec 234B/C) ---
+  function calcAdvance(){
+    const total = +document.getElementById('adv-total-tax').value || 0;
+    const tds = +document.getElementById('adv-tds').value || 0;
+    const presumptive = document.getElementById('adv-presumptive').value === 'yes';
+    const net = Math.max(0, total - tds);
+    document.getElementById('adv-net').textContent = fmtInt(net);
+    if(net <= 10000){
+      document.getElementById('adv-q1').textContent = 'Not required (net tax ≤ ₹10K)';
+      document.getElementById('adv-q2').textContent = '—';
+      document.getElementById('adv-q3').textContent = '—';
+      document.getElementById('adv-q4').textContent = '—';
+      return;
+    }
+    if(presumptive){
+      document.getElementById('adv-q1').textContent = '— (presumptive)';
+      document.getElementById('adv-q2').textContent = '— (presumptive)';
+      document.getElementById('adv-q3').textContent = '— (presumptive)';
+      document.getElementById('adv-q4').textContent = fmtInt(net) + ' (lump sum by 15 Mar)';
+      return;
+    }
+    document.getElementById('adv-q1').textContent = fmtInt(net * 0.15);
+    document.getElementById('adv-q2').textContent = fmtInt(net * 0.45);
+    document.getElementById('adv-q3').textContent = fmtInt(net * 0.75);
+    document.getElementById('adv-q4').textContent = fmtInt(net);
+  }
+  ['adv-total-tax','adv-tds','adv-presumptive'].forEach(id => document.getElementById(id).addEventListener('input', calcAdvance));
+  calcAdvance();
+
+  // --- 87A REBATE ---
+  function slabTaxOldRaw(ti){
+    let t=0;
+    if(ti<=250000) t=0;
+    else if(ti<=500000) t=(ti-250000)*0.05;
+    else if(ti<=1000000) t=12500+(ti-500000)*0.2;
+    else t=112500+(ti-1000000)*0.3;
+    return t;
+  }
+  function slabTaxNewRaw(ti){
+    let t=0, prev=0;
+    const slabs = [[400000,0],[800000,0.05],[1200000,0.10],[1600000,0.15],[2000000,0.20],[2400000,0.25],[Infinity,0.30]];
+    for(const [limit, rate] of slabs){
+      if(ti <= limit){ t += (ti - prev) * rate; break; }
+      else { t += (limit - prev) * rate; prev = limit; }
+    }
+    return t;
+  }
+  function calc87A(){
+    const ti = +document.getElementById('reb-ti').value || 0;
+    const regime = document.getElementById('reb-regime').value;
+    let slab, rebateCap, rebateLimit;
+    if(regime === 'new'){
+      slab = slabTaxNewRaw(ti);
+      rebateCap = 60000;
+      rebateLimit = 1200000;
+    } else {
+      slab = slabTaxOldRaw(ti);
+      rebateCap = 12500;
+      rebateLimit = 500000;
+    }
+    const eligible = ti <= rebateLimit;
+    const rebate = eligible ? Math.min(slab, rebateCap) : 0;
+    const taxAfterRebate = slab - rebate;
+    let totalWithCess = taxAfterRebate * 1.04;
+    let marginalRelief = 0;
+    // Marginal relief — new regime, between rebateLimit and ~rebateLimit + crossover
+    if(regime === 'new' && ti > rebateLimit && totalWithCess > (ti - rebateLimit)){
+      marginalRelief = totalWithCess - (ti - rebateLimit);
+      totalWithCess = ti - rebateLimit;
+    }
+    document.getElementById('reb-slab').textContent = fmtInt(slab);
+    document.getElementById('reb-eligible').textContent = eligible ? '✓ Yes (income ≤ ₹' + (rebateLimit/100000) + 'L)' : '✗ No (income > ₹' + (rebateLimit/100000) + 'L)';
+    document.getElementById('reb-rebate').textContent = fmtInt(rebate);
+    document.getElementById('reb-marginal').textContent = marginalRelief > 0 ? fmtInt(marginalRelief) + ' applied' : 'Not applicable';
+    document.getElementById('reb-final').textContent = fmtInt(totalWithCess);
+  }
+  ['reb-ti','reb-regime'].forEach(id => document.getElementById(id).addEventListener('input', calc87A));
+  calc87A();
+
+  // --- RESIDENTIAL STATUS (Section 6) ---
+  function calcResidential(){
+    const daysPY = +document.getElementById('res-days-pyt').value || 0;
+    const status = document.getElementById('res-status').value;
+    const highIncome = document.getElementById('res-income-high').value === 'yes';
+    const days4 = +document.getElementById('res-days-4').value || 0;
+    const days7 = +document.getElementById('res-days-7').value || 0;
+    const resident10 = +document.getElementById('res-resident-10').value || 0;
+    const t1 = daysPY >= 182;
+    let t2Threshold = 60;
+    if(status === 'employment') t2Threshold = 182;
+    else if(status === 'visiting') t2Threshold = highIncome ? 120 : 182;
+    const t2 = daysPY >= t2Threshold && days4 >= 365;
+    const isResident = t1 || t2;
+    const orQualified = isResident && days7 >= 730 && resident10 >= 2;
+    document.getElementById('res-t1').textContent = t1 ? '✓ Passes (≥182 days)' : '✗ Fails (<182 days)';
+    document.getElementById('res-t2').textContent = t2 ? '✓ Passes (' + daysPY + '≥' + t2Threshold + ' & ' + days4 + '≥365)' : '✗ Fails (threshold ' + t2Threshold + 'd this PY)';
+    document.getElementById('res-or').textContent = isResident ? (orQualified ? '✓ Ordinarily resident' : '✗ Not ordinarily resident (need ≥730d in 7 PYs & ≥2-of-10 resident)') : 'n/a (you are NR)';
+    let verdict;
+    if(!isResident) verdict = 'Non-Resident (NR) — only Indian-source income taxable';
+    else if(orQualified) verdict = 'Resident & Ordinarily Resident (R-OR) — global income taxable';
+    else verdict = 'Resident but Not Ordinarily Resident (RNOR) — Indian income + foreign-business-controlled-from-India';
+    document.getElementById('res-verdict').textContent = verdict;
+  }
+  ['res-days-pyt','res-status','res-income-high','res-days-4','res-days-7','res-resident-10'].forEach(id => document.getElementById(id).addEventListener('input', calcResidential));
+  calcResidential();
+
+  // --- GRATUITY ---
+  function calcGratuity(){
+    const salary = +document.getElementById('grat-salary').value || 0;
+    const years = +document.getElementById('grat-years').value || 0;
+    const covered = document.getElementById('grat-covered').value === 'yes';
+    const isGovt = document.getElementById('grat-government').value === 'yes';
+    const eligible = years >= 5;
+    let payable = 0, formula = '—';
+    if(eligible){
+      if(covered){
+        payable = (15/26) * salary * years;
+        formula = '15/26 × ₹' + Math.round(salary).toLocaleString('en-IN') + ' × ' + years + ' yrs';
+      } else {
+        payable = (15/30) * salary * years;
+        formula = '15/30 × avg salary × ' + years + ' yrs (non-covered)';
+      }
+    }
+    const cap = isGovt ? Infinity : 2000000;
+    const exempt = Math.min(payable, cap);
+    const taxable = Math.max(0, payable - exempt);
+    document.getElementById('grat-eligible').textContent = eligible ? '✓ Yes (≥5 years)' : '✗ No (need ≥5 years; death/disability exceptions)';
+    document.getElementById('grat-formula').textContent = formula;
+    document.getElementById('grat-payable').textContent = fmtInt(payable);
+    document.getElementById('grat-exempt').textContent = isGovt ? 'Fully exempt (government)' : fmtInt(exempt) + (payable > cap ? ' (₹20L cap reached)' : '');
+    document.getElementById('grat-taxable').textContent = fmtInt(taxable);
+  }
+  ['grat-salary','grat-years','grat-covered','grat-government'].forEach(id => document.getElementById(id).addEventListener('input', calcGratuity));
+  calcGratuity();
+
+  // --- SIP ---
+  function calcSIP(){
+    const monthly = +document.getElementById('sip-monthly').value || 0;
+    const ratePct = +document.getElementById('sip-rate').value || 0;
+    const years = Math.max(1, +document.getElementById('sip-years').value || 1);
+    const stepUp = +document.getElementById('sip-stepup').value || 0;
+    const r = ratePct / 100 / 12;
+    const stepUpFactor = 1 + stepUp / 100;
+    let balance = 0;
+    let invested = 0;
+    let monthlySip = monthly;
+    const months = years * 12;
+    for(let m = 1; m <= months; m++){
+      balance = balance * (1 + r) + monthlySip;
+      invested += monthlySip;
+      if(m % 12 === 0 && m < months) monthlySip *= stepUpFactor;
+    }
+    const returns = balance - invested;
+    document.getElementById('sip-invested').textContent = fmtInt(invested);
+    document.getElementById('sip-returns').textContent = fmtInt(returns);
+    document.getElementById('sip-maturity').textContent = fmtInt(balance);
+  }
+  ['sip-monthly','sip-rate','sip-years','sip-stepup'].forEach(id => document.getElementById(id).addEventListener('input', calcSIP));
+  calcSIP();
+
+  // --- PPF ---
+  function calcPPF(){
+    const annual = +document.getElementById('ppf-annual').value || 0;
+    const ratePct = +document.getElementById('ppf-rate').value || 0;
+    const years = Math.max(1, +document.getElementById('ppf-years').value || 15);
+    const r = ratePct / 100;
+    // Annual deposit at start of each year, compounded yearly
+    let balance = 0;
+    for(let y = 1; y <= years; y++){
+      balance = (balance + annual) * (1 + r);
+    }
+    const invested = annual * years;
+    const interest = balance - invested;
+    document.getElementById('ppf-invested').textContent = fmtInt(invested);
+    document.getElementById('ppf-interest').textContent = fmtInt(interest);
+    document.getElementById('ppf-maturity').textContent = fmtInt(balance);
+  }
+  ['ppf-annual','ppf-rate','ppf-years'].forEach(id => document.getElementById(id).addEventListener('input', calcPPF));
+  calcPPF();
+
+  // --- NPS ---
+  function calcNPS(){
+    const monthly = +document.getElementById('nps-monthly').value || 0;
+    const ageNow = +document.getElementById('nps-age-now').value || 30;
+    const ageRet = +document.getElementById('nps-age-ret').value || 60;
+    const ratePct = +document.getElementById('nps-rate').value || 0;
+    const marginal = (+document.getElementById('nps-marginal').value || 0) / 100;
+    const years = Math.max(0, ageRet - ageNow);
+    const months = years * 12;
+    const r = ratePct / 100 / 12;
+    let balance = 0;
+    for(let m = 1; m <= months; m++){
+      balance = balance * (1 + r) + monthly;
+    }
+    const invested = monthly * months;
+    const lumpsum = balance * 0.4;
+    const annuity = balance * 0.6;
+    // 80CCD(1B) extra ₹50K — applies on annual contribution capped at 50K
+    const annualContrib = monthly * 12;
+    const eligible80ccd1b = Math.min(annualContrib, 50000);
+    const taxSaved = eligible80ccd1b * marginal;
+    document.getElementById('nps-invested').textContent = fmtInt(invested);
+    document.getElementById('nps-corpus').textContent = fmtInt(balance);
+    document.getElementById('nps-lumpsum').textContent = fmtInt(lumpsum);
+    document.getElementById('nps-annuity').textContent = fmtInt(annuity);
+    document.getElementById('nps-tax-saved').textContent = fmtInt(taxSaved);
+  }
+  ['nps-monthly','nps-age-now','nps-age-ret','nps-rate','nps-marginal'].forEach(id => document.getElementById(id).addEventListener('input', calcNPS));
+  calcNPS();
 
   // --- Advanced-options toggle ---
   document.querySelectorAll('.calc-advanced-toggle').forEach(btn => {
