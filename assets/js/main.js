@@ -1,3 +1,42 @@
+/* ---------- Google Analytics 4 ---------- */
+(function () {
+  'use strict';
+  var GA_ID = 'G-PWLM7321K5';
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+
+  // Custom event: WhatsApp CTA clicks (any wa.me / api.whatsapp.com link)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (/wa\.me|api\.whatsapp\.com/i.test(href)) {
+      gtag('event', 'whatsapp_click', {
+        link_url: href,
+        link_text: (a.textContent || '').trim().slice(0, 80),
+        page_path: location.pathname
+      });
+    }
+  }, { passive: true });
+
+  // Custom event: which calculator tab a visitor opened (calculators.html only)
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.calc-tab');
+    if (!btn) return;
+    gtag('event', 'calc_used', {
+      calc_name: btn.getAttribute('data-tab') || (btn.textContent || '').trim(),
+      page_path: location.pathname
+    });
+  }, { passive: true });
+})();
+
 /* Aarvya Consulting — interactions
    Lightweight, no-framework, ~3KB minified */
 (function () {
