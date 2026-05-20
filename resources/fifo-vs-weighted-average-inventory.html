@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a1f44" />
+<title>FIFO vs Weighted Average — Inventory Valuation for the Kirana Shop | Aarvya Consulting</title>
+<meta name="description" content="A composite story: a kirana shop in Pune owner choosing between FIFO and Weighted Average for atta, oil, sugar. The ICDS-II rule (no LIFO allowed in India), the tax impact on COGS, and why your auditor cares more than you might think." />
+<meta name="keywords" content="FIFO vs weighted average India, ICDS-II inventory valuation, LIFO not allowed India, kirana inventory accounting, COGS calculation India, tax audit inventory method" />
+<link rel="canonical" href="https://aarvyaconsulting.com/resources/fifo-vs-weighted-average-inventory.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="FIFO vs Weighted Average — inventory for the kirana shop" />
+<meta property="og:description" content="ICDS-II rules, no LIFO in India, tax impact of FIFO vs WA, audit consistency requirement." />
+<meta property="og:image" content="https://aarvyaconsulting.com/og-default.svg" />
+<meta property="og:url" content="https://aarvyaconsulting.com/resources/fifo-vs-weighted-average-inventory.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://aarvyaconsulting.com/og-default.svg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"FIFO vs Weighted Average — inventory for the kirana shop","description":"ICDS-II rules, no LIFO in India, tax impact, audit consistency.","image":"https://aarvyaconsulting.com/og-default.svg","author":{"@type":"Organization","name":"Aarvya Consulting","url":"https://aarvyaconsulting.com/"},"publisher":{"@type":"Organization","name":"Aarvya Consulting","logo":{"@type":"ImageObject","url":"https://aarvyaconsulting.com/og-default.svg"}},"datePublished":"2026-05-20","dateModified":"2026-05-20","mainEntityOfPage":{"@type":"WebPage","@id":"https://aarvyaconsulting.com/resources/fifo-vs-weighted-average-inventory.html"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+<link rel="stylesheet" href="_shared.css" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a1f44'/><text x='50%' y='58%' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23c9a961'>A</text></svg>" />
+</head>
+<body>
+
+<div class="read-progress"><div class="read-progress__fill"></div></div>
+
+<div class="topbar"><div class="container topbar__row"><div class="topbar__left"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div><div class="topbar__right"><span>Mon–Sat · 10:00–19:00</span></div></div></div>
+
+<header class="site-header"><div class="container nav"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya Consulting</strong><span>Tax · Compliance · ERP</span></span></a><nav class="nav__menu"><a href="../index.html">Home</a><a href="../about.html">About</a><span class="has-sub"><a href="../services.html">Services</a><div class="submenu"><a href="../services/gst-filing.html">GST Services</a><a href="../services/itr-filing.html">Income Tax / ITR</a><a href="../services/company-registration.html">Business Registration</a><a href="../services/erp-consulting.html">ERP Consulting</a><a href="../services.html">All Services →</a></div></span><a class="is-active" href="../resources.html">Guides</a><a href="../calculators.html">Calculators</a><a href="../contact.html">Contact</a></nav><div class="nav__cta"><a class="btn btn--ghost" href="tel:+919211719725">Call Now</a><a class="btn btn--primary" href="../contact.html">Free Consultation</a></div><button class="nav__toggle" aria-label="Open menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></header>
+
+<div class="mobile-panel" id="mobilePanel"><div class="mobile-panel__inner"><div class="mobile-panel__head"><a class="brand" href="../index.html"><span class="brand__mark">A</span><span class="brand__name"><strong>Aarvya</strong><span>Consulting</span></span></a><button class="mobile-panel__close nav__toggle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><a href="../index.html">Home</a><a href="../about.html">About Us</a><a href="../services.html">Services</a><a href="../resources.html">Guides</a><a href="../calculators.html">Calculators</a><a href="../contact.html">Contact</a><div class="mobile-panel__cta"><a class="btn btn--whatsapp" href="https://wa.me/919211719725" target="_blank" rel="noopener">WhatsApp Us</a><a class="btn btn--primary" href="tel:+919211719725">Call Now</a></div></div></div>
+
+<section class="hero-illust">
+  <div class="hero-illust__inner">
+    <div class="hero-illust__text">
+      <div class="hero-illust__breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../resources.html">Guides</a><span>›</span><span>FIFO vs Weighted Average</span></div>
+      <div class="hero-illust__meta"><span class="chip">Accounting</span><span>· 6 min read</span><span>· Updated May 2026</span></div>
+      <h1>FIFO vs Weighted Average — inventory accounting for the kirana shop</h1>
+      <p class="lede">Ramesh runs a kirana store in Pune. He buys 50kg of atta in March, 70kg in April, 50kg in May. The wholesale price moves up. End of May he has 40kg left and a question: how much was the "cost" of the atta he sold? FIFO and Weighted Average give different answers. ICDS forbids LIFO entirely. Here's the actual math and what your tax auditor wants to see.</p>
+    </div>
+    <div class="hero-illust__art-wrap">
+      <svg class="hero-illust__art illust-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="160" cy="220" rx="160" ry="18" fill="#f0e9d5"/>
+        <!-- 3 sacks -->
+        <ellipse cx="80" cy="180" rx="40" ry="14" fill="#946e2c"/>
+        <path d="M55 180 Q55 110 80 110 Q105 110 105 180 Z" fill="#c9a961" stroke="#0a1f44" stroke-width="2"/>
+        <text x="80" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" fill="#0a1f44">Mar</text>
+        <text x="80" y="170" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#0a1f44">₹38/kg</text>
+        <ellipse cx="160" cy="180" rx="40" ry="14" fill="#946e2c"/>
+        <path d="M135 180 Q135 110 160 110 Q185 110 185 180 Z" fill="#c9a961" stroke="#0a1f44" stroke-width="2"/>
+        <text x="160" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" fill="#0a1f44">Apr</text>
+        <text x="160" y="170" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#0a1f44">₹42/kg</text>
+        <ellipse cx="240" cy="180" rx="40" ry="14" fill="#946e2c"/>
+        <path d="M215 180 Q215 110 240 110 Q265 110 265 180 Z" fill="#c9a961" stroke="#0a1f44" stroke-width="2"/>
+        <text x="240" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" fill="#0a1f44">May</text>
+        <text x="240" y="170" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#0a1f44">₹45/kg</text>
+        <text x="160" y="100" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="800" fill="#0a1f44">Atta · 50 + 70 + 50 = 170kg</text>
+        <line x1="0" y1="208" x2="320" y2="208" stroke="#0a1f44" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<article class="section">
+  <div class="article-body article-body--story">
+
+    <div class="story-opener">
+      <div class="story-opener__avatar" aria-hidden="true">R</div>
+      <div class="story-opener__body">
+        <span class="story-opener__name">Ramesh · 45 · Kirana store owner, Pune</span>
+        <p>Ramesh sells about 130 SKUs in his 600 sq ft kirana. Atta is his biggest seller. In March, he bought 50kg @ ₹38. April: 70kg @ ₹42 (post a wheat price hike). May: 50kg @ ₹45. He sold 130kg through the quarter at retail ₹56/kg.</p>
+        <p>His CA asks at GST audit: <em>"What inventory method are you using? FIFO or weighted average?"</em></p>
+        <p>Ramesh: <em>"What's that?"</em></p>
+        <p>Five minutes of explanation later, he realises that the answer changes his profit by ₹360 on atta alone — and across 130 SKUs, it can add up to a meaningful tax difference.</p>
+      </div>
+    </div>
+
+    <div class="tldr">
+      <div class="tldr__title">🪙 In 60 seconds</div>
+      <ul>
+        <li><strong>Two acceptable methods in India</strong>: <strong>FIFO</strong> (First-In-First-Out — oldest stock cost is used for sales) and <strong>Weighted Average</strong> (running average cost per unit).</li>
+        <li><strong>LIFO is NOT allowed</strong> under <strong>ICDS-II</strong> (Income Computation and Disclosure Standards) for tax purposes. Allowed under some old accounting conventions but withdrawn under Ind AS / ICDS.</li>
+        <li>In a <strong>rising-price environment</strong>: FIFO gives lower COGS → higher profit → higher tax. Weighted Average smooths the impact.</li>
+        <li>In a <strong>falling-price environment</strong>: reverse — FIFO higher COGS → lower profit.</li>
+        <li><strong>Consistency principle</strong>: once you pick a method, you must stick with it. Switching between FIFO and Weighted Average requires disclosure in financial statements and a reasonable justification. Tax authorities scrutinise method changes that conveniently reduce tax.</li>
+      </ul>
+    </div>
+
+    <h2>The math on Ramesh's atta</h2>
+
+    <p>Stock movements for Q1 (Mar-May):</p>
+    <ul class="checklist">
+      <li>Mar 1: buy 50kg @ ₹38 = ₹1,900</li>
+      <li>Apr 5: buy 70kg @ ₹42 = ₹2,940</li>
+      <li>May 10: buy 50kg @ ₹45 = ₹2,250</li>
+      <li>Total purchases: 170kg, ₹7,090.</li>
+      <li>Sold over the quarter: 130kg at retail ₹56/kg = ₹7,280 revenue.</li>
+      <li>Closing stock: 40kg.</li>
+    </ul>
+
+    <div class="compare-cards">
+      <div class="compare-card">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">FIFO</h3>
+            <p class="compare-card__tagline">First-bought sold first</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Sells the 50kg March stock first (₹38), then 70kg April (₹42), then 10kg May (₹45). <strong>COGS = 50×38 + 70×42 + 10×45 = ₹5,290</strong>. Closing 40kg May @ ₹45 = ₹1,800. <strong>Gross profit = 7,280 − 5,290 = ₹1,990</strong>.</p>
+      </div>
+      <div class="compare-card compare-card--pick">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Weighted Average</h3>
+            <p class="compare-card__tagline">Running average cost</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Total available 170kg @ ₹7,090 → weighted avg ₹41.71/kg. <strong>COGS = 130 × 41.71 = ₹5,423</strong>. Closing 40 × 41.71 = ₹1,668. <strong>Gross profit = 7,280 − 5,423 = ₹1,857</strong>.</p>
+      </div>
+    </div>
+
+    <p>Differential profit between FIFO and WA on atta alone: <strong>₹133 (in this quarter)</strong>. Annualised + applied across 130 SKUs in a rising-price economy, the differential can reach ₹15-40k of taxable profit. At 30% slab, that's ₹4-12k of annual tax. Not big for a kirana — but materially relevant for a wholesale distributor or a manufacturer with thousands of SKUs.</p>
+
+    <h2>ICDS-II — the tax rulebook</h2>
+
+    <p>The Income Tax Department issued Income Computation and Disclosure Standards (ICDS) in 2017, applicable to all assessees other than individuals / HUFs not covered by tax audit. ICDS-II deals with inventory valuation:</p>
+
+    <ul class="checklist">
+      <li>Inventory should be valued at <strong>cost OR net realisable value (NRV)</strong>, whichever is lower.</li>
+      <li>Cost can be determined using <strong>FIFO or Weighted Average</strong> — your choice.</li>
+      <li><strong>LIFO is explicitly NOT permitted</strong>.</li>
+      <li>Specific identification permitted only for non-fungible items (jewellery, custom-built items).</li>
+      <li>The chosen method must be applied <strong>consistently</strong> across years.</li>
+      <li>Change of method requires disclosure + reasonable cause. AO can challenge if the change has tax-reduction intent.</li>
+    </ul>
+
+    <p>Ind AS 2 (the corresponding accounting standard) is aligned with ICDS-II — same two-method choice, same LIFO prohibition.</p>
+
+    <h2>Which method to pick</h2>
+
+    <div class="compare-cards compare-cards--3">
+      <div class="compare-card">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Pick FIFO if</h3>
+            <p class="compare-card__tagline">Physical-flow match</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Perishables (food, dairy, pharma). Date-coded inventory (expiry-based). Single-source supply where each batch is identifiable. Closing stock value should reflect <strong>recent purchase prices</strong> — balance-sheet realism.</p>
+      </div>
+      <div class="compare-card compare-card--pick">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Pick Weighted Average if</h3>
+            <p class="compare-card__tagline">Bulk fungibles</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Bulk fungible items (steel, chemicals, cement, grains). Stock often mixed in silos / tanks. Frequent purchases at small price variations. P&amp;L should reflect <strong>smoothed cost</strong> — earnings consistency.</p>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card__head">
+          <div class="compare-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+          <div>
+            <h3 class="compare-card__name">Specific identification</h3>
+            <p class="compare-card__tagline">Non-fungibles</p>
+          </div>
+        </div>
+        <p class="compare-card__verdict">Jewellery (each piece unique). Real-estate inventory (each unit). High-value custom equipment. Maintain serial-number / lot-number identification. ICDS-II permits this for non-fungibles.</p>
+      </div>
+    </div>
+
+    <p>For Ramesh's kirana: <strong>FIFO is the natural choice</strong>. Atta has shelf-life; he physically sells older stock first to avoid expiry losses. Method matches actual flow.</p>
+
+    <p>For a steel distributor: <strong>Weighted Average</strong> is typical. Steel rods are commingled; specific batch identification isn't practical. Smoothed cost makes more sense.</p>
+
+    <h2>What the auditor actually checks</h2>
+
+    <ul class="checklist">
+      <li><strong>Disclosure</strong>: financial statements must state the method used. Schedule III (Companies Act) + Ind AS 2 require disclosure of inventory accounting policies.</li>
+      <li><strong>Consistency</strong>: method same as prior year. Any change explained with reason.</li>
+      <li><strong>Physical inventory</strong>: year-end physical count reconciled with system stock. Variance &gt; 2-3% triggers detailed review.</li>
+      <li><strong>NRV test</strong>: items where market price has dropped below cost → write down to NRV. Slow-moving / obsolete / damaged inventory provisioned for.</li>
+      <li><strong>GST cross-check</strong>: GSTR-1 outward supplies value should correlate with sales × inventory turnover. GSTR-2B inward should correlate with purchases.</li>
+    </ul>
+
+    <h2>The funny historical wrinkle</h2>
+
+    <p>India's withdrawal of LIFO predates ICDS — Ind AS 2 (2016) prohibited it. The rationale: LIFO produces unrealistic closing stock values (decades-old prices remain on balance sheet) and is easily manipulated in inflationary periods to reduce tax. Most major economies have moved away from LIFO; the US is one notable holdout (US GAAP still permits LIFO for tax purposes, leading to "LIFO reserve" disclosures on US companies' balance sheets). India aligned with global practice.</p>
+
+    <p>The practical effect: in a rising-price economy, Indian businesses report slightly higher profits (and tax) than they would have under LIFO. The trade-off is more accurate balance-sheet values and reduced manipulation risk.</p>
+
+    <h2>Quick answers</h2>
+    <div class="faq">
+      <div class="faq__item is-open"><button class="faq__q">Can I switch from FIFO to Weighted Average mid-year?</button><div class="faq__a"><p>No mid-year switches. Year-on-year change is permitted with disclosure + justification. Tax auditor will scrutinise if change appears tax-motivated.</p></div></div>
+      <div class="faq__item"><button class="faq__q">My ERP uses Weighted Average; my old Tally used FIFO. Problem?</button><div class="faq__a"><p>Disclose the change in the year of transition. Restate prior-year comparatives in financial statements (Ind AS 8 retrospective application). Tax adjustment for the year-of-change differential needs to be disclosed.</p></div></div>
+      <div class="faq__item"><button class="faq__q">Does it matter if my inventory turns over fast?</button><div class="faq__a"><p>Less, in absolute terms. High turnover (e.g., 12+ times/year) means closing stock represents only days of purchases — FIFO vs WA differential narrows. Slow turnover (e.g., 2 times/year) means closing stock has lots of old purchase prices — bigger differential.</p></div></div>
+      <div class="faq__item"><button class="faq__q">What about NRV — when does it matter?</button><div class="faq__a"><p>When market price has dropped below your purchase cost. Example: bought a SKU at ₹100; current selling price is ₹85; cost less than NRV requires writing down to ₹85. Often comes up in fashion / electronics / commodity-linked inventory.</p></div></div>
+      <div class="faq__item"><button class="faq__q">Standard costing — allowed?</button><div class="faq__a"><p>Standard costing can be used for internal management but must reconcile to actual cost (FIFO or WA) for financial reporting. The variance gets adjusted to inventory or COGS depending on cause.</p></div></div>
+    </div>
+
+    <a class="next-up" href="bookkeeping-from-day-one.html">
+      <div class="next-up__icon"><svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <div class="next-up__body"><div class="next-up__label">For the wider bookkeeping setup</div><div class="next-up__title">Bookkeeping from day one</div></div>
+      <div class="next-up__arrow"><svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    </a>
+
+    <h2>When you might want help</h2>
+    <p>Two situations: (1) Inventory-heavy business reviewing method choice — FIFO vs WA + ERP configuration + audit defence. (2) Method change in the works — Ind AS 8 disclosure + restatement + AO communication.</p>
+
+    <div class="cta-strip reveal"><div><h2>Inventory method confused?</h2><p>Method selection, ERP configuration, NRV adjustment, audit-grade documentation. Fixed-scope review.</p></div><div class="cta-strip__btns"><a class="btn btn--gold btn--lg" href="https://wa.me/919211719725?text=Hello%20Aarvya%2C%20inventory%20accounting%20question." target="_blank" rel="noopener">WhatsApp Now</a><a class="btn btn--ghost-light btn--lg" href="../contact.html">Send a Message</a></div></div>
+
+    <div class="helpful"><p>Was this guide helpful?</p><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20FIFO%20vs%20WA">👍 Yes</a><a class="btn-helpful" href="mailto:aarvyaconsulting@gmail.com?subject=Feedback%3A%20Could%20be%20better">👎 Could be better</a></div>
+
+    <p style="font-size:.82rem;color:#7b8aa1;margin-top:24px;font-style:italic">"Ramesh" and the atta prices are composite illustrations. Method choice depends on actual inventory turnover, type, and audit considerations.</p>
+
+    <div class="related"><h3>Read next</h3><div class="related__grid">
+      <a class="related__card" href="bookkeeping-from-day-one.html"><span class="chip">Accounting</span><h4>Bookkeeping day 1</h4><p>The wider setup.</p></a>
+      <a class="related__card" href="cash-flow-vs-profit.html"><span class="chip">Accounting</span><h4>Cash flow vs profit</h4><p>What inventory affects.</p></a>
+      <a class="related__card" href="finance-close-month-end-erp.html"><span class="chip">Accounting</span><h4>Month-end close</h4><p>Where inventory enters.</p></a>
+    </div></div>
+
+  </div>
+</article>
+
+<footer class="footer"><div class="container"><div class="footer__grid"><div class="footer__brand"><a class="brand" href="../index.html" style="margin-bottom:16px"><span class="brand__mark">A</span><span class="brand__name"><strong style="color:#fff">Aarvya Consulting</strong><span>Tax · Compliance · ERP</span></span></a><p>Professional services in taxation, compliance, accounting, audit, ERP and business advisory.</p><p style="font-family:var(--font-display);font-style:italic;color:var(--gold-400);margin-top:14px">"Driven by Accuracy, Powered by Trust."</p></div><div><h4>Services</h4><ul class="footer__list"><li><a href="../services/itr-filing.html">Income Tax &amp; TDS</a></li><li><a href="../services/gst-filing.html">GST Services</a></li><li><a href="../services/company-registration.html">Business Registration</a></li><li><a href="../services/erp-consulting.html">ERP Consulting</a></li><li><a href="../services.html">All services</a></li></ul></div><div><h4>Company</h4><ul class="footer__list"><li><a href="../about.html">About Us</a></li><li><a href="../resources.html">Guides &amp; Resources</a></li><li><a href="../contact.html">Contact</a></li><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms</a></li></ul></div><div><h4>Contact</h4><div class="footer__contact"><a href="tel:+919211719725">+91 92117 19725</a><a href="mailto:aarvyaconsulting@gmail.com">aarvyaconsulting@gmail.com</a></div></div></div><div class="footer__bottom"><span>© <span data-year>2025</span> Aarvya Consulting. All rights reserved.</span><span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span></div></div></footer>
+
+<div class="mobile-actions"><a class="call" href="tel:+919211719725">Call Now</a><a class="wa" href="https://wa.me/919211719725" target="_blank" rel="noopener">WhatsApp Us</a></div>
+<a class="fab-wa" href="https://wa.me/919211719725" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 1.64 6L0 24l6.18-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.5-8.5Z"/></svg></a>
+
+<script src="../assets/js/main.js" defer></script>
+<script src="_articles.js" defer></script>
+</body>
+</html>
