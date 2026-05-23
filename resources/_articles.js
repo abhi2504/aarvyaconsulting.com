@@ -16,8 +16,8 @@
     update();
   }
 
-  // Checklist toggle
-  document.querySelectorAll('.checklist li').forEach(function (li) {
+  // Checklist toggle (classic .checklist + the icon-based .doc-check)
+  document.querySelectorAll('.checklist li, .doc-check li').forEach(function (li) {
     li.addEventListener('click', function () { li.classList.toggle('is-checked'); });
   });
 
@@ -29,6 +29,36 @@
   var activeCat = 'all';
   var activeQuery = '';
 
+  // Full-text content index — lazy-loaded the first time the user
+  // intends to search. Lets the box match words inside the guide body,
+  // not just the title & tags. If it fails to load, title/tag search
+  // keeps working, so search is never broken by a missing index.
+  var contentIndex = null;
+  var indexState = 'idle'; // idle | loading | ready | failed
+
+  function loadIndex() {
+    if (indexState === 'loading' || indexState === 'ready') return;
+    indexState = 'loading';
+    fetch('search-index.json')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) { indexState = 'failed'; return; }
+        contentIndex = {};
+        data.forEach(function (item) {
+          contentIndex[item.u] = (item.t + ' ' + item.x).toLowerCase();
+        });
+        indexState = 'ready';
+        if (activeQuery) applyFilter(); // re-run now that content is searchable
+      })
+      .catch(function () { indexState = 'failed'; });
+  }
+
+  function matchesContent(card) {
+    if (!contentIndex) return false;
+    var txt = contentIndex[card.getAttribute('href') || ''];
+    return !!txt && txt.indexOf(activeQuery) >= 0;
+  }
+
   function applyFilter() {
     var shown = 0;
     cards.forEach(function (card) {
@@ -36,7 +66,10 @@
       var title = (card.getAttribute('data-title') || card.textContent || '').toLowerCase();
       var tags = (card.getAttribute('data-tags') || '').toLowerCase();
       var matchCat = activeCat === 'all' || cat === activeCat;
-      var matchQ = !activeQuery || title.indexOf(activeQuery) >= 0 || tags.indexOf(activeQuery) >= 0;
+      var matchQ = !activeQuery
+        || title.indexOf(activeQuery) >= 0
+        || tags.indexOf(activeQuery) >= 0
+        || matchesContent(card);
       if (matchCat && matchQ) { card.classList.remove('is-filtered-out'); shown++; }
       else { card.classList.add('is-filtered-out'); }
     });
@@ -53,8 +86,10 @@
   });
 
   if (search) {
+    search.addEventListener('focus', loadIndex, { once: true });
     search.addEventListener('input', function () {
       activeQuery = search.value.trim().toLowerCase();
+      if (activeQuery && indexState === 'idle') loadIndex();
       applyFilter();
     });
   }

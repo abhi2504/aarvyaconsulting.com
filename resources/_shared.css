@@ -972,3 +972,51 @@
   .article-body--story h2 { font-size: 1.25rem; margin-top: 1.6em; }
   .article-body--story p { font-size: .98rem; line-height: 1.7; }
 }
+
+/* ============================================================
+   Document checklist — icon + tickable, alignment-safe.
+   Layout per row: [tick] [icon chip] [text body]. The body is a
+   SINGLE grid child, so any number of <strong>s inside it stay
+   inline and never split into columns (the .checklist flex bug).
+   ============================================================ */
+.doc-check { list-style: none; padding: 0; margin: 16px 0 28px; display: grid; gap: 10px; }
+.doc-check li {
+  display: grid;
+  grid-template-columns: 22px 44px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 13px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s var(--ease);
+}
+.doc-check li:hover { border-color: rgba(201,169,97,.5); transform: translateY(-1px); }
+.doc-check li::before {
+  content: '';
+  width: 22px; height: 22px; border-radius: 7px;
+  border: 2px solid var(--ink-300);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20,6 9,17 4,12'/%3E%3C/svg%3E");
+  background-size: 0 0; background-position: center; background-repeat: no-repeat;
+  transition: background-size .18s, border-color .18s, background-color .18s;
+}
+.doc-check li.is-checked { background: #f5fbf7; border-color: rgba(31,157,85,.4); }
+.doc-check li.is-checked::before { background-color: var(--success); border-color: var(--success); background-size: 15px 15px; }
+.doc-check__ico {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--bg-soft); color: var(--navy-700);
+  display: grid; place-items: center;
+}
+.doc-check__ico svg { width: 22px; height: 22px; }
+.doc-check li.is-checked .doc-check__ico { background: rgba(31,157,85,.12); color: #126b3b; }
+.doc-check__body { min-width: 0; line-height: 1.55; color: var(--ink-700); font-size: .95rem; }
+.doc-check__body strong { color: var(--navy-900); }
+
+@media (max-width: 720px) {
+  .doc-check li { grid-template-columns: 20px 38px 1fr; gap: 11px; padding: 11px 13px; }
+  .doc-check li::before { width: 20px; height: 20px; }
+  .doc-check__ico { width: 38px; height: 38px; border-radius: 10px; }
+  .doc-check__ico svg { width: 19px; height: 19px; }
+  .doc-check__body { font-size: .9rem; }
+}
