@@ -21,18 +21,32 @@
     li.addEventListener('click', function () { li.classList.toggle('is-checked'); });
   });
 
-  // Hub search + category filter
-  var searches = document.querySelectorAll('.js-hub-search'); // hero + "All guides" box, kept in sync
+  // ---- Hub search + category filter (drives the "All guides" grid) ----
+  var searches = document.querySelectorAll('.js-hub-search');
+  var clearBtns = document.querySelectorAll('.js-search-clear');
   var chips = document.querySelectorAll('[data-cat-chip]');
-  var cards = document.querySelectorAll('[data-guide]');
+  var cards = document.querySelectorAll('.guide-grid [data-guide]'); // count & filter the main grid only
+  var totalCards = cards.length;
   var noResults = document.querySelector('.no-results');
+  var statusEl = document.querySelector('[data-result-status]');
+  var queryEcho = document.querySelector('[data-query-echo]');
   var activeCat = 'all';
   var activeQuery = '';
 
-  // Full-text content index — lazy-loaded the first time the user
-  // intends to search. Lets the box match words inside the guide body,
-  // not just the title & tags. If it fails to load, title/tag search
-  // keeps working, so search is never broken by a missing index.
+  // Keep the sticky filter bar sitting just under the sticky site header,
+  // whatever its height is at this breakpoint.
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var setStickyTop = function () {
+      document.documentElement.style.setProperty('--sticky-top', header.offsetHeight + 'px');
+    };
+    setStickyTop();
+    window.addEventListener('resize', setStickyTop, { passive: true });
+  }
+
+  // Full-text content index — lazy-loaded the first time the user intends to
+  // search. Matches words inside the guide body, not just title & tags. If it
+  // fails to load, title/tag search still works, so search is never broken.
   var contentIndex = null;
   var indexState = 'idle'; // idle | loading | ready | failed
 
@@ -59,6 +73,15 @@
     return !!txt && txt.indexOf(activeQuery) >= 0;
   }
 
+  function updateStatus(shown) {
+    if (!statusEl) return;
+    if (!activeQuery && activeCat === 'all') {
+      statusEl.innerHTML = 'Showing all <strong>' + totalCards + '</strong> guides';
+    } else {
+      statusEl.innerHTML = 'Showing <strong>' + shown + '</strong> of ' + totalCards + ' guides';
+    }
+  }
+
   function applyFilter() {
     var shown = 0;
     cards.forEach(function (card) {
@@ -74,6 +97,16 @@
       else { card.classList.add('is-filtered-out'); }
     });
     if (noResults) noResults.classList.toggle('is-visible', shown === 0);
+    if (queryEcho) queryEcho.textContent = activeQuery;
+    updateStatus(shown);
+  }
+
+  function setQuery(value) {
+    activeQuery = value.trim().toLowerCase();
+    searches.forEach(function (s) { if (s.value !== value) s.value = value; });
+    clearBtns.forEach(function (b) { b.hidden = !value; });
+    if (activeQuery && indexState === 'idle') loadIndex();
+    applyFilter();
   }
 
   chips.forEach(function (chip) {
@@ -87,14 +120,18 @@
 
   searches.forEach(function (input) {
     input.addEventListener('focus', loadIndex, { once: true });
-    input.addEventListener('input', function () {
-      activeQuery = input.value.trim().toLowerCase();
-      // mirror the value into the other search box(es) so they stay in sync
-      searches.forEach(function (other) { if (other !== input) other.value = input.value; });
-      if (activeQuery && indexState === 'idle') loadIndex();
-      applyFilter();
+    input.addEventListener('input', function () { setQuery(input.value); });
+  });
+
+  clearBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setQuery('');
+      if (searches[0]) searches[0].focus();
     });
   });
+
+  // Initialise the status line ("Showing all N guides") on load.
+  if (cards.length) applyFilter();
 
   // Lazy-load Mermaid only if there's a mermaid block
   if (document.querySelector('pre.mermaid, code.mermaid, .mermaid')) {

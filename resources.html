@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,700&display=swap" />
-<link rel="stylesheet" href="assets/css/styles.css" />
-<link rel="stylesheet" href="resources/_shared.css" />
+<link rel="stylesheet" href="assets/css/styles.css?v=20260523" />
+<link rel="stylesheet" href="resources/_shared.css?v=20260523" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a1f44'/><text x='50%' y='58%' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23c9a961'>A</text></svg>" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"Aarvya Consulting Guides","url":"https://aarvyaconsulting.com/resources.html","description":"Free, beginner-friendly guides on Indian tax, GST, compliance, accounting, payroll and ERP."}
@@ -82,20 +82,7 @@
       <span class="hero__pill" style="margin-bottom:18px"><span class="dot"></span> Free · No sign-up · Plain English</span>
       <h1>Guides &amp; Resources — straight talk on tax, GST, compliance &amp; ERP</h1>
       <p>Written so anyone can follow — even if you've never filed a return or registered a business. Real numbers, real steps, no jargon.</p>
-      <div class="hub-controls">
-        <div class="hub-search"><input id="hubSearch" class="js-hub-search" type="search" placeholder="Search by title or anything inside a guide — e.g. 'NOC', 'cancelled cheque', 'QRMP'…" autocomplete="off" /></div>
-        <div class="cat-chips">
-          <button class="cat-chip is-active" data-cat-chip="all">All</button>
-          <button class="cat-chip" data-cat-chip="tax">Tax</button>
-          <button class="cat-chip" data-cat-chip="gst">GST</button>
-          <button class="cat-chip" data-cat-chip="registration">Registration</button>
-          <button class="cat-chip" data-cat-chip="roc">ROC</button>
-          <button class="cat-chip" data-cat-chip="accounting">Accounting</button>
-          <button class="cat-chip" data-cat-chip="payroll">Payroll</button>
-          <button class="cat-chip" data-cat-chip="erp">ERP</button>
-          <button class="cat-chip" data-cat-chip="advisory">Advisory</button>
-        </div>
-      </div>
+      <a class="btn btn--gold btn--lg" href="#all-guides" style="margin-top:6px">Browse &amp; search all 101 guides ↓</a>
     </div>
     <div class="hub-hero__art-wrap" aria-hidden="true">
       <svg class="hub-hero__art" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg">
@@ -241,15 +228,34 @@
 </section>
 
 <!-- All guides -->
-<section class="section">
+<section class="section" id="all-guides" style="scroll-margin-top:72px">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">All guides</span>
-      <h2 class="section-title">Browse by topic</h2>
-      <p class="section-lede">101 guides live · plain-English explainers across Tax, GST, Registration, ROC, Payroll, Accounting, ERP &amp; Advisory.</p>
-      <div class="guide-search"><input class="js-hub-search" type="search" placeholder="Search guides by title or content — e.g. 'NOC', 'cancelled cheque', 'QRMP'…" autocomplete="off" aria-label="Search guides" /></div>
+      <h2 class="section-title">Browse all 101 guides</h2>
+      <p class="section-lede">Plain-English explainers across Tax, GST, Registration, ROC, Payroll, Accounting, ERP &amp; Advisory. Search matches titles <em>and</em> anything written inside a guide.</p>
     </div>
-    <div class="no-results">No guides match — try a different search.</div>
+
+    <div class="guide-filter">
+      <div class="guide-search">
+        <input id="hubSearch" class="js-hub-search" type="search" placeholder="Search 101 guides — try “NOC”, “cancelled cheque”, “QRMP”…" autocomplete="off" aria-label="Search guides" />
+        <button class="guide-search__clear js-search-clear" type="button" aria-label="Clear search" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="cat-chips" role="tablist" aria-label="Filter by topic">
+        <button class="cat-chip is-active" data-cat-chip="all">All</button>
+        <button class="cat-chip" data-cat-chip="tax">Tax</button>
+        <button class="cat-chip" data-cat-chip="gst">GST</button>
+        <button class="cat-chip" data-cat-chip="registration">Registration</button>
+        <button class="cat-chip" data-cat-chip="roc">ROC</button>
+        <button class="cat-chip" data-cat-chip="accounting">Accounting</button>
+        <button class="cat-chip" data-cat-chip="payroll">Payroll</button>
+        <button class="cat-chip" data-cat-chip="erp">ERP</button>
+        <button class="cat-chip" data-cat-chip="advisory">Advisory</button>
+      </div>
+      <div class="guide-filter__status" data-result-status aria-live="polite">Showing all <strong>101</strong> guides</div>
+    </div>
+
+    <div class="no-results">No guides match “<span data-query-echo></span>”. Try a different word or topic.</div>
     <div class="guide-grid">
       <!-- Tax -->
       <a class="guide-card" href="resources/itr-for-first-timers.html" data-guide data-cat="tax" data-title="ITR for first-timers" data-tags="itr salary tax freelancer">
@@ -795,6 +801,6 @@
 <a class="fab-wa" href="https://wa.me/919211719725" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 1.64 6L0 24l6.18-1.62A12 12 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.5-8.5Z"/></svg></a>
 
 <script src="assets/js/main.js" defer></script>
-<script src="resources/_articles.js" defer></script>
+<script src="resources/_articles.js?v=20260523" defer></script>
 </body>
 </html>
