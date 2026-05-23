@@ -22,7 +22,7 @@
   });
 
   // Hub search + category filter
-  var search = document.getElementById('hubSearch');
+  var searches = document.querySelectorAll('.js-hub-search'); // hero + "All guides" box, kept in sync
   var chips = document.querySelectorAll('[data-cat-chip]');
   var cards = document.querySelectorAll('[data-guide]');
   var noResults = document.querySelector('.no-results');
@@ -85,14 +85,16 @@
     });
   });
 
-  if (search) {
-    search.addEventListener('focus', loadIndex, { once: true });
-    search.addEventListener('input', function () {
-      activeQuery = search.value.trim().toLowerCase();
+  searches.forEach(function (input) {
+    input.addEventListener('focus', loadIndex, { once: true });
+    input.addEventListener('input', function () {
+      activeQuery = input.value.trim().toLowerCase();
+      // mirror the value into the other search box(es) so they stay in sync
+      searches.forEach(function (other) { if (other !== input) other.value = input.value; });
       if (activeQuery && indexState === 'idle') loadIndex();
       applyFilter();
     });
-  }
+  });
 
   // Lazy-load Mermaid only if there's a mermaid block
   if (document.querySelector('pre.mermaid, code.mermaid, .mermaid')) {
